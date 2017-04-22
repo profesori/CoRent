@@ -6126,8 +6126,8 @@ button.close {
   border: 2px solid #e9e9e9; }
 
 .block {
-  padding-bottom: 80px;
-  padding-top: 80px; }
+  padding-bottom: 30px;
+  padding-top: 30px; }
   .block .page-header:first-of-type {
     margin-top: 0px; }
 
@@ -6272,7 +6272,7 @@ button.close {
 
 .page-header {
   border: 0px;
-  margin: 80px 0px;
+  margin: 30px 0px;
   padding: 0px;
   text-align: center; }
   .page-header h1 {
@@ -6291,6 +6291,29 @@ button.close {
       .page-header p a:hover {
         border-color: #008675; }
   .page-header.left {
+    text-align: left; }
+
+.page-header-white {
+  border: 0px;
+  margin: 20px 0px;
+  padding: 0px;
+  text-align: center; }
+  .page-header-white h1 {
+    color: #ffd925;
+    font-size: 36px;
+    font-weight: 300;
+    margin: 0px;
+    padding: 0px; }
+  .page-header-white p {
+    color: rgba(255, 217, 37, 0.6);
+    font-size: 15px;
+    margin: 30px 0px 0px 0px;
+    padding: 0px; }
+    .page-header-white p a {
+      border-bottom: 1px solid #009f8b; }
+      .page-header-white p a:hover {
+        border-color: #008675; }
+  .page-header-white.left {
     text-align: left; }
 
 .page-title {
