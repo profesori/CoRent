@@ -1,0 +1,3 @@
+alter_studio_co_rent_homepage:
+    path:     /
+    defaults: { _controller: AlterStudioCoRentBundle:Default:index }

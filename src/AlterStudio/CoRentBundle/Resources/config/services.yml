@@ -1,0 +1,4 @@
+services:
+#    alter_studio_co_rent.example:
+#        class: AlterStudio\CoRentBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

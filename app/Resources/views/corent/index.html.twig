@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="main">
+        <div class="main-inner">
+            <div class="content">
+                <div class="hero-image">
+
+                    <div class="hero-image-inner" style="background-image: url(' {{asset('img/header/bg_3.jpg')}} ');">
+                        <div class="hero-image-content">
+                            <div class="container">
+                                <div class="center-block">
+                                    <h1>Kerkoni rreth jush makinen ideale</h1>
+                                    <p>
+                                        Me lire, me shpejt, me i sigurt...
+                                    </p>
+                                    <div class="hero-image-form-wrapper-main">
+                                        <form class="form-inline">
+                                            <div class="hero-image-location form-group">
+                                                <input type="text" class="form-control" placeholder="Keyword">
+                                            </div>
+                                            <!-- /.form-group -->
+                                            <div class="hero-image-date form-group">
+                                                <input type="date" class="form-control" id="exampleInputEmail2" placeholder="Data e nisjes">
+                                            </div>
+                                            <div class="hero-image-date form-group">
+                                                <input type="date" class="form-control" id="exampleInputEmail2" placeholder="Data e mbarimit">
+                                            </div>
+                                            <div class="hero-image-distance form-group">
+                                                <select class="form-control" title="Distanca"></select>
+                                            </div>
+                                            <!-- /.form-group -->
+                                            <button type="submit" class="btn btn-primary">Kerko</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.container -->
+                        </div>
+                        <!-- /.hero-image-content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
