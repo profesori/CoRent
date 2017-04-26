@@ -7905,11 +7905,18 @@ h2.widgettitle {
 /*------------------------------------------------------------------
 [ 15. Homepage Image ]
 */
+.mobile-form {
+  display: none;
+  padding-bottom: 10px; }
+  @media (max-width: 767px) {
+    .mobile-form {
+      display: block; } }
+
 .hero-image-inner {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 550px;
+  height: 650px;
   position: relative; }
   .hero-image-inner:after {
     background-color: rgba(0, 0, 0, 0.2);
@@ -7921,10 +7928,54 @@ h2.widgettitle {
     right: 0px;
     top: 0px; }
 
-.hero-image-content {
+.hero-image-inner-main {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 550px;
+  position: relative; }
+  .hero-image-inner-main:after {
+    background-color: rgba(0, 0, 0, 0.2);
+    bottom: 0px;
+    content: '';
+    display: block;
+    left: 0px;
+    position: absolute;
+    right: 0px;
+    top: 0px; }
+
+.hero-image-content-main {
   position: absolute;
   left: 50%;
   top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  z-index: 10; }
+  .hero-image-content-main h1 {
+    color: #fff;
+    font-size: 45px;
+    font-weight: 300;
+    margin: 0px 0px 30px 0px; }
+  .hero-image-content-main p {
+    color: #fff;
+    font-size: 20px;
+    margin: 0px 0px 40px 0px; }
+  .hero-image-content-main .btn, .hero-image-content-main .detail-gallery .owl-next, .detail-gallery .hero-image-content-main .owl-next, .hero-image-content-main .detail-gallery .owl-prev, .detail-gallery .hero-image-content-main .owl-prev {
+    margin-right: 20px; }
+  @media (max-width: 767px) {
+    .hero-image-content-main {
+      left: 0px !important;
+      right: 0px !important;
+      transform: none;
+      top: 120px; }
+      .hero-image-content-main h1 {
+        font-size: 25px;
+        font-weight: 200; } }
+
+.hero-image-content {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
   transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   z-index: 10; }
@@ -7943,16 +7994,14 @@ h2.widgettitle {
     .hero-image-content {
       left: 0px !important;
       right: 0px !important;
-      transform: none;
-      top: 120px; } }
-  @media (max-width: 767px) {
-    .hero-image-content h1 {
-      font-size: 25px;
-      font-weight: 2Ò00; } }
+      transform: none; }
+      .hero-image-content h1 {
+        font-size: 25px;
+        font-weight: 200; } }
 
 .hero-image-form-wrapper {
-  bottom: 0px;
-  left: 0px;
+  bottom: 20%;
+  left: 10%;
   position: absolute;
   right: 0px; }
   .hero-image-form-wrapper .dropdown-toggle, .hero-image-form-wrapper input {
@@ -7962,7 +8011,6 @@ h2.widgettitle {
     height: 48px;
     font-size: 16px;
     font-weight: 300;
-    padding-left: 46px;
     padding-right: 20px;
     text-transform: inherit; }
     .hero-image-form-wrapper .dropdown-toggle:active, .hero-image-form-wrapper .dropdown-toggle:focus, .hero-image-form-wrapper .dropdown-toggle:hover, .hero-image-form-wrapper input:active, .hero-image-form-wrapper input:focus, .hero-image-form-wrapper input:hover {
@@ -7990,6 +8038,9 @@ h2.widgettitle {
     text-transform: uppercase; }
     .hero-image-form-wrapper button:hover {
       background-color: #00483f !important; }
+  @media (max-width: 767px) {
+    .hero-image-form-wrapper {
+      display: none; } }
 
 .hero-image-form-wrapper-main .dropdown-toggle, .hero-image-form-wrapper-main input {
   background-color: rgba(255, 255, 255, 0.9) !important;
@@ -8030,11 +8081,10 @@ h2.widgettitle {
   .hero-image-form-wrapper-main button:hover {
     background-color: #00483f !important; }
 
-.hero-image-location, .hero-image-category, .hero-image-price, .hero-image-keyword, .hero-image-date, .hero-image-distance {
+.hero-image-location, .hero-image-category, .hero-image-price, .hero-image-keyword, .hero-image-date, .hero-image-distance, .hero-image-input {
   height: 48px;
   position: relative; }
-  .hero-image-location:before, .hero-image-category:before, .hero-image-price:before, .hero-image-keyword:before, .hero-image-date:before, .hero-image-distance:before {
-    content: '\f278';
+  .hero-image-location:before, .hero-image-category:before, .hero-image-price:before, .hero-image-keyword:before, .hero-image-date:before, .hero-image-distance:before, .hero-image-input:before {
     display: block;
     font-family: 'FontAwesome';
     font-size: 13px;
@@ -8045,25 +8095,44 @@ h2.widgettitle {
     text-align: center;
     width: 48px;
     z-index: 99; }
-  .hero-image-location input, .hero-image-category input, .hero-image-price input, .hero-image-keyword input, .hero-image-date input, .hero-image-distance input {
-    padding-left: 48px; }
+
+.hero-image-location:before {
+  content: '\f278'; }
+
+.hero-image-location .dropdown-toggle, .hero-image-location input {
+  padding-left: 48px; }
 
 .hero-image-keyword:before {
   content: '\f002'; }
 
+.hero-image-keyword .dropdown-toggle, .hero-image-keyword input {
+  padding-left: 48px; }
+
 .hero-image-date:before {
   content: '\f073'; }
+
+.hero-image-date .dropdown-toggle, .hero-image-date input {
+  padding-left: 48px; }
 
 .hero-image-distance:before {
   content: '\f018';
   font-size: 15px; }
 
+.hero-image-distance .dropdown-toggle, .hero-image-distance input {
+  padding-left: 48px; }
+
 .hero-image-category:before {
   content: '\f114';
   font-size: 15px; }
 
+.hero-image-category .dropdown-toggle, .hero-image-category input {
+  padding-left: 48px; }
+
 .hero-image-price:before {
   content: '\f155'; }
+
+.hero-image-price .dropdown-toggle, .hero-image-price input {
+  padding-left: 48px; }
 
 /*------------------------------------------------------------------
 [ 16. Social Buttons ]
