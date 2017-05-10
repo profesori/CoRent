@@ -1,0 +1,68 @@
+/*
+
+	INSTRUCTIONS ---------------------------------------------------------------------------------
+  
+  1. link this stylesheet in the head of your HTML
+  	 <link href="YOUR PATH/Corent.css" rel="stylesheet" type="text/css" />
+     
+  2. Set the file name as data-theme attribute on your input
+  	 <input data-theme="Corent" />
+     
+  3. That's it!
+  
+  When you run script the style will be automatically applied.
+
+*/
+div.datedropper.Corent {
+  border-radius: 8px;
+  width: 180px;
+}
+div.datedropper.Corent .picker {
+  border-radius: 8px;
+  box-shadow: 0 0 32px 0px rgba(0, 0, 0, 0.1);
+}
+div.datedropper.Corent .pick-l {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+div.datedropper.Corent:before,
+div.datedropper.Corent .pick-submit,
+div.datedropper.Corent .pick-lg-b .pick-sl:before,
+div.datedropper.Corent .pick-m,
+div.datedropper.Corent .pick-lg-h {
+  background-color: #fd4741;
+}
+div.datedropper.Corent .pick-y.pick-jump,
+div.datedropper.Corent .pick li span,
+div.datedropper.Corent .pick-lg-b .pick-wke,
+div.datedropper.Corent .pick-btn {
+  color: #fd4741;
+}
+div.datedropper.Corent .picker,
+div.datedropper.Corent .pick-l {
+  background-color: #FFF;
+}
+div.datedropper.Corent .picker,
+div.datedropper.Corent .pick-arw,
+div.datedropper.Corent .pick-l {
+  color: #4D4D4D;
+}
+div.datedropper.Corent .pick-m,
+div.datedropper.Corent .pick-m .pick-arw,
+div.datedropper.Corent .pick-lg-h,
+div.datedropper.Corent .pick-lg-b .pick-sl,
+div.datedropper.Corent .pick-submit {
+  color: #FFF;
+}
+div.datedropper.Corent.picker-tiny:before,
+div.datedropper.Corent.picker-tiny .pick-m {
+  background-color: #FFF;
+}
+div.datedropper.Corent.picker-tiny .pick-m,
+div.datedropper.Corent.picker-tiny .pick-m .pick-arw {
+  color: #4D4D4D;
+}
+div.datedropper.Corent.picker-lkd .pick-submit {
+  background-color: #FFF;
+  color: #4D4D4D;
+}

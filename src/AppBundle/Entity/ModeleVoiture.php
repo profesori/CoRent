@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Modele_Voiture
+ * ModeleVoiture
  *
- * @ORM\Table(name="modele__voiture")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Modele_VoitureRepository")
+ * @ORM\Table(name="modele_voiture")
+ * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\ModeleVoitureRepository")
  */
-class Modele_Voiture
+class ModeleVoiture
 {
     /**
      * @var int
@@ -27,12 +27,17 @@ class Modele_Voiture
      * @ORM\Column(name="modele", type="string", length=255)
      */
     private $modele;
-
     /**
-    * Many Modele have One Marque.
-    * @ORM\ManyToOne(targetEntity="Marque_Voiture", inversedBy="$modele")
+    * @ORM\ManyToOne(targetEntity="Voiture", inversedBy="modeles")
     */
     private $marque;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="annee_production", type="string", length=4)
+     */
+    private $anneeProduction;
 
 
     /**
@@ -50,7 +55,7 @@ class Modele_Voiture
      *
      * @param string $modele
      *
-     * @return Modele_Voiture
+     * @return ModeleVoiture
      */
     public function setModele($modele)
     {
@@ -70,13 +75,37 @@ class Modele_Voiture
     }
 
     /**
+     * Set anneeProduction
+     *
+     * @param string $anneeProduction
+     *
+     * @return ModeleVoiture
+     */
+    public function setAnneeProduction($anneeProduction)
+    {
+        $this->anneeProduction = $anneeProduction;
+
+        return $this;
+    }
+
+    /**
+     * Get anneeProduction
+     *
+     * @return string
+     */
+    public function getAnneeProduction()
+    {
+        return $this->anneeProduction;
+    }
+
+    /**
      * Set marque
      *
-     * @param \AppBundle\Entity\Marque_Voiture $marque
+     * @param \CorentApi\ApiBundle\Entity\Voiture $marque
      *
-     * @return Modele_Voiture
+     * @return ModeleVoiture
      */
-    public function setMarque(\AppBundle\Entity\Marque_Voiture $marque = null)
+    public function setMarque(\CorentApi\ApiBundle\Entity\Voiture $marque = null)
     {
         $this->marque = $marque;
 
@@ -86,7 +115,7 @@ class Modele_Voiture
     /**
      * Get marque
      *
-     * @return \AppBundle\Entity\Marque_Voiture
+     * @return \CorentApi\ApiBundle\Entity\Voiture
      */
     public function getMarque()
     {

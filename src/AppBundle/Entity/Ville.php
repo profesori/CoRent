@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Ville
  *
  * @ORM\Table(name="ville")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\VilleRepository")
+ * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\VilleRepository")
  */
 class Ville
 {
@@ -31,9 +31,17 @@ class Ville
     /**
      * @var string
      *
-     * @ORM\Column(name="code_postal", type="string", length=5, unique=true)
+     * @ORM\Column(name="code_postal", type="string", length=5)
      */
     private $codePostal;
+    /**
+     * @ORM\OneToMany(targetEntity="Adresse", mappedBy="ville")
+     */
+    private $adresses;
+    /**
+    * @ORM\ManyToOne(targetEntity="Pays", inversedBy="villes")
+    */
+   private $pays;
 
 
     /**
@@ -92,5 +100,70 @@ class Ville
     public function getCodePostal()
     {
         return $this->codePostal;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->adresses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add adress
+     *
+     * @param \CorentApi\ApiBundle\Entity\Adresse $adress
+     *
+     * @return Ville
+     */
+    public function addAdress(\CorentApi\ApiBundle\Entity\Adresse $adress)
+    {
+        $this->adresses[] = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Remove adress
+     *
+     * @param \CorentApi\ApiBundle\Entity\Adresse $adress
+     */
+    public function removeAdress(\CorentApi\ApiBundle\Entity\Adresse $adress)
+    {
+        $this->adresses->removeElement($adress);
+    }
+
+    /**
+     * Get adresses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAdresses()
+    {
+        return $this->adresses;
+    }
+
+    /**
+     * Set pays
+     *
+     * @param \CorentApi\ApiBundle\Entity\Pays $pays
+     *
+     * @return Ville
+     */
+    public function setPays(\CorentApi\ApiBundle\Entity\Pays $pays = null)
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    /**
+     * Get pays
+     *
+     * @return \CorentApi\ApiBundle\Entity\Pays
+     */
+    public function getPays()
+    {
+        return $this->pays;
     }
 }

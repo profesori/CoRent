@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Pays
  *
  * @ORM\Table(name="pays")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PaysRepository")
+ * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\PaysRepository")
  */
 class Pays
 {
@@ -27,13 +27,10 @@ class Pays
      * @ORM\Column(name="pays", type="string", length=255)
      */
     private $pays;
-
     /**
-     * @var string
-     *
-     * @ORM\Column(name="code", type="string", length=5)
+     * @ORM\OneToMany(targetEntity="Ville", mappedBy="pays")
      */
-    private $code;
+    private $villes;
 
 
     /**
@@ -69,28 +66,45 @@ class Pays
     {
         return $this->pays;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->villes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Set code
+     * Add ville
      *
-     * @param string $code
+     * @param \CorentApi\ApiBundle\Entity\Ville $ville
      *
      * @return Pays
      */
-    public function setCode($code)
+    public function addVille(\CorentApi\ApiBundle\Entity\Ville $ville)
     {
-        $this->code = $code;
+        $this->villes[] = $ville;
 
         return $this;
     }
 
     /**
-     * Get code
+     * Remove ville
      *
-     * @return string
+     * @param \CorentApi\ApiBundle\Entity\Ville $ville
      */
-    public function getCode()
+    public function removeVille(\CorentApi\ApiBundle\Entity\Ville $ville)
     {
-        return $this->code;
+        $this->villes->removeElement($ville);
+    }
+
+    /**
+     * Get villes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVilles()
+    {
+        return $this->villes;
     }
 }

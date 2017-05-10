@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Calendrier
  *
  * @ORM\Table(name="calendrier")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CalendrierRepository")
+ * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\CalendrierRepository")
  */
 class Calendrier
 {
@@ -22,17 +22,29 @@ class Calendrier
     private $id;
 
     /**
-    * Many Calendrier have One Annonce.
-    * @ORM\ManyToOne(targetEntity="Marque_Voiture", inversedBy="$calendrier")
-    */
-    private $annonce;
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateStatus", type="datetime")
+     */
+    private $dateStatus;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isFree", type="boolean")
+     */
+    private $isFree;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_indisponible", type="date")
+     * @ORM\Column(name="dateModification", type="datetime")
      */
-    private $dateIndisponible;
+    private $dateModification;
+    /**
+    * @ORM\ManyToOne(targetEntity="Annonce", inversedBy="calendrier")
+    */
+   private $annonce;
 
 
     /**
@@ -46,13 +58,85 @@ class Calendrier
     }
 
     /**
-     * Set annonce
+     * Set dateStatus
      *
-     * @param string $annonce
+     * @param \DateTime $dateStatus
      *
      * @return Calendrier
      */
-    public function setAnnonce($annonce)
+    public function setDateStatus($dateStatus)
+    {
+        $this->dateStatus = $dateStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get dateStatus
+     *
+     * @return \DateTime
+     */
+    public function getDateStatus()
+    {
+        return $this->dateStatus;
+    }
+
+    /**
+     * Set isFree
+     *
+     * @param boolean $isFree
+     *
+     * @return Calendrier
+     */
+    public function setIsFree($isFree)
+    {
+        $this->isFree = $isFree;
+
+        return $this;
+    }
+
+    /**
+     * Get isFree
+     *
+     * @return bool
+     */
+    public function getIsFree()
+    {
+        return $this->isFree;
+    }
+
+    /**
+     * Set dateModification
+     *
+     * @param \DateTime $dateModification
+     *
+     * @return Calendrier
+     */
+    public function setDateModification($dateModification)
+    {
+        $this->dateModification = $dateModification;
+
+        return $this;
+    }
+
+    /**
+     * Get dateModification
+     *
+     * @return \DateTime
+     */
+    public function getDateModification()
+    {
+        return $this->dateModification;
+    }
+
+    /**
+     * Set annonce
+     *
+     * @param \CorentApi\ApiBundle\Entity\Annonce $annonce
+     *
+     * @return Calendrier
+     */
+    public function setAnnonce(\CorentApi\ApiBundle\Entity\Annonce $annonce = null)
     {
         $this->annonce = $annonce;
 
@@ -62,34 +146,10 @@ class Calendrier
     /**
      * Get annonce
      *
-     * @return string
+     * @return \CorentApi\ApiBundle\Entity\Annonce
      */
     public function getAnnonce()
     {
         return $this->annonce;
-    }
-
-    /**
-     * Set dateIndisponible
-     *
-     * @param \DateTime $dateIndisponible
-     *
-     * @return Calendrier
-     */
-    public function setDateIndisponible($dateIndisponible)
-    {
-        $this->dateIndisponible = $dateIndisponible;
-
-        return $this;
-    }
-
-    /**
-     * Get dateIndisponible
-     *
-     * @return \DateTime
-     */
-    public function getDateIndisponible()
-    {
-        return $this->dateIndisponible;
     }
 }

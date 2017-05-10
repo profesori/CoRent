@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Voiture
  *
  * @ORM\Table(name="voiture")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\VoitureRepository")
+ * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\VoitureRepository")
  */
 class Voiture
 {
@@ -22,77 +22,53 @@ class Voiture
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Marque_Voiture")
+     * @var string
+     *
+     * @ORM\Column(name="marque", type="string", length=255)
      */
     private $marque;
-
     /**
-     *@ORM\ManyToOne(targetEntity="Modele_Voiture")
+     * @ORM\OneToMany(targetEntity="ModeleVoiture", mappedBy="marque")
      */
-    private $modele;
-
+    private $modeles;
     /**
      * @var string
      *
-     * @ORM\Column(name="pays_immatriculation", type="string", length=255)
+     * @ORM\Column(name="details", type="string", length=255)
      */
-    private $paysImmatriculation;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_immatriculation", type="datetime")
-     */
-    private $dateImmatriculation;
-
+    private $details;
     /**
      * @var string
      *
-     * @ORM\Column(name="nb_places", type="string", length=255)
+     * @ORM\Column(name="commentaires", type="string", length=255)
      */
-    private $nbPlaces;
-
+    private $commentaires;
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nb_portes", type="string", length=255)
-     */
-    private $nbPortes;
-
+    * @ORM\ManyToOne(targetEntity="Dico")
+    */
+    private $portes;
+   /**
+   * @ORM\ManyToOne(targetEntity="Dico")
+   */
+    private $places;
     /**
-     * @var string
-     *
-     * @ORM\Column(name="carburant", type="string", length=255)
-     */
+    * @ORM\ManyToOne(targetEntity="Dico")
+    */
     private $carburant;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="boite_vitesse", type="string", length=255)
+     /**
+     * @ORM\ManyToOne(targetEntity="Dico")
      */
-    private $boiteVitesse;
-
+    private $boite;
+      /**
+      * @ORM\ManyToOne(targetEntity="Dico")
+      */
+    private $kmParcourues;
     /**
-     * @var string
-     *
-     * @ORM\Column(name="km_parcourus", type="string", length=255)
-     */
-    private $kmParcourus;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="conso_carburant", type="string", length=255)
-     */
-    private $consoCarburant;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="options", type="simple_array")
+     * @ORM\ManyToMany(targetEntity="Dico")
      */
     private $options;
+
+
 
 
     /**
@@ -106,229 +82,13 @@ class Voiture
     }
 
     /**
-     * Set paysImmatriculation
-     *
-     * @param string $paysImmatriculation
-     *
-     * @return Voiture
-     */
-    public function setPaysImmatriculation($paysImmatriculation)
-    {
-        $this->paysImmatriculation = $paysImmatriculation;
-
-        return $this;
-    }
-
-    /**
-     * Get paysImmatriculation
-     *
-     * @return string
-     */
-    public function getPaysImmatriculation()
-    {
-        return $this->paysImmatriculation;
-    }
-
-    /**
-     * Set dateImmatriculation
-     *
-     * @param \DateTime $dateImmatriculation
-     *
-     * @return Voiture
-     */
-    public function setDateImmatriculation($dateImmatriculation)
-    {
-        $this->dateImmatriculation = $dateImmatriculation;
-
-        return $this;
-    }
-
-    /**
-     * Get dateImmatriculation
-     *
-     * @return \DateTime
-     */
-    public function getDateImmatriculation()
-    {
-        return $this->dateImmatriculation;
-    }
-
-    /**
-     * Set nbPlaces
-     *
-     * @param string $nbPlaces
-     *
-     * @return Voiture
-     */
-    public function setNbPlaces($nbPlaces)
-    {
-        $this->nbPlaces = $nbPlaces;
-
-        return $this;
-    }
-
-    /**
-     * Get nbPlaces
-     *
-     * @return string
-     */
-    public function getNbPlaces()
-    {
-        return $this->nbPlaces;
-    }
-
-    /**
-     * Set nbPortes
-     *
-     * @param string $nbPortes
-     *
-     * @return Voiture
-     */
-    public function setNbPortes($nbPortes)
-    {
-        $this->nbPortes = $nbPortes;
-
-        return $this;
-    }
-
-    /**
-     * Get nbPortes
-     *
-     * @return string
-     */
-    public function getNbPortes()
-    {
-        return $this->nbPortes;
-    }
-
-    /**
-     * Set carburant
-     *
-     * @param string $carburant
-     *
-     * @return Voiture
-     */
-    public function setCarburant($carburant)
-    {
-        $this->carburant = $carburant;
-
-        return $this;
-    }
-
-    /**
-     * Get carburant
-     *
-     * @return string
-     */
-    public function getCarburant()
-    {
-        return $this->carburant;
-    }
-
-    /**
-     * Set boiteVitesse
-     *
-     * @param string $boiteVitesse
-     *
-     * @return Voiture
-     */
-    public function setBoiteVitesse($boiteVitesse)
-    {
-        $this->boiteVitesse = $boiteVitesse;
-
-        return $this;
-    }
-
-    /**
-     * Get boiteVitesse
-     *
-     * @return string
-     */
-    public function getBoiteVitesse()
-    {
-        return $this->boiteVitesse;
-    }
-
-    /**
-     * Set kmParcourus
-     *
-     * @param string $kmParcourus
-     *
-     * @return Voiture
-     */
-    public function setKmParcourus($kmParcourus)
-    {
-        $this->kmParcourus = $kmParcourus;
-
-        return $this;
-    }
-
-    /**
-     * Get kmParcourus
-     *
-     * @return string
-     */
-    public function getKmParcourus()
-    {
-        return $this->kmParcourus;
-    }
-
-    /**
-     * Set consoCarburant
-     *
-     * @param string $consoCarburant
-     *
-     * @return Voiture
-     */
-    public function setConsoCarburant($consoCarburant)
-    {
-        $this->consoCarburant = $consoCarburant;
-
-        return $this;
-    }
-
-    /**
-     * Get consoCarburant
-     *
-     * @return string
-     */
-    public function getConsoCarburant()
-    {
-        return $this->consoCarburant;
-    }
-
-    /**
-     * Set options
-     *
-     * @param array $options
-     *
-     * @return Voiture
-     */
-    public function setOptions($options)
-    {
-        $this->options = $options;
-
-        return $this;
-    }
-
-    /**
-     * Get options
-     *
-     * @return array
-     */
-    public function getOptions()
-    {
-        return $this->options;
-    }
-
-    /**
      * Set marque
      *
-     * @param \AppBundle\Entity\Marque_Voiture $marque
+     * @param string $marque
      *
      * @return Voiture
      */
-    public function setMarque(\AppBundle\Entity\Marque_Voiture $marque = null)
+    public function setMarque($marque)
     {
         $this->marque = $marque;
 
@@ -338,34 +98,253 @@ class Voiture
     /**
      * Get marque
      *
-     * @return \AppBundle\Entity\Marque_Voiture
+     * @return string
      */
     public function getMarque()
     {
         return $this->marque;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->modeles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Set modele
+     * Add modele
      *
-     * @param \AppBundle\Entity\Modele_Voiture $modele
+     * @param \CorentApi\ApiBundle\Entity\ModeleVoiture $modele
      *
      * @return Voiture
      */
-    public function setModele(\AppBundle\Entity\Modele_Voiture $modele = null)
+    public function addModele(\CorentApi\ApiBundle\Entity\ModeleVoiture $modele)
     {
-        $this->modele = $modele;
+        $this->modeles[] = $modele;
 
         return $this;
     }
 
     /**
-     * Get modele
+     * Remove modele
      *
-     * @return \AppBundle\Entity\Modele_Voiture
+     * @param \CorentApi\ApiBundle\Entity\ModeleVoiture $modele
      */
-    public function getModele()
+    public function removeModele(\CorentApi\ApiBundle\Entity\ModeleVoiture $modele)
     {
-        return $this->modele;
+        $this->modeles->removeElement($modele);
+    }
+
+    /**
+     * Get modeles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getModeles()
+    {
+        return $this->modeles;
+    }
+
+    /**
+     * Set details
+     *
+     * @param string $details
+     *
+     * @return Voiture
+     */
+    public function setDetails($details)
+    {
+        $this->details = $details;
+
+        return $this;
+    }
+
+    /**
+     * Get details
+     *
+     * @return string
+     */
+    public function getDetails()
+    {
+        return $this->details;
+    }
+
+    /**
+     * Set commentaires
+     *
+     * @param string $commentaires
+     *
+     * @return Voiture
+     */
+    public function setCommentaires($commentaires)
+    {
+        $this->commentaires = $commentaires;
+
+        return $this;
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return string
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
+    }
+
+    /**
+     * Set portes
+     *
+     * @param \CorentApi\ApiBundle\Entity\Dico $portes
+     *
+     * @return Voiture
+     */
+    public function setPortes(\CorentApi\ApiBundle\Entity\Dico $portes = null)
+    {
+        $this->portes = $portes;
+
+        return $this;
+    }
+
+    /**
+     * Get portes
+     *
+     * @return \CorentApi\ApiBundle\Entity\Dico
+     */
+    public function getPortes()
+    {
+        return $this->portes;
+    }
+
+    /**
+     * Set places
+     *
+     * @param \CorentApi\ApiBundle\Entity\Dico $places
+     *
+     * @return Voiture
+     */
+    public function setPlaces(\CorentApi\ApiBundle\Entity\Dico $places = null)
+    {
+        $this->places = $places;
+
+        return $this;
+    }
+
+    /**
+     * Get places
+     *
+     * @return \CorentApi\ApiBundle\Entity\Dico
+     */
+    public function getPlaces()
+    {
+        return $this->places;
+    }
+
+    /**
+     * Set carburant
+     *
+     * @param \CorentApi\ApiBundle\Entity\Dico $carburant
+     *
+     * @return Voiture
+     */
+    public function setCarburant(\CorentApi\ApiBundle\Entity\Dico $carburant = null)
+    {
+        $this->carburant = $carburant;
+
+        return $this;
+    }
+
+    /**
+     * Get carburant
+     *
+     * @return \CorentApi\ApiBundle\Entity\Dico
+     */
+    public function getCarburant()
+    {
+        return $this->carburant;
+    }
+
+    /**
+     * Set boite
+     *
+     * @param \CorentApi\ApiBundle\Entity\Dico $boite
+     *
+     * @return Voiture
+     */
+    public function setBoite(\CorentApi\ApiBundle\Entity\Dico $boite = null)
+    {
+        $this->boite = $boite;
+
+        return $this;
+    }
+
+    /**
+     * Get boite
+     *
+     * @return \CorentApi\ApiBundle\Entity\Dico
+     */
+    public function getBoite()
+    {
+        return $this->boite;
+    }
+
+    /**
+     * Set kmParcourues
+     *
+     * @param \CorentApi\ApiBundle\Entity\Dico $kmParcourues
+     *
+     * @return Voiture
+     */
+    public function setKmParcourues(\CorentApi\ApiBundle\Entity\Dico $kmParcourues = null)
+    {
+        $this->kmParcourues = $kmParcourues;
+
+        return $this;
+    }
+
+    /**
+     * Get kmParcourues
+     *
+     * @return \CorentApi\ApiBundle\Entity\Dico
+     */
+    public function getKmParcourues()
+    {
+        return $this->kmParcourues;
+    }
+
+    /**
+     * Add option
+     *
+     * @param \CorentApi\ApiBundle\Entity\Dico $option
+     *
+     * @return Voiture
+     */
+    public function addOption(\CorentApi\ApiBundle\Entity\Dico $option)
+    {
+        $this->options[] = $option;
+
+        return $this;
+    }
+
+    /**
+     * Remove option
+     *
+     * @param \CorentApi\ApiBundle\Entity\Dico $option
+     */
+    public function removeOption(\CorentApi\ApiBundle\Entity\Dico $option)
+    {
+        $this->options->removeElement($option);
+    }
+
+    /**
+     * Get options
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOptions()
+    {
+        return $this->options;
     }
 }

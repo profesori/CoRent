@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Entity/User.php
+// src/Acme/ApiBundle/Entity/User.php
 
 namespace AppBundle\Entity;
 
@@ -7,21 +7,34 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * User
+ *
+ * @ORM\Table("users")
  * @ORM\Entity
- * @ORM\Table(name="fos_user")
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"loueur" = "Loueur", "locataire" = "Locataire","user" = "User"})
+ *
  */
 class User extends BaseUser
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
-    public function __construct()
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
     {
-        parent::__construct();
-        // your own logic
+        return $this->id;
     }
 }

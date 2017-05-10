@@ -5,3 +5,7 @@ alter_studio_co_rent_homepage:
 alter_studio_co_rent_rent:
     path:     /jep-makinen-tende
     defaults: { _controller: AlterStudioCoRentBundle:RentCarWizard:index }
+
+index:
+    path:     /makinat
+    defaults: { _controller: AlterStudioCoRentBundle:ListCar:index }

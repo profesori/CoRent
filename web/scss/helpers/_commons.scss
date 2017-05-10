@@ -303,6 +303,18 @@
     text-align: center;
     width: 72px;
 }
+.box-icon-noborder {
+    border: 2px solid rgba(#009933, .4);
+    border-radius: 50%;
+    color: $color-primary-light;
+    float: left;
+    font-size: 34px;
+    height: 72px;
+    line-height: 70px;
+    margin: 0px 20px 0px 0px;
+    text-align: center;
+    width: 72px;
+}
 
 .box-content {
     display: table-cell;
@@ -589,7 +601,7 @@ blockquote {
     background-repeat: no-repeat;
     background-image: url('../img/tmp/slider-large-3.jpg');
     background-position: center center;
-    margin: -80px -750px 80px -750px;
+    margin: 0px -750px 30px -750px;
     padding: 70px 750px;
     position: relative;
 

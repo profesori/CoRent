@@ -20,10 +20,10 @@
                                             </div>
                                             <!-- /.form-group -->
                                             <div class="hero-image-date form-group">
-                                                <input type="date" class="form-control" id="exampleInputEmail2" placeholder="Data e nisjes">
+                                                <input type="text" data-modal="true" data-format="d-m-Y" data-large-default="true" data-large-mode="true" class="form-control" id="dataNisje" placeholder="Data e nisjes">
                                             </div>
                                             <div class="hero-image-date form-group">
-                                                <input type="date" class="form-control" id="exampleInputEmail2" placeholder="Data e mbarimit">
+                                                <input type="text" class="form-control" id="dataMbarim" placeholder="Data e mbarimit" data-modal="true" data-format="d-m-Y" data-large-default="true" data-large-mode="true">
                                             </div>
                                             <div class="hero-image-distance form-group">
                                                 <select class="form-control" title="Distanca"></select>
@@ -436,4 +436,8 @@
             </div>
         </div>
     </div>
+    <script>
+        $('#dataNisje').dateDropper();
+        $('#dataMbarim').dateDropper();
+    </script>
 {% endblock %}
