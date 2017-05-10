@@ -9,3 +9,6 @@ alter_studio_co_rent_rent:
 index:
     path:     /makinat
     defaults: { _controller: AlterStudioCoRentBundle:ListCar:index }
+profile:
+    path:     /profile
+    defaults: { _controller: AlterStudioCoRentBundle:User:index }

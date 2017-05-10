@@ -3828,7 +3828,7 @@ tbody.collapse.in {
     margin-left: 2px; }
   .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
     color: #fff;
-    background-color: #337ab7; }
+    background-color: #33b794; }
 
 .nav-stacked > li {
   float: none; }
@@ -10386,6 +10386,9 @@ h2.widgettitle {
 /*------------------------------------------------------------------
 [ 35. Admin ]
 */
+.profile-nav-pills {
+  padding: 30px 0px; }
+
 .outer-admin {
   display: table-cell;
   vertical-align: bottom; }
@@ -10796,17 +10799,17 @@ ol li {
 .message {
   background-color: #fff;
   border-left: 4px solid #c6af5c;
-  margin: 0px 0px 50px 0px;
-  padding: 30px; }
+  margin: 0px 0px 0px 0px;
+  padding: 20px; }
   .message h1 {
     color: #b6b7b8;
-    font-size: 12px;
+    font-size: 10px;
     margin: 0px;
     padding: 0px;
     text-transform: uppercase; }
   .message p {
     color: #444;
-    font-size: 19px;
+    font-size: 14px;
     font-weight: 300;
     line-height: 34px;
     margin: 20px 0px 0px 0px; }
