@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Annonce
  *
  * @ORM\Table(name="annonce")
- * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\AnnonceRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\AnnonceRepository")
  */
 class Annonce
 {
@@ -97,6 +97,10 @@ class Annonce
    * @ORM\OneToMany(targetEntity="DemandesAnnonce", mappedBy="annonce")
    */
    private $demandes;
+   /**
+   * @ORM\OneToMany(targetEntity="Photo", mappedBy="annonce")
+   */
+   private $photos;
 
 
 
@@ -481,5 +485,39 @@ class Annonce
     public function getDemandes()
     {
         return $this->demandes;
+    }
+
+    /**
+     * Add photo
+     *
+     * @param \AppBundle\Entity\Photo $photo
+     *
+     * @return Annonce
+     */
+    public function addPhoto(\AppBundle\Entity\Photo $photo)
+    {
+        $this->photos[] = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Remove photo
+     *
+     * @param \AppBundle\Entity\Photo $photo
+     */
+    public function removePhoto(\AppBundle\Entity\Photo $photo)
+    {
+        $this->photos->removeElement($photo);
+    }
+
+    /**
+     * Get photos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
     }
 }

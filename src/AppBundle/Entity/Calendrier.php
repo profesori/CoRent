@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Calendrier
  *
  * @ORM\Table(name="calendrier")
- * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\CalendrierRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CalendrierRepository")
  */
 class Calendrier
 {

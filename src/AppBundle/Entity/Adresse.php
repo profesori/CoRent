@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Adresse
  *
  * @ORM\Table(name="adresse")
- * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\AdresseRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\AdresseRepository")
  */
 class Adresse
 {

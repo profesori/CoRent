@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CommentairesAnnonces
  *
  * @ORM\Table(name="commentaires_annonces")
- * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\CommentairesAnnoncesRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CommentairesAnnoncesRepository")
  */
 class CommentairesAnnonces
 {

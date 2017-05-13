@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Locataire
  *
  * @ORM\Table(name="locataire")
- * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\LocataireRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\LocataireRepository")
  */
 class Locataire extends User
 {

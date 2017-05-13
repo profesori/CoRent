@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Reservation
  *
  * @ORM\Table(name="reservation")
- * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\ReservationRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ReservationRepository")
  */
 class Reservation
 {

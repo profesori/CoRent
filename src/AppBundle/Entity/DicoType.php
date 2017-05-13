@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DicoType
  *
  * @ORM\Table(name="dico_type")
- * @ORM\Entity(repositoryClass="CorentApi\ApiBundle\Repository\DicoTypeRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\DicoTypeRepository")
  */
 class DicoType
 {
