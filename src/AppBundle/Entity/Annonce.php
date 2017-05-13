@@ -90,7 +90,7 @@ class Annonce
    */
    private $loueur;
    /**
-    * @ORM\OneToMany(targetEntity="CommentairesAnnonces", mappedBy="annonces")
+    * @ORM\OneToMany(targetEntity="CommentairesAnnonces", mappedBy="annonce")
     */
    private $commentaires;
    /**

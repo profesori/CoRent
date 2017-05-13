@@ -1,0 +1,55 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+  {% trans_default_domain 'FOSUserBundle' %}
+  <div class="main">
+    <div class="main-inner" style="padding:80px 0px">
+      <div class="container">
+        <div class="content">
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 col-sm-offset-4" style="display: block">
+              <div class="page-title">
+                <h1>Regjistrohu</h1>
+              </div>
+              {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+              <div class="form-group">
+                {{ form_label(form.email) }}
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+              </div>
+              <div class="form-group">
+                {{ form_errors(form.username) }}
+                {{ form_label(form.username) }}
+                {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+              </div>
+              <div class="form-group">
+                {{ form_errors(form.plainPassword.first) }}
+                {{ form_label(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+              </div>
+              <div class="form-group">
+                {{ form_errors(form.plainPassword.second) }}
+                {{ form_label(form.plainPassword.second) }}
+                {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+              </div>
+
+              <!-- /.form-group -->
+              <input type="submit" class="btn btn-primary pull-right" id="_submit" name="_submit" value="Regjistrohu"/>
+
+              {{ form_end(form) }}
+            </div>
+            <!-- /.col-sm-4 -->
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- /.content -->
+      </div>
+      <!-- /.container -->
+    </div>
+    <!-- /.main-inner -->
+  </div>
+  <!-- /.main -->
+{% endblock fos_user_content %}

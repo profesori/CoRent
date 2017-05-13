@@ -35,7 +35,7 @@ class ChatDemande
      */
     private $message;
     /**
-    * @ORM\ManyToOne(targetEntity="DemandesAnnonce", inversedBy="messages")
+    * @ORM\ManyToOne(targetEntity="DemandesAnnonce", inversedBy="chatMessages")
     */
     private $demande;
     /**

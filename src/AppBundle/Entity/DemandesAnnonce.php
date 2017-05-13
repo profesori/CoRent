@@ -54,9 +54,9 @@ class DemandesAnnonce
     */
     private $locataire;
     /**
-    * @ORM\OneToMany(targetEntity="ChatDemande", mappedBy="demandes")
+    * @ORM\OneToMany(targetEntity="ChatDemande", mappedBy="demande")
     */
-    private $messages;
+    private $chatMessages;
     /**
      * @var bool
      *
@@ -312,5 +312,39 @@ class DemandesAnnonce
     public function getInvalide()
     {
         return $this->invalide;
+    }
+
+    /**
+     * Add chatMessage
+     *
+     * @param \AppBundle\Entity\ChatDemande $chatMessage
+     *
+     * @return DemandesAnnonce
+     */
+    public function addChatMessage(\AppBundle\Entity\ChatDemande $chatMessage)
+    {
+        $this->chatMessages[] = $chatMessage;
+
+        return $this;
+    }
+
+    /**
+     * Remove chatMessage
+     *
+     * @param \AppBundle\Entity\ChatDemande $chatMessage
+     */
+    public function removeChatMessage(\AppBundle\Entity\ChatDemande $chatMessage)
+    {
+        $this->chatMessages->removeElement($chatMessage);
+    }
+
+    /**
+     * Get chatMessages
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChatMessages()
+    {
+        return $this->chatMessages;
     }
 }

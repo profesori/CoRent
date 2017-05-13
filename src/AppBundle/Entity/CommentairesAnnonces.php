@@ -35,9 +35,9 @@ class CommentairesAnnonces
      */
     private $dateCommentaire;
     /**
-    * @ORM\ManyToOne(targetEntity="DemandesAnnonce", inversedBy="commentaires")
+    * @ORM\ManyToOne(targetEntity="Annonce", inversedBy="commentaires")
     */
-    private $annonces;
+    private $annonce;
 
 
     /**
@@ -120,5 +120,29 @@ class CommentairesAnnonces
     public function getAnnonces()
     {
         return $this->annonces;
+    }
+
+    /**
+     * Set annonce
+     *
+     * @param \AppBundle\Entity\Annonce $annonce
+     *
+     * @return CommentairesAnnonces
+     */
+    public function setAnnonce(\AppBundle\Entity\Annonce $annonce = null)
+    {
+        $this->annonce = $annonce;
+
+        return $this;
+    }
+
+    /**
+     * Get annonce
+     *
+     * @return \AppBundle\Entity\Annonce
+     */
+    public function getAnnonce()
+    {
+        return $this->annonce;
     }
 }

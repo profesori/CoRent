@@ -2,3 +2,8 @@ services:
 #    alter_studio_co_rent.example:
 #        class: AlterStudio\CoRentBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+      alter_studio_co_rent.registration_listener:
+              class: AlterStudio\CoRentBundle\EventListener\RegistrationListener
+              arguments: []
+              tags:
+                  - { name: kernel.event_subscriber }
