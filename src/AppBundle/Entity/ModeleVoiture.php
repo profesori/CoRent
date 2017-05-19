@@ -28,16 +28,9 @@ class ModeleVoiture
      */
     private $modele;
     /**
-    * @ORM\ManyToOne(targetEntity="Voiture", inversedBy="modeles")
+    * @ORM\ManyToOne(targetEntity="MarqueVoiture", inversedBy="modeles")
     */
     private $marque;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="annee_production", type="string", length=4)
-     */
-    private $anneeProduction;
 
 
     /**
@@ -101,11 +94,11 @@ class ModeleVoiture
     /**
      * Set marque
      *
-     * @param \CorentApi\ApiBundle\Entity\Voiture $marque
+     * @param \AppBundle\Entity\MarqueVoiture $marque
      *
      * @return ModeleVoiture
      */
-    public function setMarque(\CorentApi\ApiBundle\Entity\Voiture $marque = null)
+    public function setMarque(\AppBundle\Entity\MarqueVoiture $marque = null)
     {
         $this->marque = $marque;
 
@@ -115,10 +108,14 @@ class ModeleVoiture
     /**
      * Get marque
      *
-     * @return \CorentApi\ApiBundle\Entity\Voiture
+     * @return \AppBundle\Entity\MarqueVoiture
      */
     public function getMarque()
     {
         return $this->marque;
+    }
+    public function __toString()
+    {
+        return $this->modele;
     }
 }

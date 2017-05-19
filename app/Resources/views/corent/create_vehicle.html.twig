@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  <div class="main">
+    <div class="main-inner" style="padding:80px 0px">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-lg-9">
+            <div class="content">
+              <div class="page-title">
+                <h1>Krijo anoncen tende</h1>
+              </div>
+              <!--
+              <div class="background-white p30 mb30">
+                <h3 class="page-title">Makina juaj</h3>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <select name="Marka">
+                        <option>Marka</option>
+                        <option>Apartment</option>
+                        <option>Condo</option>
+                        <option>House</option>
+                        <option>Villa</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <select name="contract">
+                        <option>Modeli</option>
+                        <option>Rent</option>
+                        <option>Sale</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-building-o"></i>
+                      </span>
+                      <input class="form-control" type="text" placeholder="Addressa e makines">
+                    </div>
+
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-map-o"></i>
+                      </span>
+                      <input class="form-control" type="text" placeholder="Qyteti">
+                    </div>
+                  </div>
+                </div>
+              </div>-->
+              {{form_start(form2)}}
+              <div class="form-group">
+                {{form_row(form2.marque)}}
+              </div>
+              <div class="form-group" id="marque_remplace">
+                {{form_row(form2.modele,{'attr': {'class': 'form-control'}}) }}
+              </div>
+              {{form_end(form2)}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function() {
+      var $voiture = $('#appbundle_voiture_marque');
+      // When sport gets selected ...
+      $voiture.on('change', function() {
+        // ... retrieve the corresponding form.
+        var $form = $(this).closest('form');
+        // Simulate form data, but only include the selected sport value.
+        var data = {};
+        data[$voiture.attr('name')] = $voiture.val();
+        // Submit data via AJAX to the form's action path.
+        $.ajax({
+          url: $form.attr('action'),
+          type: $form.attr('method'),
+          data: data,
+          success: function(html) {
+            var aremp =
+            // Replace current position field ... console.log(html);
+            $("#marque_remplace").replaceWith(function(n) {
+              var ht = $(html).find('#marque_remplace');
+              //ht.children('#appbundle_voiture_modele').addClass("form-control")
+              return ht;
+            });
+            // Position field now displays the appropriate positions.
+          }
+
+        });
+      });
+
+    });
+  </script>
+{% endblock %}

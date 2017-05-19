@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class DicoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getDicoByDicotype($pattern)
+    {
+        $qb = $this->createQueryBuilder('d');
+        return $qb
+      ->join('d.dicotype', 'dt', 'WITH', $qb->expr()->eq('dt.dicotypeLibelle', '?1'))
+      ->setParameter(1, $pattern);
+    }
 }

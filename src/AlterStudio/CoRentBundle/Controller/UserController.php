@@ -32,4 +32,8 @@ class UserController extends Controller
     {
         return $this->render('corent/profili_tabs/qerate.html.twig');
     }
+    public function infoAction()
+    {
+        return $this->render('corent/profili_tabs/info.html.twig');
+    }
 }

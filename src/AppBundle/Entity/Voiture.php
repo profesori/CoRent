@@ -24,25 +24,25 @@ class Voiture
     /**
      * @var string
      *
-     * @ORM\Column(name="marque", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="MarqueVoiture")
      */
     private $marque;
     /**
-     * @ORM\OneToMany(targetEntity="ModeleVoiture", mappedBy="marque")
+     * @var string
+     *
+     * @ORM\Column(name="annee_production", type="string", length=4)
      */
-    private $modeles;
+    private $anneeProduction;
+    /**
+     * @ORM\OneToOne(targetEntity="ModeleVoiture")
+     */
+    private $modele;
     /**
      * @var string
      *
      * @ORM\Column(name="details", type="string", length=255)
      */
     private $details;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="commentaires", type="string", length=255)
-     */
-    private $commentaires;
     /**
     * @ORM\ManyToOne(targetEntity="Dico")
     */
@@ -109,41 +109,6 @@ class Voiture
      */
     public function __construct()
     {
-        $this->modeles = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add modele
-     *
-     * @param \CorentApi\ApiBundle\Entity\ModeleVoiture $modele
-     *
-     * @return Voiture
-     */
-    public function addModele(\CorentApi\ApiBundle\Entity\ModeleVoiture $modele)
-    {
-        $this->modeles[] = $modele;
-
-        return $this;
-    }
-
-    /**
-     * Remove modele
-     *
-     * @param \CorentApi\ApiBundle\Entity\ModeleVoiture $modele
-     */
-    public function removeModele(\CorentApi\ApiBundle\Entity\ModeleVoiture $modele)
-    {
-        $this->modeles->removeElement($modele);
-    }
-
-    /**
-     * Get modeles
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getModeles()
-    {
-        return $this->modeles;
     }
 
     /**
@@ -346,5 +311,53 @@ class Voiture
     public function getOptions()
     {
         return $this->options;
+    }
+
+    /**
+     * Get modele
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getModele()
+    {
+        return $this->modele;
+    }
+
+    /**
+     * Set modele
+     *
+     * @param \AppBundle\Entity\ModeleVoiture $modele
+     *
+     * @return Voiture
+     */
+    public function setModele(\AppBundle\Entity\ModeleVoiture $modele = null)
+    {
+        $this->modele = $modele;
+
+        return $this;
+    }
+
+    /**
+     * Set anneeProduction
+     *
+     * @param string $anneeProduction
+     *
+     * @return Voiture
+     */
+    public function setAnneeProduction($anneeProduction)
+    {
+        $this->anneeProduction = $anneeProduction;
+
+        return $this;
+    }
+
+    /**
+     * Get anneeProduction
+     *
+     * @return string
+     */
+    public function getAnneeProduction()
+    {
+        return $this->anneeProduction;
     }
 }

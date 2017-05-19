@@ -20,7 +20,7 @@ class ListCarController extends Controller
       $dateF = $request->query->get('date-fin'); // get a $_GET parameter
 
       //Declare respitory
-      $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $annonceRepository = $em->getRepository('AppBundle:Annonce');
         $qb = $annonceRepository->createQueryBuilder('ann');
         $query = $qb->join('ann.adresseVoiture', 'adr')
@@ -34,7 +34,7 @@ class ListCarController extends Controller
               ->setParameter(3, $dateD)
               ->getQuery();
 
-        
+
         $annonces = $query->getResult();
 
         return $this->render('corent/list.html.twig', array(
