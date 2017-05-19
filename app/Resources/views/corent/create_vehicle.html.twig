@@ -9,60 +9,135 @@
               <div class="page-title">
                 <h1>Krijo anoncen tende</h1>
               </div>
-              <!--
+
               <div class="background-white p30 mb30">
-                <h3 class="page-title">Makina juaj</h3>
+                {{form_start(form2)}}
+                <h3 class="page-title">1. Te dhenat e makines tuaj</h3>
+                <div class="row">
+
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-car"></i>
+                      </span>
+                      {{form_widget(form2.marque,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </span>
+                      {{form_widget(form2.anneeProduction,{'attr': {'class': 'form-control','placeholder':'Viti i prodhimit'}}) }}
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="form-group" id="marque_remplace">
+                      {{form_widget(form2.modele,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="input-group">
+                      {{form_widget(form2.places,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-free-code-camp"></i>
+                      </span>
+                      {{form_widget(form2.carburant,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="fa fa-road"></i>
+                      </span>
+                      {{form_widget(form2.kmParcourues,{'attr': {'class': 'form-control','placeholder':'KM'}}) }}
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      {{form_widget(form2.boite,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="input-group">
+                      {{form_widget(form2.portes,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                  </div>
+
+                </div>
+                <!--End Row-->
+                {{form_end(form2)}}
+              </div>
+
+              {{form_start(form)}}
+              <div class="background-white p30 mb30">
+                <h3 class="page-title">2. Adressa e makines tuaj</h3>
                 <div class="row">
                   <div class="col-sm-6">
-                    <div class="form-group">
-                      <select name="Marka">
-                        <option>Marka</option>
-                        <option>Apartment</option>
-                        <option>Condo</option>
-                        <option>House</option>
-                        <option>Villa</option>
-                      </select>
+                    <div class="input-group">
+                      {{form_widget(form.adresseVoiture.adresse,{'attr': {'class': 'form-control'}}) }}
                     </div>
-                    <div class="form-group">
-                      <select name="contract">
-                        <option>Modeli</option>
-                        <option>Rent</option>
-                        <option>Sale</option>
-                      </select>
+                    <div class="input-group">
+                      {{form_widget(form.adresseVoiture.ville.ville,{'attr': {'class': 'form-control'}}) }}
                     </div>
                   </div>
-
                   <div class="col-sm-6">
                     <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-building-o"></i>
-                      </span>
-                      <input class="form-control" type="text" placeholder="Addressa e makines">
+                      {{form_widget(form.adresseVoiture.ville.codePostal,{'attr': {'class': 'form-control'}}) }}
                     </div>
-
                     <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-map-o"></i>
-                      </span>
-                      <input class="form-control" type="text" placeholder="Qyteti">
+                      {{form_widget(form.adresseVoiture.ville.pays.pays,{'attr': {'class': 'form-control'}}) }}
                     </div>
                   </div>
+
                 </div>
-              </div>-->
-              {{form_start(form2)}}
-              <div class="form-group">
-                {{form_row(form2.marque)}}
               </div>
-              <div class="form-group" id="marque_remplace">
-                {{form_row(form2.modele,{'attr': {'class': 'form-control'}}) }}
+
+              <div class="background-white p30 mb30">
+                <h3 class="page-title">3. Informacionet e qerase</h3>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      {{form_widget(form.prixKM,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="input-group">
+                      {{form_widget(form.prixJour,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="input-group">
+                      {{form_widget(form.limiteKM,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="input-group">
+                      {{form_widget(form.dureeLocation,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="input-group">
+                      {{form_widget(form.exigences,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="input-group">
+                      {{form_widget(form.enligne,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                  </div>
+
+                </div>
               </div>
-              {{form_end(form2)}}
+
+              <div class="background-white p30 mb30">
+                <h3 class="page-title">4. Fotot</h3>
+                <div class="row"></div>
+              </div>
+              {{form_end(form)}}
+
             </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <script>
     $(document).ready(function() {
       var $voiture = $('#appbundle_voiture_marque');

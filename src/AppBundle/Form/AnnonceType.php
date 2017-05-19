@@ -32,8 +32,8 @@ class AnnonceType extends AbstractType
     {
         $builder
         ->add('adresseVoiture', AdresseType::class)
-        ->add('prixJour', MoneyType::class)
-        ->add('prixKM', MoneyType::class)
+        ->add('prixJour', IntegerType::class)
+        ->add('prixKM', IntegerType::class)
         ->add('enligne', CheckboxType::class)
         ->add('dureeLocation', IntegerType::class)
         ->add('limiteKM', IntegerType::class)

@@ -26,11 +26,16 @@ class AnnonceController extends Controller
             'action' => $this->generateUrl('add_annonce')
           ));
 
-        if ($request->isMethod('POST') && $form2->handleRequest($request)->isValid()) {
-            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
-
-            return $this->redirectToRoute('profile');
+        if ($request->isXmlHttpRequest()) {
+            $formVoiture = $form2->handleRequest($request);
+        } else {
+            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+                return $this->redirectToRoute('profile');
+            }
         }
+
+
 
         return $this->render('corent/create_vehicle.html.twig', array(
       'form' => $form->createView(),'form2' => $form2->createView()

@@ -29,14 +29,18 @@ class VoitureType extends AbstractType
         $carburant = 'CARBURANT';
         $boite = 'BOITE';
         $options = 'OPTIONES';
+        $km = 'KM';
 
 
         $builder
         ->add('marque', EntityType::class, array(
                 'class'       => 'AppBundle:MarqueVoiture',
+                'required'=> true,
                 'placeholder' => '',
             ))
-        ->add('anneeProduction', TextType::class)
+        ->add('anneeProduction', TextType::class, array(
+                'required'=> true,
+            ))
         ->add('portes', EntityType::class, array(
                 'class'       => 'AppBundle:Dico',
                 'placeholder' => 'Portes',
@@ -54,6 +58,7 @@ class VoitureType extends AbstractType
         ->add('carburant', EntityType::class, array(
                 'class'       => 'AppBundle:Dico',
                 'placeholder' => 'Carburant',
+                'required'=> true,
                 'query_builder' => function (DicoRepository $repository) use ($carburant) {
                     return $repository->getDicoByDicotype($carburant);
                 }
@@ -61,11 +66,19 @@ class VoitureType extends AbstractType
         ->add('boite', EntityType::class, array(
                 'class'       => 'AppBundle:Dico',
                 'placeholder' => 'Boite',
+                'required'=> true,
                 'query_builder' => function (DicoRepository $repository) use ($boite) {
                     return $repository->getDicoByDicotype($boite);
                 }
             ))
-        ->add('kmParcourues', TextType::class)
+        ->add('kmParcourues', EntityType::class, array(
+                'class'       => 'AppBundle:Dico',
+                'placeholder' => 'Km Parcourues',
+                'required'=> true,
+                'query_builder' => function (DicoRepository $repository) use ($km) {
+                    return $repository->getDicoByDicotype($km);
+                }
+            ))
         ->add('Options', EntityType::class, array(
                 'class'       => 'AppBundle:Dico',
                 'placeholder' => 'Options',
@@ -82,6 +95,7 @@ class VoitureType extends AbstractType
             $form->add('modele', EntityType::class, array(
                     'class'       => 'AppBundle:ModeleVoiture',
                     'placeholder' => null === $marque ? 'Please choose a Marque first' : 'Please Choose',
+                    'required'=> true,
                     'choices' =>  $modeles
                   ));
         };
