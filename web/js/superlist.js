@@ -1,5 +1,31 @@
 $(document).ready(function() {
   'use strict';
+  var $voiture = $('#appbundle_voiture_marque');
+  // When sport gets selected ...
+  $voiture.on('change', function() {
+    // ... retrieve the corresponding form.
+    var $form = $(this).closest('form');
+    // Simulate form data, but only include the selected sport value.
+    var data = {};
+    data[$voiture.attr('name')] = $voiture.val();
+    // Submit data via AJAX to the form's action path.
+    $.ajax({
+      url: $form.attr('action'),
+      type: $form.attr('method'),
+      data: data,
+      success: function(html) {
+        var aremp =
+          // Replace current position field ... console.log(html);
+          $("#marque_remplace").replaceWith(function(n) {
+            var ht = $(html).find('#marque_remplace');
+            //ht.children('#appbundle_voiture_modele').addClass("form-control")
+            return ht;
+          });
+        // Position field now displays the appropriate positions.
+      }
+
+    });
+  });
   $('.nav-tabs > li a[title]').tooltip();
 
   //Wizard
@@ -303,13 +329,11 @@ $(document).ready(function() {
   /**
    * Input file
    */
-  $('#input-file').fileinput({
-    initialPreview: [
-      "<img src='assets/img/tmp/product-1.jpg' class='file-preview-image' alt='Listing 1' title='Listing 1'>",
-      "<img src='assets/img/tmp/product-2.jpg' class='file-preview-image' alt='Listing 2' title='Listing 2'>"
-    ],
-    overwriteInitial: true,
-    initialCaption: "Your Uploaded Images"
+  $('#appbundle_annonce_photos_imageName').fileinput({
+    showUpload: false,
+    initialCaption: "Vini fotot tuaja",
+    overwriteInitial: false,
+    maxFileCount: 3,
   });
 });
 

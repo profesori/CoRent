@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Photo
@@ -22,19 +24,20 @@ class Photo
     private $id;
 
     /**
-     * @var string
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @ORM\Column(name="photoUrl", type="string", length=255)
+     * @Vich\UploadableField(mapping="annonce_photo", fileNameProperty="imageName", size="size")
+     *
+     * @var File
      */
-    private $photoUrl;
+    private $imageFile;
 
     /**
-     * @var string
+     * @ORM\Column(type="string", length=255)
      *
-     * @ORM\Column(name="thumbUrl", type="string", length=255)
+     * @var string
      */
-    private $thumbUrl;
-
+    private $imageName;
     /**
      * @var float
      *
@@ -182,5 +185,29 @@ class Photo
     public function getAnnonce()
     {
         return $this->annonce;
+    }
+
+    /**
+     * Set imageName
+     *
+     * @param string $imageName
+     *
+     * @return Photo
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * Get imageName
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
     }
 }

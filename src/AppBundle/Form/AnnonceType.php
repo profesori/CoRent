@@ -9,11 +9,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use AppBundle\Form\PhotoType;
 use Doctrine\ORM\EntityManager;
 
 
@@ -32,12 +34,31 @@ class AnnonceType extends AbstractType
     {
         $builder
         ->add('adresseVoiture', AdresseType::class)
-        ->add('prixJour', IntegerType::class)
-        ->add('prixKM', IntegerType::class)
-        ->add('enligne', CheckboxType::class)
-        ->add('dureeLocation', IntegerType::class)
-        ->add('limiteKM', IntegerType::class)
-        ->add('exigences', TextareaType::class);
+        ->add('prixJour', IntegerType::class, array(
+          'label'=>'Cmimi ditor i qerase'
+
+        ))
+        ->add('prixKM', IntegerType::class, array(
+          'label'=>'Cmimi per cdo KM shtese'
+
+        ))
+        //->add('enligne', CheckboxType::class)
+        ->add('dureeLocation', IntegerType::class, array(
+          'label'=>'Kohezgjatja max e qerase'
+
+        ))
+        ->add('limiteKM', IntegerType::class, array(
+          'label'=>'Limiti kohor max i qerase'
+
+        ))
+        ->add('exigences', TextareaType::class, array(
+          'label'=>'Eksigjenca te tjera'
+
+        ))
+        ->add('photos', PhotoType::class)
+        ->add('save', SubmitType::class, array(
+          'label' => 'Krijo annoncen tende'
+        ));
     }
 
 

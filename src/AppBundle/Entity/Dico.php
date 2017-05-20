@@ -42,7 +42,10 @@ class Dico
     {
         return $this->id;
     }
-
+    public function __toString()
+    {
+        return $this->dicoLibelle;
+    }
     /**
      * Set dicoLibelle
      *
@@ -74,7 +77,7 @@ class Dico
      *
      * @return Dico
      */
-    public function setDicotype(\CorentApi\ApiBundle\Entity\DicoType $dicotype = null)
+    public function setDicotype(\AppBundle\Entity\DicoType $dicotype = null)
     {
         $this->dicotype = $dicotype;
 

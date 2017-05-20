@@ -43,6 +43,10 @@ class DicoType
     {
         return $this->id;
     }
+    public function __toString()
+    {
+        return $this->dicotypeLibelle;
+    }
 
     /**
      * Set dicotypeLibelle
@@ -82,7 +86,7 @@ class DicoType
      *
      * @return DicoType
      */
-    public function addDico(\CorentApi\ApiBundle\Entity\Dico $dico)
+    public function addDico(\AppBundle\Entity\Dico $dico)
     {
         $this->dicos[] = $dico;
 
@@ -94,7 +98,7 @@ class DicoType
      *
      * @param \CorentApi\ApiBundle\Entity\Dico $dico
      */
-    public function removeDico(\CorentApi\ApiBundle\Entity\Dico $dico)
+    public function removeDico(\AppBundle\Entity\Dico $dico)
     {
         $this->dicos->removeElement($dico);
     }

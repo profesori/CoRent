@@ -82,8 +82,8 @@ class VoitureType extends AbstractType
         ->add('Options', EntityType::class, array(
                 'class'       => 'AppBundle:Dico',
                 'placeholder' => 'Options',
-                'query_builder' => function (DicoRepository $repository) use ($boite) {
-                    return $repository->getDicoByDicotype($boite);
+                'query_builder' => function (DicoRepository $repository) use ($options) {
+                    return $repository->getDicoByDicotype($options);
                 },
                 'multiple'     => true,
                 'expanded'     => true,

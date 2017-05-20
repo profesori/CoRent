@@ -86,7 +86,7 @@ class Annonce
     */
    private $calendrier;
    /**
-   * @ORM\ManyToOne(targetEntity="Loueur", inversedBy="annonces")
+   * @ORM\ManyToOne(targetEntity="User")
    */
    private $loueur;
    /**

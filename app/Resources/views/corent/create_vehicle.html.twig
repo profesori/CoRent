@@ -75,7 +75,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="input-group">
-                      {{form_widget(form.adresseVoiture.adresse,{'attr': {'class': 'form-control'}}) }}
+                      {{form_row(form.adresseVoiture.adresse,{'attr': {'class': 'form-control'}}) }}
                     </div>
                     <div class="input-group">
                       {{form_widget(form.adresseVoiture.ville.ville,{'attr': {'class': 'form-control'}}) }}
@@ -83,7 +83,7 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="input-group">
-                      {{form_widget(form.adresseVoiture.ville.codePostal,{'attr': {'class': 'form-control'}}) }}
+                      {{form_row(form.adresseVoiture.ville.codePostal,{'attr': {'class': 'form-control'}}) }}
                     </div>
                     <div class="input-group">
                       {{form_widget(form.adresseVoiture.ville.pays.pays,{'attr': {'class': 'form-control'}}) }}
@@ -98,26 +98,24 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="input-group">
-                      {{form_widget(form.prixKM,{'attr': {'class': 'form-control'}}) }}
+                      {{form_row(form.prixJour,{'attr': {'class': 'form-control'}}) }}
                     </div>
                     <div class="input-group">
-                      {{form_widget(form.prixJour,{'attr': {'class': 'form-control'}}) }}
+                      {{form_row(form.prixKM,{'attr': {'class': 'form-control'}}) }}
                     </div>
+
                   </div>
                   <div class="col-sm-6">
                     <div class="input-group">
-                      {{form_widget(form.limiteKM,{'attr': {'class': 'form-control'}}) }}
+                      {{form_row(form.limiteKM,{'attr': {'class': 'form-control'}}) }}
                     </div>
                     <div class="input-group">
-                      {{form_widget(form.dureeLocation,{'attr': {'class': 'form-control'}}) }}
+                      {{form_row(form.dureeLocation,{'attr': {'class': 'form-control'}}) }}
                     </div>
                   </div>
                   <div class="col-sm-12">
                     <div class="input-group">
-                      {{form_widget(form.exigences,{'attr': {'class': 'form-control'}}) }}
-                    </div>
-                    <div class="input-group">
-                      {{form_widget(form.enligne,{'attr': {'class': 'form-control'}}) }}
+                      {{form_row(form.exigences,{'attr': {'class': 'form-control'}}) }}
                     </div>
                   </div>
 
@@ -126,47 +124,22 @@
 
               <div class="background-white p30 mb30">
                 <h3 class="page-title">4. Fotot</h3>
-                <div class="row"></div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    {{ form_widget(form.photos.imageName, {'attr': {'name':'input-file[]','class': 'btn btn-primary pull-center'}}) }}
+                  </div>
+                </div>
               </div>
+
+              <div class="input-group">
+                {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary pull-center'}}) }}
+              </div>
+
               {{form_end(form)}}
-
             </div>
-
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <script>
-    $(document).ready(function() {
-      var $voiture = $('#appbundle_voiture_marque');
-      // When sport gets selected ...
-      $voiture.on('change', function() {
-        // ... retrieve the corresponding form.
-        var $form = $(this).closest('form');
-        // Simulate form data, but only include the selected sport value.
-        var data = {};
-        data[$voiture.attr('name')] = $voiture.val();
-        // Submit data via AJAX to the form's action path.
-        $.ajax({
-          url: $form.attr('action'),
-          type: $form.attr('method'),
-          data: data,
-          success: function(html) {
-            var aremp =
-            // Replace current position field ... console.log(html);
-            $("#marque_remplace").replaceWith(function(n) {
-              var ht = $(html).find('#marque_remplace');
-              //ht.children('#appbundle_voiture_modele').addClass("form-control")
-              return ht;
-            });
-            // Position field now displays the appropriate positions.
-          }
-
-        });
-      });
-
-    });
-  </script>
 {% endblock %}

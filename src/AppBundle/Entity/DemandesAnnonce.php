@@ -50,7 +50,7 @@ class DemandesAnnonce
     */
     private $annonce;
     /**
-    * @ORM\ManyToOne(targetEntity="Locataire", inversedBy="demandes")
+    * @ORM\ManyToOne(targetEntity="User")
     */
     private $locataire;
     /**

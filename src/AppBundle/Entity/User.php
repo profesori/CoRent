@@ -11,9 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table("users")
  * @ORM\Entity
- * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"loueur" = "Loueur", "locataire" = "Locataire","user" = "User"})
  *
  */
 class User extends BaseUser
