@@ -26,7 +26,7 @@ $(document).ready(function() {
 
     });
   });
-  $('.nav-tabs > li a[title]').tooltip();
+  //$('.nav-tabs > li a[title]').tooltip();
 
   //Wizard
   $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
@@ -52,6 +52,16 @@ $(document).ready(function() {
 
   });
 
+  //Calendar pignose
+  $('.calendar').pignoseCalendar({
+    multiple: true,
+    toggle: true,
+    selectOver: true,
+    reverse: true,
+    select: function(dates, context) {
+      console.log('toggle active dates', context.storage.activeDates);
+    }
+  });
 
 
   /**
@@ -71,9 +81,7 @@ $(document).ready(function() {
   /**
    * Bootstrap Tooltip
    */
-  $(function() {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+
 
   /**
    * Map
@@ -159,11 +167,13 @@ $(document).ready(function() {
    * Detail gallery
    */
   if ($('.detail-gallery-index').length != 0) {
-    $('.detail-gallery-index').owlCarousel({
-      items: 5,
-      nav: true,
-      dots: true,
-      navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>']
+    $('.detail-gallery-index').slick({
+      adaptiveHeight: true,
+      accessibility: true,
+      prevArrow: '<i class="fa fa-chevron-left"></i>',
+      nextArrow: '<i class="fa fa-chevron-right"></i>',
+      slidesToShow: 4
+
     });
   }
 

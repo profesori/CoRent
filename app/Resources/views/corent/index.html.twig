@@ -1,443 +1,361 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="main">
-        <div class="main-inner">
-            <div class="content">
-                <div class="hero-image">
-                    <div class="hero-image-inner-main" style="background-image: url(' {{asset('img/header/bg_3.jpg')}} ');">
-                        <div class="hero-image-content-main">
-                            <div class="container">
-                                <div class="center-block">
-                                    <h1>Kerkoni rreth jush makinen ideale</h1>
-                                    <p>
-                                        Me lire, me shpejt, me i sigurt...
-                                    </p>
-                                    <div class="hero-image-form-wrapper-main">
-                                        <form class="form-inline">
-                                            <div class="hero-image-location form-group">
-                                                <input type="text" class="form-control" placeholder="Keyword">
-                                            </div>
-                                            <!-- /.form-group -->
-                                            <div class="hero-image-date form-group">
-                                                <input type="text" data-modal="true" data-format="d-m-Y" data-large-default="true" data-large-mode="true" class="form-control" id="dataNisje" placeholder="Data e nisjes">
-                                            </div>
-                                            <div class="hero-image-date form-group">
-                                                <input type="text" class="form-control" id="dataMbarim" placeholder="Data e mbarimit" data-modal="true" data-format="d-m-Y" data-large-default="true" data-large-mode="true">
-                                            </div>
-                                            <div class="hero-image-distance form-group">
-                                                <select class="form-control" title="Distanca"></select>
-                                            </div>
-                                            <!-- /.form-group -->
-                                            <button type="submit" class="btn btn-primary">Kerko</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
+  <div class="main">
+    <div class="main-inner">
+      <div class="content">
+        <div class="hero-image">
+          <div class="hero-image-inner-main" style="background-image: url(' {{asset('img/header/bg_3.jpg')}} ');">
+            <div class="hero-image-content-main">
+              <div class="container">
+                <div class="center-block">
+                  <h1>Kerkoni rreth jush makinen ideale</h1>
+                  <p>
+                    Me lire, me shpejt, me i sigurt...
+                  </p>
+                  <div class="hero-image-form-wrapper-main">
+                    <form class="form-inline">
+                      <div class="hero-image-location form-group">
+                        <input type="text" class="form-control" placeholder="Keyword">
+                      </div>
+                      <!-- /.form-group -->
+                      <div class="hero-image-date form-group">
+                        <input type="text" data-modal="true" data-format="d-m-Y" data-large-default="true" data-large-mode="true" class="form-control" id="dataNisje" placeholder="Data e nisjes">
+                      </div>
+                      <div class="hero-image-date form-group">
+                        <input type="text" class="form-control" id="dataMbarim" placeholder="Data e mbarimit" data-modal="true" data-format="d-m-Y" data-large-default="true" data-large-mode="true">
+                      </div>
+                      <div class="hero-image-distance form-group">
+                        <select class="form-control" title="Distanca"></select>
+                      </div>
+                      <!-- /.form-group -->
+                      <button type="submit" class="btn btn-primary">Kerko</button>
+                    </form>
+                  </div>
                 </div>
+              </div>
 
-                <!--Grid with some cars-->
-                <div class="container">
-
-                    <div class="page-header">
-                        <h1>Komuniteti me i madh i makinave me qera ne Shqiperi</h1>
-                        <p>Zbuloni anoncat me te reja dhe rezervoni sa me shpejt makinen tuaj te ardhshme.</p>
-                    </div>
-                    <!-- /.page-header -->
-
-                    <div class="cards-simple-wrapper">
-                        <div class="row">
-                            <div class="col-sm-6 col-md-3">
-                                <div class="card-simple" data-background-image="assets/img/tmp/product-2.jpg">
-                                    <div class="card-simple-background">
-                                        <div class="card-simple-content">
-                                            <h2>
-                                                <a href="listing-detail.html">Tasty Brazil Coffee</a>
-                                            </h2>
-                                            <div class="card-simple-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <!-- /.card-rating -->
-
-                                            <div class="card-simple-actions">
-                                                <a href="#" class="fa fa-bookmark-o"></a>
-                                                <a href="listing-detail.html" class="fa fa-search"></a>
-                                                <a href="#" class="fa fa-heart-o"></a>
-                                            </div>
-                                            <!-- /.card-simple-actions -->
-                                        </div>
-                                        <!-- /.card-simple-content -->
-
-                                        <div class="card-simple-label">Coffee</div>
-
-                                    </div>
-                                    <!-- /.card-simple-background -->
-                                </div>
-                                <!-- /.card-simple -->
-                            </div>
-                            <!-- /.col-* -->
-
-                            <div class="col-sm-6 col-md-3">
-                                <div class="card-simple" data-background-image="assets/img/tmp/product-3.jpg">
-                                    <div class="card-simple-background">
-                                        <div class="card-simple-content">
-                                            <h2>
-                                                <a href="listing-detail.html">Healthy Breakfast</a>
-                                            </h2>
-                                            <div class="card-simple-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <!-- /.card-rating -->
-
-                                            <div class="card-simple-actions">
-                                                <a href="#" class="fa fa-bookmark-o"></a>
-                                                <a href="listing-detail.html" class="fa fa-search"></a>
-                                                <a href="#" class="fa fa-heart-o"></a>
-                                            </div>
-                                            <!-- /.card-simple-actions -->
-                                        </div>
-                                        <!-- /.card-simple-content -->
-
-                                        <div class="card-simple-label">Food</div>
-
-                                        <div class="card-simple-price">$12 / person</div>
-
-                                    </div>
-                                    <!-- /.card-simple-background -->
-                                </div>
-                                <!-- /.card-simple -->
-                            </div>
-                            <!-- /.col-* -->
-
-                            <div class="col-sm-6 col-md-3">
-                                <div class="card-simple" data-background-image="assets/img/tmp/product-4.jpg">
-                                    <div class="card-simple-background">
-                                        <div class="card-simple-content">
-                                            <h2>
-                                                <a href="listing-detail.html">Coffee &amp; Newspaper</a>
-                                            </h2>
-                                            <div class="card-simple-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <!-- /.card-rating -->
-
-                                            <div class="card-simple-actions">
-                                                <a href="#" class="fa fa-bookmark-o"></a>
-                                                <a href="listing-detail.html" class="fa fa-search"></a>
-                                                <a href="#" class="fa fa-heart-o"></a>
-                                            </div>
-                                            <!-- /.card-simple-actions -->
-                                        </div>
-                                        <!-- /.card-simple-content -->
-
-                                        <div class="card-simple-label">Restaurant</div>
-
-                                    </div>
-                                    <!-- /.card-simple-background -->
-                                </div>
-                                <!-- /.card-simple -->
-                            </div>
-                            <!-- /.col-* -->
-
-                            <div class="col-sm-6 col-md-3">
-                                <div class="card-simple" data-background-image="assets/img/tmp/product-5.jpg">
-                                    <div class="card-simple-background">
-                                        <div class="card-simple-content">
-                                            <h2>
-                                                <a href="listing-detail.html">Boat Trip</a>
-                                            </h2>
-                                            <div class="card-simple-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <!-- /.card-rating -->
-
-                                            <div class="card-simple-actions">
-                                                <a href="#" class="fa fa-bookmark-o"></a>
-                                                <a href="listing-detail.html" class="fa fa-search"></a>
-                                                <a href="#" class="fa fa-heart-o"></a>
-                                            </div>
-                                            <!-- /.card-simple-actions -->
-                                        </div>
-                                        <!-- /.card-simple-content -->
-
-                                        <div class="card-simple-label">Vacation</div>
-
-                                    </div>
-                                    <!-- /.card-simple-background -->
-                                </div>
-                                <!-- /.card-simple -->
-                            </div>
-                            <!-- /.col-* -->
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.cards-simple-wrapper -->
-
-                    <div class="block background-black-light fullwidth mt80">
-                        <div class="page-header-white">
-                            <h1>Nje menyre e re per te gjetur makine me qera</h1>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="box">
-                                    <div class="box-icon">
-                                        <i class="fa fa-money"></i>
-                                    </div>
-                                    <!-- /.box-icon -->
-
-                                    <div class="box-content">
-                                        <h2>Me ekonomike</h2>
-                                        <p>Tashme mund te gjeni makine duke filluar nga 500 lek dita</p>
-
-                                        <a href="#">Zbulo me shume
-                                            <i class="fa fa-chevron-right"></i>
-                                        </a>
-                                    </div>
-                                    <!-- /.box-content -->
-                                </div>
-                            </div>
-                            <!-- /.col-sm-4 -->
-
-                            <div class="col-sm-4">
-                                <div class="box">
-                                    <div class="box-icon">
-                                        <i class="fa fa-shield"></i>
-                                    </div>
-                                    <!-- /.box-icon -->
-
-                                    <div class="box-content">
-                                        <h2>Udheto me i qete dhe i sigurt</h2>
-                                        <p>Fale siguracionit Kasko te perfshire ne kontratat tuaja te qirase, mund te udhetoni sa me te qete.
-                                        </p>
-
-                                        <a href="#">Zbulo me shume
-                                            <i class="fa fa-chevron-right"></i>
-                                        </a>
-                                    </div>
-                                    <!-- /.box-content -->
-                                </div>
-                            </div>
-                            <!-- /.col-sm-4 -->
-
-                            <div class="col-sm-4">
-                                <div class="box">
-                                    <div class="box-icon">
-                                        <i class="fa fa-thumbs-o-up"></i>
-                                    </div>
-                                    <!-- /.box-icon -->
-
-                                    <div class="box-content">
-                                        <h2>Makinen jua sjellim ne</h2>
-                                        <p>Nuk mund te vini ne qendren tone te merrni celsat, pa problem. Brenda gjys ore makinen jua sjellim ne kudo qe te jeni</p>
-
-                                        <a href="#">Zbulo me shume
-                                            <i class="fa fa-chevron-right"></i>
-                                        </a>
-                                    </div>
-                                    <!-- /.box-content -->
-                                </div>
-                            </div>
-                            <!-- /.col-sm-4 -->
-                        </div>
-                        <!-- /.row -->
-
-                    </div>
-                    <!-- /.block -->
-                    <div class="block background-secondary fullwidth ">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="contact-info-wrapper">
-                                    <h2>Doni te dini me shume, mos hesitoni te na kontaktoni</h2>
-
-                                    <div class="contact-info">
-                                        <span class="contact-info-item">
-                                            <i class="fa fa-at"></i>
-                                            <span>support@sitename.com</span>
-                                        </span>
-                                        <!-- /.contact-info-item -->
-
-                                        <span class="contact-info-item">
-                                            <i class="fa fa-phone"></i>
-                                            <span>+123-456-789</span>
-                                        </span>
-                                        <!-- /.contact-info-item -->
-                                    </div>
-                                    <!-- /.contact-info-->
-                                </div>
-                                <!-- /.contact-info-wrapper -->
-                            </div>
-                            <!-- /.col-* -->
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.block -->
-
-                    <div class="block background-white fullwidth">
-                        <div class="page-header">
-                            <h1>Vleresimet e fundit</h1>
-                        </div>
-                        <!-- /.page-header -->
-
-                        <div class="row">
-                            <div class="col-sm-6">
-
-                                <div class="testimonial">
-                                    <div class="testimonial-image">
-                                        <img src="assets/img/tmp/agent-2.jpg" alt="">
-                                    </div>
-                                    <!-- /.testimonial-image -->
-
-                                    <div class="testimonial-inner">
-                                        <div class="testimonial-title">
-                                            <h2>Best Support Ever</h2>
-
-                                            <div class="testimonial-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <!-- /.testimonial-rating -->
-                                        </div>
-                                        <!-- /.testimonial-title -->
-
-                                        Duis et magna vel est tempus vehicula vitae sit amet enim. Sed vitae ligula congue, luctus mauris eu, scelerisque felis.
-
-                                        <div class="testimonial-sign">- Natasha Samson</div>
-                                        <!-- /.testimonial-sign -->
-                                    </div>
-                                    <!-- /.testimonial-inner -->
-                                </div>
-                                <!-- /.testimonial -->
-
-                                <div class="testimonial last">
-                                    <div class="testimonial-image">
-                                        <img src="assets/img/tmp/agent-3.jpg" alt="">
-                                    </div>
-                                    <!-- /.testimonial-image -->
-
-                                    <div class="testimonial-inner">
-                                        <div class="testimonial-title">
-                                            <h2>Best Directory</h2>
-
-                                            <div class="testimonial-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <!-- /.testimonial-rating -->
-                                        </div>
-                                        <!-- /.testimonial-title -->
-
-                                        Duis et magna vel est tempus vehicula vitae sit amet enim. Sed vitae ligula congue, luctus mauris eu, scelerisque felis.
-
-                                        <div class="testimonial-sign">- Kim Glove</div>
-                                        <!-- /.testimonial-sign -->
-                                    </div>
-                                    <!-- /.testimonial-inner -->
-                                </div>
-                                <!-- /.testimonial -->
-                            </div>
-                            <!-- /.col-* -->
-
-                            <div class="col-sm-6">
-                                <div class="testimonial">
-                                    <div class="testimonial-image">
-                                        <img src="assets/img/tmp/agent-4.jpg" alt="">
-                                    </div>
-                                    <!-- /.testimonial-image -->
-
-                                    <div class="testimonial-inner">
-                                        <div class="testimonial-title">
-                                            <h2>Totally Impressed</h2>
-
-                                            <div class="testimonial-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <!-- /.testimonial-rating -->
-                                        </div>
-                                        <!-- /.testimonial-title -->
-
-                                        Curabitur scelerisque nulla consequat elit semper, vitae lobortis velit tempor. Sed purus eros, pellentesque non maximus scelerisque, aliquam id magna. Integer in metus ante. Integer faucibus mi quis rhoncus cursus.
-
-                                        <div class="testimonial-sign">- Richard Peterson</div>
-                                        <!-- /.testimonial-sign -->
-                                    </div>
-                                    <!-- /.testimonial-inner -->
-                                </div>
-                                <!-- /.testimonial -->
-
-                                <div class="testimonial last">
-                                    <div class="testimonial-image">
-                                        <img src="assets/img/tmp/agent-5.jpg" alt="">
-                                    </div>
-                                    <!-- /.testimonial-image -->
-
-                                    <div class="testimonial-inner">
-                                        <div class="testimonial-title">
-                                            <h2>Awesome Directory
-                                            </h2>
-
-                                            <div class="testimonial-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <!-- /.testimonial-rating -->
-                                        </div>
-                                        <!-- /.testimonial-title -->
-
-                                        Donec finibus consectetur nunc, quis viverra nisi iaculis a. Donec non eros vel turpis bibendum sodales. Curabitur scelerisque nulla consequat elit semper, vitae lobortis velit tempor. Sed purus eros, pellentesque non maximus scelerisque, aliquam id
-                                        magna. Integer in metus ante. Integer faucibus mi quis rhoncus cursus. Aliquam malesuada eleifend tellus, sit amet eleifend lacus aliquam in. Etiam a neque ut augue mattis gravida vel vel purus. Nullam bibendum viverra enim, in pretium purus.
-
-                                        <div class="testimonial-sign">- Rachel Fast</div>
-                                        <!-- /.testimonial-sign -->
-                                    </div>
-                                    <!-- /.testimonial-inner -->
-                                </div>
-                                <!-- /.testimonial -->
-                            </div>
-                            <!-- /.col-* -->
-                        </div>
-                        <!--end block testimonial-->
-
-                    </div>
-                </div>
-                <!-- /.container -->
             </div>
+
+          </div>
         </div>
+
+        <!--Grid with some cars-->
+        <div class="container">
+
+          <div class="page-header">
+            <h1>Komuniteti me i madh i makinave me qera ne Shqiperi</h1>
+            <p>Zbuloni anoncat me te reja dhe rezervoni sa me shpejt makinen tuaj te ardhshme.</p>
+          </div>
+          <!-- /.page-header -->
+
+          <div class="cards-simple-wrapper">
+            <div class="row">
+              <div class="col-sm-6 col-md-3">
+                <div class="card-simple" data-background-image="assets/img/tmp/product-3.jpg">
+                  <div class="card-simple-background">
+                    <div class="card-simple-content">
+                      <h2>
+                        <a href="listing-detail.html">Renault Espace</a>
+                      </h2>
+                      <div class="card-simple-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                      <!-- /.card-rating -->
+
+                    </div>
+                    <!-- /.card-simple-content -->
+
+                    <div class="card-simple-label">Familjare</div>
+
+                    <div class="card-simple-price">60 euro / dita</div>
+
+                  </div>
+                  <!-- /.card-simple-background -->
+                </div>
+                <!-- /.card-simple -->
+              </div>
+              <!-- /.col-* -->
+              <div class="col-sm-6 col-md-3">
+                <div class="card-simple" data-background-image="assets/img/tmp/product-3.jpg">
+                  <div class="card-simple-background">
+                    <div class="card-simple-content">
+                      <h2>
+                        <a href="listing-detail.html">Renault Espace</a>
+                      </h2>
+                      <div class="card-simple-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                      <!-- /.card-rating -->
+                    </div>
+                    <!-- /.card-simple-content -->
+                    <div class="card-simple-label">Familjare</div>
+                    <div class="card-simple-price">60 euro / dita</div>
+                  </div>
+                  <!-- /.card-simple-background -->
+                </div>
+                <!-- /.card-simple -->
+              </div>
+              <!-- /.col-* -->
+
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.cards-simple-wrapper -->
+
+          <div class="block background-black-light fullwidth mt80">
+            <div class="page-header-white">
+              <h1>Nje menyre e re per te gjetur makine me qera</h1>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="box">
+                  <div class="box-icon">
+                    <i class="fa fa-money"></i>
+                  </div>
+                  <!-- /.box-icon -->
+
+                  <div class="box-content">
+                    <h2>Me ekonomike</h2>
+                    <p>Tashme mund te gjeni makine duke filluar nga 500 lek dita</p>
+
+                    <a href="#">Zbulo me shume
+                      <i class="fa fa-chevron-right"></i>
+                    </a>
+                  </div>
+                  <!-- /.box-content -->
+                </div>
+              </div>
+              <!-- /.col-sm-4 -->
+
+              <div class="col-sm-4">
+                <div class="box">
+                  <div class="box-icon">
+                    <i class="fa fa-shield"></i>
+                  </div>
+                  <!-- /.box-icon -->
+
+                  <div class="box-content">
+                    <h2>Udheto me i qete dhe i sigurt</h2>
+                    <p>Fale siguracionit Kasko te perfshire ne kontratat tuaja te qirase, mund te udhetoni sa me te qete.
+                    </p>
+
+                    <a href="#">Zbulo me shume
+                      <i class="fa fa-chevron-right"></i>
+                    </a>
+                  </div>
+                  <!-- /.box-content -->
+                </div>
+              </div>
+              <!-- /.col-sm-4 -->
+
+              <div class="col-sm-4">
+                <div class="box">
+                  <div class="box-icon">
+                    <i class="fa fa-thumbs-o-up"></i>
+                  </div>
+                  <!-- /.box-icon -->
+
+                  <div class="box-content">
+                    <h2>Makinen jua sjellim ne</h2>
+                    <p>Nuk mund te vini ne qendren tone te merrni celsat, pa problem. Brenda gjys ore makinen jua sjellim ne kudo qe te jeni</p>
+
+                    <a href="#">Zbulo me shume
+                      <i class="fa fa-chevron-right"></i>
+                    </a>
+                  </div>
+                  <!-- /.box-content -->
+                </div>
+              </div>
+              <!-- /.col-sm-4 -->
+            </div>
+            <!-- /.row -->
+
+          </div>
+          <!-- /.block -->
+          <div class="block background-secondary fullwidth ">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="contact-info-wrapper">
+                  <h2>Doni te dini me shume, mos hesitoni te na kontaktoni</h2>
+
+                  <div class="contact-info">
+                    <span class="contact-info-item">
+                      <i class="fa fa-at"></i>
+                      <span>support@sitename.com</span>
+                    </span>
+                    <!-- /.contact-info-item -->
+
+                    <span class="contact-info-item">
+                      <i class="fa fa-phone"></i>
+                      <span>+123-456-789</span>
+                    </span>
+                    <!-- /.contact-info-item -->
+                  </div>
+                  <!-- /.contact-info-->
+                </div>
+                <!-- /.contact-info-wrapper -->
+              </div>
+              <!-- /.col-* -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.block -->
+
+          <div class="block background-white fullwidth">
+            <div class="page-header">
+              <h1>Vleresimet e fundit</h1>
+            </div>
+            <!-- /.page-header -->
+
+            <div class="row">
+              <div class="col-sm-6">
+
+                <div class="testimonial">
+                  <div class="testimonial-image">
+                    <img src="assets/img/tmp/agent-2.jpg" alt="">
+                  </div>
+                  <!-- /.testimonial-image -->
+
+                  <div class="testimonial-inner">
+                    <div class="testimonial-title">
+                      <h2>Best Support Ever</h2>
+
+                      <div class="testimonial-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                      <!-- /.testimonial-rating -->
+                    </div>
+                    <!-- /.testimonial-title -->
+
+                    Duis et magna vel est tempus vehicula vitae sit amet enim. Sed vitae ligula congue, luctus mauris eu, scelerisque felis.
+
+                    <div class="testimonial-sign">- Natasha Samson</div>
+                    <!-- /.testimonial-sign -->
+                  </div>
+                  <!-- /.testimonial-inner -->
+                </div>
+                <!-- /.testimonial -->
+
+                <div class="testimonial last">
+                  <div class="testimonial-image">
+                    <img src="assets/img/tmp/agent-3.jpg" alt="">
+                  </div>
+                  <!-- /.testimonial-image -->
+
+                  <div class="testimonial-inner">
+                    <div class="testimonial-title">
+                      <h2>Best Directory</h2>
+
+                      <div class="testimonial-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                      <!-- /.testimonial-rating -->
+                    </div>
+                    <!-- /.testimonial-title -->
+
+                    Duis et magna vel est tempus vehicula vitae sit amet enim. Sed vitae ligula congue, luctus mauris eu, scelerisque felis.
+
+                    <div class="testimonial-sign">- Kim Glove</div>
+                    <!-- /.testimonial-sign -->
+                  </div>
+                  <!-- /.testimonial-inner -->
+                </div>
+                <!-- /.testimonial -->
+              </div>
+              <!-- /.col-* -->
+
+              <div class="col-sm-6">
+                <div class="testimonial">
+                  <div class="testimonial-image">
+                    <img src="assets/img/tmp/agent-4.jpg" alt="">
+                  </div>
+                  <!-- /.testimonial-image -->
+
+                  <div class="testimonial-inner">
+                    <div class="testimonial-title">
+                      <h2>Totally Impressed</h2>
+
+                      <div class="testimonial-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                      <!-- /.testimonial-rating -->
+                    </div>
+                    <!-- /.testimonial-title -->
+
+                    Curabitur scelerisque nulla consequat elit semper, vitae lobortis velit tempor. Sed purus eros, pellentesque non maximus scelerisque, aliquam id magna. Integer in metus ante. Integer faucibus mi quis rhoncus cursus.
+
+                    <div class="testimonial-sign">- Richard Peterson</div>
+                    <!-- /.testimonial-sign -->
+                  </div>
+                  <!-- /.testimonial-inner -->
+                </div>
+                <!-- /.testimonial -->
+
+                <div class="testimonial last">
+                  <div class="testimonial-image">
+                    <img src="assets/img/tmp/agent-5.jpg" alt="">
+                  </div>
+                  <!-- /.testimonial-image -->
+
+                  <div class="testimonial-inner">
+                    <div class="testimonial-title">
+                      <h2>Awesome Directory
+                      </h2>
+
+                      <div class="testimonial-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                      <!-- /.testimonial-rating -->
+                    </div>
+                    <!-- /.testimonial-title -->
+
+                    Donec finibus consectetur nunc, quis viverra nisi iaculis a. Donec non eros vel turpis bibendum sodales. Curabitur scelerisque nulla consequat elit semper, vitae lobortis velit tempor. Sed purus eros, pellentesque non maximus scelerisque, aliquam id
+                    magna. Integer in metus ante. Integer faucibus mi quis rhoncus cursus. Aliquam malesuada eleifend tellus, sit amet eleifend lacus aliquam in. Etiam a neque ut augue mattis gravida vel vel purus. Nullam bibendum viverra enim, in pretium purus.
+
+                    <div class="testimonial-sign">- Rachel Fast</div>
+                    <!-- /.testimonial-sign -->
+                  </div>
+                  <!-- /.testimonial-inner -->
+                </div>
+                <!-- /.testimonial -->
+              </div>
+              <!-- /.col-* -->
+            </div>
+            <!--end block testimonial-->
+
+          </div>
+        </div>
+        <!-- /.container -->
+      </div>
     </div>
-    <script>
-        $('#dataNisje').dateDropper();
-        $('#dataMbarim').dateDropper();
-    </script>
+  </div>
+  <script>
+    $('#dataNisje').dateDropper();
+    $('#dataMbarim').dateDropper();
+  </script>
 {% endblock %}

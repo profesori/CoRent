@@ -41,4 +41,8 @@ class AnnonceController extends Controller
       'form' => $form->createView(),'form2' => $form2->createView()
     ));
     }
+    public function detailAction()
+    {
+        return $this->render('corent/annonce_detail.html.twig');
+    }
 }

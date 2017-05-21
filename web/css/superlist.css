@@ -6116,6 +6116,10 @@ button.close {
 /*------------------------------------------------------------------
 [ 4. Common classes ]
 */
+.owl-carousel .owl-wrapper,
+.owl-carousel .owl-item {
+  float: left; }
+
 .center {
   text-align: center; }
 

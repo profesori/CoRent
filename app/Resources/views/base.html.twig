@@ -11,12 +11,14 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
     <link href="{{asset('libraries/bootstrap-fileinput/fileinput.min.css')}}" rel="stylesheet" type="text/css">
-
+    <link href="{{asset('libraries/owl.carousel/assets/owl.carousel.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('libraries/colorbox/example1/colorbox.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/superlist.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/datedropper.min.css')}}" rel="stylesheet" type="text/css">
 
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('favicon.png')}}">
     <link href="{{asset('css/Corent.css')}}" rel="stylesheet" type="text/css"/>
+    {% block style %}{% endblock %}
     {% block title %}{% endblock %}
   </head>
 
@@ -246,17 +248,23 @@
 
     <!--Javascript scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script src="https://use.fontawesome.com/29791c23f8.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <script src="{{asset('libraries/colorbox/jquery.colorbox-min.js')}}" type="text/javascript"></script>
     <script src="{{asset('js/datedropper.min.js')}}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{asset('js/moment.js')}}"></script>
+    <script type="text/javascript" src="{{asset('libraries/pignose/js/pignose.calendar.full.min.js')}}"></script>
     <script src="{{asset('libraries/colorbox/jquery.colorbox-min.js')}}" type="text/javascript"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
     <script type="text/javascript" src="{{asset('libraries/bootstrap-fileinput/fileinput.min.js')}}"></script>
     <script src="{{asset('js/superlist.js')}}" type="text/javascript"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+
+    {% block javascript %}{% endblock %}
 
   </body>
 </html>

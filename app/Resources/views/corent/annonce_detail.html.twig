@@ -1,0 +1,275 @@
+{% extends 'base.html.twig' %}
+{% block body%}
+
+  <div class="main">
+    <div class="main-inner" style="padding:10px 0px">
+      <div class="content">
+
+        <div class="container">
+          {# On affiche tous les messages flash dont le nom est « info » #}
+          {% for message in app.session.flashbag.get('info') %}
+            <div class="alert alert-icon alert-warning" role="alert">
+              <strong>Info!</strong>
+              {{Message}}
+            </div>
+          {% endfor %}
+          <div class="row detail-content">
+            <h2>Alfa Romeo 19</h2>
+            <div class="col-sm-6">
+
+              <div class="detail-gallery">
+                <div class="detail-gallery-preview">
+                  <a href="{{asset('img/tmp/gallery-1.jpg')}}">
+                    <img src="{{asset('img/tmp/gallery-1.jpg')}}">
+                  </a>
+                </div>
+
+                <ul class="detail-gallery-index">
+                  <li class="detail-gallery-list-item">
+                    <a data-target="{{asset('img/tmp/gallery-2.jpg')}}">
+                      <img src="{{asset('img/tmp/gallery-2.jpg')}}" alt="...">
+                    </a>
+                  </li>
+                  <li class="detail-gallery-list-item">
+                    <a data-target="{{asset('img/tmp/gallery-3.jpg')}}">
+                      <img src="{{asset('img/tmp/gallery-3.jpg')}}" alt="...">
+                    </a>
+                  </li>
+                  <li class="detail-gallery-list-item">
+                    <a data-target="{{asset('img/tmp/gallery-3.jpg')}}">
+                      <img src="{{asset('img/tmp/gallery-3.jpg')}}" alt="...">
+                    </a>
+                  </li>
+                  <li class="detail-gallery-list-item">
+                    <a data-target="{{asset('img/tmp/gallery-3.jpg')}}">
+                      <img src="{{asset('img/tmp/gallery-3.jpg')}}" alt="...">
+                    </a>
+                  </li>
+                </ul>
+
+              </div>
+              <!-- /.detail-gallery -->
+
+            </div>
+            <!-- /.col-sm-7 -->
+
+            <div class="col-sm-5">
+
+              <div class="background-white p20">
+                <div class="detail-overview-rating">
+                  <i class="fa fa-star"></i>
+                  <strong>4.3 / 5
+                  </strong>nga
+                  <a href="#reviews">316 njerez</a>
+                </div>
+
+                <div class="detail-actions row">
+                  <div class="col-sm-4">
+                    <div class="btn btn-primary btn-book" data-toggle="modal" data-target="#myModal">
+                      <i class="fa fa-shopping-cart"></i>
+                      Rezervo
+                    </div>
+                  </div>
+
+                  <!--modal for reservations-->
+                  <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                          <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>One fine body&hellip;</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Anullo</button>
+                          <button type="button" class="btn btn-primary">Rezervo Tani</button>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+                  <!-- /.modal -->
+
+                  <!-- /.col-sm-4 -->
+                </div>
+                <!-- /.detail-actions -->
+              </div>
+              <!-- /.detail-amenities -->
+              <div class="alert alert-icon alert-info" role="alert">
+                <strong>Si te rezervoni</strong>
+              </br>
+              Shifni karakteristikat e makines, nqs jeni dakort klikoni butonin Rezervoj dhe plotesoni fomularin. Per me shume info kliko
+              <a href="#">ketu</a>.
+            </div>
+          </div>
+          <!-- /.col-sm-5 -->
+
+          <div class="col-sm-12">
+            <h2>Karakteristikat e makines</h2>
+            <div class="background-white p20">
+              <div class="row">
+                <div class="col-sm-6">
+                  <table class="table table-hover mb0">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Karburanti</th>
+                        <td style="text-align:right">Diesel</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">KM</th>
+                        <td style="text-align:right">20.000-30.000</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Portat</th>
+                        <td style="text-align:right">3 dyer</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-sm-6">
+                  <table class="table table-hover mb0">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Karburanti</th>
+                        <td style="text-align:right">Diesel</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">KM</th>
+                        <td style="text-align:right">20.000-30.000</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Portat</th>
+                        <td style="text-align:right">3 dyer</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <h3>Opsionet</h3>
+              <ul class="detail-amenities">
+                <li class="yes">WiFi</li>
+                <li class="yes">WiFi</li>
+                <li class="yes">WiFi</li>
+                <li class="yes">WiFi</li>
+                <li class="yes">WiFi</li>
+              </ul>
+            </div>
+            <!--Reviews-->
+            <h2 id="reviews">Komentet per kete makine</h2>
+            <div class="reviews">
+              <div class="review">
+                <div class="review-image">
+                  <img src="{{asset('img/tmp/agent-1.jpg')}}" alt=" ">
+                </div>
+                <!-- /.review-image -->
+
+                <div class="review-inner">
+                  <div class="review-title">
+                    <h2>Nancy Collins</h2>
+
+                    <div class="review-overall-rating">
+                      <span class="overall-rating-title">Total Score:</span>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star-half-o"></i>
+                      <i class="fa fa-star-o"></i>
+                    </div>
+                    <!-- /.review-rating -->
+                  </div>
+                  <!-- /.review-title -->
+
+                  <div class="review-content-wrapper">
+                    <div class="review-content">
+                      <div class="review-pros">
+                        <p>Quisque aliquet ornare nunc in viverra. Nullam ornare molestie ligula in luctus. Suspendisse ac cursus elit. In congue mattis felis, non hendrerit orci dictum id.</p>
+                      </div>
+                      <!-- /.pros -->
+                    </div>
+                    <!-- /.review-content -->
+                    <!-- /.review-rating -->
+                  </div>
+                  <!-- /.review-content-wrapper -->
+
+                </div>
+                <!-- /.review-inner -->
+              </div>
+              <!-- /.review -->
+
+            </div>
+            <!-- /.reviews -->
+            <!--End Reviews-->
+
+            <h2>Ler nje koment</h2>
+            <form class="background-white p20 add-review" method="post" action="?">
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <label for="">Name
+                    <span class="required">*</span>
+                  </label>
+                  <input type="text" class="form-control" id="" required>
+                </div>
+                <!-- /.col-sm-6 -->
+
+                <div class="form-group col-sm-6">
+                  <label for="">Email
+                    <span class="required">*</span>
+                  </label>
+                  <input type="email" class="form-control" id="" required>
+                </div>
+                <!-- /.col-sm-6 -->
+              </div>
+              <!-- /.row -->
+
+              <div class="row">
+                <div class="form-group col-sm-6">
+                  <label for="">Pros</label>
+                  <textarea class="form-control" rows="5" id=""></textarea>
+                </div>
+                <!-- /.col-sm-6 -->
+                <div class="form-group col-sm-6">
+                  <label for="">Cons</label>
+                  <textarea class="form-control" rows="5" id=""></textarea>
+                </div>
+                <!-- /.col-sm-6 -->
+
+                <div class="col-sm-8">
+                  <p>Required fields are marked
+                    <span class="required">*</span>
+                  </p>
+                </div>
+                <!-- /.col-sm-8 -->
+                <div class="col-sm-4">
+                  <button class="btn btn-primary btn-block" type="submit">
+                    <i class="fa fa-star"></i>Submit Review</button>
+                </div>
+                <!-- /.col-sm-4 -->
+              </div>
+              <!-- /.row -->
+            </form>
+          </div>
+          <!-- /.col-* -->
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.container -->
+
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.main-inner -->
+</div>
+<!-- /.main -->
+
+{% endblock %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+{% endblock %}
+{% block javascript %}{% endblock %}
