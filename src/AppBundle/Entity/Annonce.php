@@ -27,6 +27,12 @@ class Annonce
      * @ORM\Column(name="dateAnnonce", type="datetimetz")
      */
     private $dateAnnonce;
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="landing", type="boolean")
+     */
+    private $landing;
 
     /**
      * @var int
@@ -519,5 +525,29 @@ class Annonce
     public function getPhotos()
     {
         return $this->photos;
+    }
+
+    /**
+     * Set landing
+     *
+     * @param boolean $landing
+     *
+     * @return Annonce
+     */
+    public function setLanding($landing)
+    {
+        $this->landing = $landing;
+
+        return $this;
+    }
+
+    /**
+     * Get landing
+     *
+     * @return boolean
+     */
+    public function getLanding()
+    {
+        return $this->landing;
     }
 }

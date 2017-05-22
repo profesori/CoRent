@@ -9,7 +9,7 @@ list_makinat:
     defaults: { _controller: AlterStudioCoRentBundle:ListCar:index }
 profile:
     path:     /profile
-    defaults: { _controller: AlterStudioCoRentBundle:User:index }
+    defaults: { _controller: AlterStudioCoRentBundle:Profile:index }
 add_annonce:
     path:     /annonce/add
     defaults: { _controller: AlterStudioCoRentBundle:Annonce:add }

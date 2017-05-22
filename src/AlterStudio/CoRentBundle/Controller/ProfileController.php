@@ -5,7 +5,7 @@ namespace AlterStudio\CoRentBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
-class UserController extends Controller
+class ProfileController extends Controller
 {
     /**
    * @Security("has_role('ROLE_USER')")

@@ -44,7 +44,7 @@ class Dico
     }
     public function __toString()
     {
-        return $this->dicoLibelle;
+        return (string) $this->getDicoLibelle();
     }
     /**
      * Set dicoLibelle

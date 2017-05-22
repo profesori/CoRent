@@ -5,91 +5,58 @@
       <div class="container">
         <div class="content">
           <div class="document-title">
-            <h1>Row Version</h1>
-
-            <ul class="breadcrumb">
-              <li>
-                <a href="#">Superlist</a>
-              </li>
-              <li>
-                <a href="#">Listing</a>
-              </li>
-            </ul>
+            <h1>Lista e makinave e disponueshme</h1>
           </div>
 
-          <form class="filter" method="post" action="?">
-            <div class="row">
-              <div class="col-sm-12 col-md-4">
-                <div class="form-group">
-                  <input type="text" placeholder="Keyword" class="form-control">
-                </div>
-                <!-- /.form-group -->
+          {{form_start(form,{'attr': {'class': 'filter'}})}}
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <div class="form-group">
+                {{form_row(form.location,{'attr': {'class': 'form-control','placeholder':'Vendndodhja'}}) }}
               </div>
-              <!-- /.col-* -->
-              <div class="col-sm-12 col-md-4">
-                <div class="form-group">
-                  <select class="form-control" title="Select Location">
-                    <option>Bronx</option>
-                    <option>Brooklyn</option>
-                    <option>Manhattan</option>
-                    <option>Staten Island</option>
-                    <option>Queens</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-sm-12 col-md-4">
-                <div class="form-group">
-                  <select class="form-control" title="Select Category">
-                    <option value="">Automotive</option>
-                    <option value="">Jobs</option>
-                    <option value="">Nightlife</option>
-                    <option value="">Services</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col-* -->
+              <!-- /.form-group -->
             </div>
-            <!-- /.row -->
-
-            <hr>
-
-            <div class="row">
-              <div class="col-sm-8"></div>
-              <!-- /.col-* -->
-              <div class="col-sm-4">
-                <button type="submit" class="btn btn-primary">Redefine Search Result</button>
+            <!-- /.col-* -->
+            <div class="col-sm-12 col-md-4">
+              <div class="form-group">
+                {{form_row(form.dateDebut,{'attr': {'class': 'form-control','placeholder':'Data e nisjes'}}) }}
               </div>
-              <!-- /.col-* -->
             </div>
-            <!-- /.row -->
-          </form>
+
+            <div class="col-sm-12 col-md-4">
+              <div class="form-group">
+                {{form_row(form.dateFin,{'attr': {'class': 'form-control','placeholder':'Data e mberritjes'}}) }}
+              </div>
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col-* -->
+          </div>
+          <!-- /.row -->
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-8"></div>
+            <!-- /.col-* -->
+            <div class="col-sm-4">
+              {{ form_widget(form.send, {'attr': {'class': 'btn btn-primary'},'label': 'Rikerko'}) }}
+            </div>
+            <!-- /.col-* -->
+          </div>
+          <!-- /.row -->
+          {{ form_errors(form) }}
+          {{ form_errors(form.location) }}
+          {{ form_errors(form.dateDebut) }}
+          {{ form_errors(form.dateFin) }}
+
+          {{form_end(form)}}
 
           <h2 class="page-title">
-            14 makina te disponueshme me kriteret tuaja
-
-            <form method="get" action="?" class="filter-sort">
-              <div class="form-group">
-                <select title="Sort by">
-                  <option name="price">Price</option>
-                  <option name="rating">Rating</option>
-                  <option name="title">Title</option>
-                </select>
-              </div>
-              <!-- /.form-group -->
-
-              <div class="form-group">
-                <select title="Order">
-                  <option name="ASC">Asc</option>
-                  <option name="DESC">Desc</option>
-                </select>
-              </div>
-              <!-- /.form-group -->
-            </form>
+            {{ pagination.getTotalItemCount }}
+            makina te disponueshme me kriteret tuaja
           </h2>
 
-          {% for annonce in annonces %}
+          {% for annonce in pagination %}
             <!-- /.page-title -->
             <div class="cards-row">
               <div class="card-row">
@@ -149,23 +116,7 @@
               <!-- /.card-row -->
             </div>
             <div class="pager  pb60">
-              <ul>
-                <li>
-                  <a href="#">Para</a>
-                </li>
-                <li class="active">
-                  <a href="#">1</a>
-                </li>
-                <li class="#">
-                  <a>2</a>
-                </li>
-                <li>
-                  <a href="#">3</a>
-                </li>
-                <li>
-                  <a href="#">Pas</a>
-                </li>
-              </ul>
+              {{ knp_pagination_render(pagination) }}
             </div>
 
             <!-- /.pagination -->
@@ -180,7 +131,6 @@
             </div>
           {% endfor %}
           <!-- /.cards-row -->
-
         </div>
       </div>
     </div>

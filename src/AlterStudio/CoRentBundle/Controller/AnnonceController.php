@@ -34,13 +34,11 @@ class AnnonceController extends Controller
                 return $this->redirectToRoute('profile');
             }
         }
-
-
-
         return $this->render('corent/create_vehicle.html.twig', array(
-      'form' => $form->createView(),'form2' => $form2->createView()
-    ));
+          'form' => $form->createView(),'form2' => $form2->createView()
+        ));
     }
+    
     public function detailAction()
     {
         return $this->render('corent/annonce_detail.html.twig');

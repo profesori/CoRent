@@ -28,6 +28,10 @@ class ModeleVoiture
      */
     private $modele;
     /**
+    * @ORM\ManyToOne(targetEntity="Dico")
+    */
+    private $categorie;
+    /**
     * @ORM\ManyToOne(targetEntity="MarqueVoiture", inversedBy="modeles")
     */
     private $marque;
@@ -117,5 +121,29 @@ class ModeleVoiture
     public function __toString()
     {
         return $this->modele;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \AppBundle\Entity\Dico $categorie
+     *
+     * @return ModeleVoiture
+     */
+    public function setCategorie(\AppBundle\Entity\Dico $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \AppBundle\Entity\Dico
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
     }
 }
