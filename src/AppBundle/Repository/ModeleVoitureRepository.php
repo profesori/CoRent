@@ -10,4 +10,16 @@ namespace AppBundle\Repository;
  */
 class ModeleVoitureRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getPriceByModel($modele)
+    {
+        $qb = $this->createQueryBuilder('m');
+        $query = $qb
+        ->where($qb->expr()->eq('m', '?1'))
+        ->join('m.categorie', 'c')
+        ->addSelect('c')
+        ->setParameter(1, $modele)
+        ->getQuery();
+
+        return $query;
+    }
 }

@@ -1,8 +1,12 @@
 $(document).ready(function() {
   'use strict';
+
+
   var $voiture = $('#appbundle_voiture_marque');
+  var prix = $('#prix');
   // When sport gets selected ...
   $voiture.on('change', function() {
+    prix.html('');
     // ... retrieve the corresponding form.
     var $form = $(this).closest('form');
     // Simulate form data, but only include the selected sport value.
@@ -18,15 +22,38 @@ $(document).ready(function() {
           // Replace current position field ... console.log(html);
           $("#marque_remplace").replaceWith(function(n) {
             var ht = $(html).find('#marque_remplace');
-            //ht.children('#appbundle_voiture_modele').addClass("form-control")
             return ht;
           });
+        //ht.children('#appbundle_voiture_modele').addClass("form-control")
+        var $modele = $('#appbundle_voiture_modele');
+
+        // When sport gets selected ...
+        $modele.on('change', function() {
+          // ... retrieve the corresponding form.
+          var $form = $(this).closest('form');
+          // Simulate form data, but only include the selected sport value.
+          var data = {};
+          data['modele'] = $modele.val(); //Submit data via AJAX to the form's action path.
+          $.ajax({
+            url: '/jep-makinen-tende/price',
+            type: $form.attr('method'),
+            data: data,
+            success: function(data) {
+              var price = 0
+              if (data) {
+                price = data[0].categorie.price * 20
+              }
+              if (price != 0) {
+                prix.html(price + ' euros');
+              }
+            }
+          });
+        });
         // Position field now displays the appropriate positions.
       }
 
     });
   });
-  //$('.nav-tabs > li a[title]').tooltip();
 
   //Wizard
   $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {

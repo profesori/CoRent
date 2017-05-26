@@ -139,11 +139,11 @@ class DemandesAnnonce
     /**
      * Set annonce
      *
-     * @param \CorentApi\ApiBundle\Entity\Annonce $annonce
+     * @param \AppBundle\Entity\Annonce $annonce
      *
      * @return DemandesAnnonce
      */
-    public function setAnnonce(\CorentApi\ApiBundle\Entity\Annonce $annonce = null)
+    public function setAnnonce(\AppBundle\Entity\Annonce $annonce = null)
     {
         $this->annonce = $annonce;
 
@@ -153,7 +153,7 @@ class DemandesAnnonce
     /**
      * Get annonce
      *
-     * @return \CorentApi\ApiBundle\Entity\Annonce
+     * @return \AppBundle\Entity\Annonce
      */
     public function getAnnonce()
     {
@@ -163,11 +163,11 @@ class DemandesAnnonce
     /**
      * Set locataire
      *
-     * @param \CorentApi\ApiBundle\Entity\Locataire $locataire
+     * @param \AppBundle\Entity\Locataire $locataire
      *
      * @return DemandesAnnonce
      */
-    public function setLocataire(\CorentApi\ApiBundle\Entity\Locataire $locataire = null)
+    public function setLocataire(\AppBundle\Entity\Locataire $locataire = null)
     {
         $this->locataire = $locataire;
 
@@ -177,7 +177,7 @@ class DemandesAnnonce
     /**
      * Get locataire
      *
-     * @return \CorentApi\ApiBundle\Entity\Locataire
+     * @return \AppBundle\Entity\Locataire
      */
     public function getLocataire()
     {
@@ -187,11 +187,11 @@ class DemandesAnnonce
     /**
      * Add message
      *
-     * @param \CorentApi\ApiBundle\Entity\ChatDemande $message
+     * @param \AppBundle\Entity\ChatDemande $message
      *
      * @return DemandesAnnonce
      */
-    public function addMessage(\CorentApi\ApiBundle\Entity\ChatDemande $message)
+    public function addMessage(\AppBundle\Entity\ChatDemande $message)
     {
         $this->messages[] = $message;
 
@@ -201,9 +201,9 @@ class DemandesAnnonce
     /**
      * Remove message
      *
-     * @param \CorentApi\ApiBundle\Entity\ChatDemande $message
+     * @param \AppBundle\Entity\ChatDemande $message
      */
-    public function removeMessage(\CorentApi\ApiBundle\Entity\ChatDemande $message)
+    public function removeMessage(\AppBundle\Entity\ChatDemande $message)
     {
         $this->messages->removeElement($message);
     }

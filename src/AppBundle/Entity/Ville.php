@@ -31,7 +31,7 @@ class Ville
     /**
      * @var string
      *
-     * @ORM\Column(name="code_postal", type="string", length=5)
+     * @ORM\Column(name="code_postal", type="string", length=5,nullable=true)
      */
     private $codePostal;
     /**
@@ -52,6 +52,10 @@ class Ville
     public function getId()
     {
         return $this->id;
+    }
+    public function __toString()
+    {
+        return (string) $this->getVille();
     }
 
     /**
@@ -112,11 +116,11 @@ class Ville
     /**
      * Add adress
      *
-     * @param \CorentApi\ApiBundle\Entity\Adresse $adress
+     * @param \AppBundle\Entity\Adresse $adress
      *
      * @return Ville
      */
-    public function addAdress(\CorentApi\ApiBundle\Entity\Adresse $adress)
+    public function addAdress(\AppBundle\Entity\Adresse $adress)
     {
         $this->adresses[] = $adress;
 
@@ -126,9 +130,9 @@ class Ville
     /**
      * Remove adress
      *
-     * @param \CorentApi\ApiBundle\Entity\Adresse $adress
+     * @param \AppBundle\Entity\Adresse $adress
      */
-    public function removeAdress(\CorentApi\ApiBundle\Entity\Adresse $adress)
+    public function removeAdress(\AppBundle\Entity\Adresse $adress)
     {
         $this->adresses->removeElement($adress);
     }
@@ -146,11 +150,11 @@ class Ville
     /**
      * Set pays
      *
-     * @param \CorentApi\ApiBundle\Entity\Pays $pays
+     * @param \AppBundle\Entity\Pays $pays
      *
      * @return Ville
      */
-    public function setPays(\CorentApi\ApiBundle\Entity\Pays $pays = null)
+    public function setPays(\AppBundle\Entity\Pays $pays = null)
     {
         $this->pays = $pays;
 
@@ -160,7 +164,7 @@ class Ville
     /**
      * Get pays
      *
-     * @return \CorentApi\ApiBundle\Entity\Pays
+     * @return \AppBundle\Entity\Pays
      */
     public function getPays()
     {

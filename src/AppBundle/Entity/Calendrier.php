@@ -132,11 +132,11 @@ class Calendrier
     /**
      * Set annonce
      *
-     * @param \CorentApi\ApiBundle\Entity\Annonce $annonce
+     * @param \AppBundle\Entity\Annonce $annonce
      *
      * @return Calendrier
      */
-    public function setAnnonce(\CorentApi\ApiBundle\Entity\Annonce $annonce = null)
+    public function setAnnonce(\AppBundle\Entity\Annonce $annonce = null)
     {
         $this->annonce = $annonce;
 
@@ -146,7 +146,7 @@ class Calendrier
     /**
      * Get annonce
      *
-     * @return \CorentApi\ApiBundle\Entity\Annonce
+     * @return \AppBundle\Entity\Annonce
      */
     public function getAnnonce()
     {

@@ -9,3 +9,67 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle]]
+
+    app.admin.dicotype:
+        class: AppBundle\Admin\DicoTypeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "DicoType" }
+        arguments:
+            - ~
+            - AppBundle\Entity\DicoType
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    app.admin.marque:
+        class: AppBundle\Admin\MarquesAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Marque" }
+        arguments:
+            - ~
+            - AppBundle\Entity\MarqueVoiture
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    app.admin.modele:
+        class: AppBundle\Admin\ModeleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Modeles" }
+        arguments:
+            - ~
+            - AppBundle\Entity\ModeleVoiture
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    app.admin.price:
+        class: AppBundle\Admin\PriceCategorieAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "PriceCategorie" }
+        arguments:
+            - ~
+            - AppBundle\Entity\PriceCategorie
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+    app.admin.pays:
+        class: AppBundle\Admin\PaysAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Pays" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Pays
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+    app.admin.ville:
+        class: AppBundle\Admin\VilleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Ville" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Ville
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]

@@ -162,11 +162,11 @@ class Voiture
     /**
      * Set portes
      *
-     * @param \CorentApi\ApiBundle\Entity\Dico $portes
+     * @param \AppBundle\Entity\Dico $portes
      *
      * @return Voiture
      */
-    public function setPortes(\CorentApi\ApiBundle\Entity\Dico $portes = null)
+    public function setPortes(\AppBundle\Entity\Dico $portes = null)
     {
         $this->portes = $portes;
 
@@ -176,7 +176,7 @@ class Voiture
     /**
      * Get portes
      *
-     * @return \CorentApi\ApiBundle\Entity\Dico
+     * @return \AppBundle\Entity\Dico
      */
     public function getPortes()
     {
@@ -186,11 +186,11 @@ class Voiture
     /**
      * Set places
      *
-     * @param \CorentApi\ApiBundle\Entity\Dico $places
+     * @param \AppBundle\Entity\Dico $places
      *
      * @return Voiture
      */
-    public function setPlaces(\CorentApi\ApiBundle\Entity\Dico $places = null)
+    public function setPlaces(\AppBundle\Entity\Dico $places = null)
     {
         $this->places = $places;
 
@@ -200,7 +200,7 @@ class Voiture
     /**
      * Get places
      *
-     * @return \CorentApi\ApiBundle\Entity\Dico
+     * @return \AppBundle\Entity\Dico
      */
     public function getPlaces()
     {
@@ -210,11 +210,11 @@ class Voiture
     /**
      * Set carburant
      *
-     * @param \CorentApi\ApiBundle\Entity\Dico $carburant
+     * @param \AppBundle\Entity\Dico $carburant
      *
      * @return Voiture
      */
-    public function setCarburant(\CorentApi\ApiBundle\Entity\Dico $carburant = null)
+    public function setCarburant(\AppBundle\Entity\Dico $carburant = null)
     {
         $this->carburant = $carburant;
 
@@ -224,7 +224,7 @@ class Voiture
     /**
      * Get carburant
      *
-     * @return \CorentApi\ApiBundle\Entity\Dico
+     * @return \AppBundle\Entity\Dico
      */
     public function getCarburant()
     {
@@ -234,11 +234,11 @@ class Voiture
     /**
      * Set boite
      *
-     * @param \CorentApi\ApiBundle\Entity\Dico $boite
+     * @param \AppBundle\Entity\Dico $boite
      *
      * @return Voiture
      */
-    public function setBoite(\CorentApi\ApiBundle\Entity\Dico $boite = null)
+    public function setBoite(\AppBundle\Entity\Dico $boite = null)
     {
         $this->boite = $boite;
 
@@ -248,7 +248,7 @@ class Voiture
     /**
      * Get boite
      *
-     * @return \CorentApi\ApiBundle\Entity\Dico
+     * @return \AppBundle\Entity\Dico
      */
     public function getBoite()
     {
@@ -258,11 +258,11 @@ class Voiture
     /**
      * Set kmParcourues
      *
-     * @param \CorentApi\ApiBundle\Entity\Dico $kmParcourues
+     * @param \AppBundle\Entity\Dico $kmParcourues
      *
      * @return Voiture
      */
-    public function setKmParcourues(\CorentApi\ApiBundle\Entity\Dico $kmParcourues = null)
+    public function setKmParcourues(\AppBundle\Entity\Dico $kmParcourues = null)
     {
         $this->kmParcourues = $kmParcourues;
 
@@ -272,7 +272,7 @@ class Voiture
     /**
      * Get kmParcourues
      *
-     * @return \CorentApi\ApiBundle\Entity\Dico
+     * @return \AppBundle\Entity\Dico
      */
     public function getKmParcourues()
     {
@@ -282,11 +282,11 @@ class Voiture
     /**
      * Add option
      *
-     * @param \CorentApi\ApiBundle\Entity\Dico $option
+     * @param \AppBundle\Entity\Dico $option
      *
      * @return Voiture
      */
-    public function addOption(\CorentApi\ApiBundle\Entity\Dico $option)
+    public function addOption(\AppBundle\Entity\Dico $option)
     {
         $this->options[] = $option;
 
@@ -296,9 +296,9 @@ class Voiture
     /**
      * Remove option
      *
-     * @param \CorentApi\ApiBundle\Entity\Dico $option
+     * @param \AppBundle\Entity\Dico $option
      */
-    public function removeOption(\CorentApi\ApiBundle\Entity\Dico $option)
+    public function removeOption(\AppBundle\Entity\Dico $option)
     {
         $this->options->removeElement($option);
     }

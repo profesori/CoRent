@@ -222,11 +222,11 @@ class Reservation
     /**
      * Set demandeAnnonce
      *
-     * @param \CorentApi\ApiBundle\Entity\DemandesAnnonce $demandeAnnonce
+     * @param \AppBundle\Entity\DemandesAnnonce $demandeAnnonce
      *
      * @return Reservation
      */
-    public function setDemandeAnnonce(\CorentApi\ApiBundle\Entity\DemandesAnnonce $demandeAnnonce = null)
+    public function setDemandeAnnonce(\AppBundle\Entity\DemandesAnnonce $demandeAnnonce = null)
     {
         $this->demandeAnnonce = $demandeAnnonce;
 
@@ -236,7 +236,7 @@ class Reservation
     /**
      * Get demandeAnnonce
      *
-     * @return \CorentApi\ApiBundle\Entity\DemandesAnnonce
+     * @return \AppBundle\Entity\DemandesAnnonce
      */
     public function getDemandeAnnonce()
     {

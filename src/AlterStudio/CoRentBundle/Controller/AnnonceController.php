@@ -29,7 +29,7 @@ class AnnonceController extends Controller
         if ($request->isXmlHttpRequest()) {
             $formVoiture = $form2->handleRequest($request);
         } else {
-            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid() && $form2->handleRequest($request)) {
                 $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
                 return $this->redirectToRoute('profile');
             }
@@ -38,7 +38,7 @@ class AnnonceController extends Controller
           'form' => $form->createView(),'form2' => $form2->createView()
         ));
     }
-    
+
     public function detailAction()
     {
         return $this->render('corent/annonce_detail.html.twig');

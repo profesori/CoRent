@@ -73,7 +73,7 @@ class Dico
     /**
      * Set dicotype
      *
-     * @param \CorentApi\ApiBundle\Entity\DicoType $dicotype
+     * @param \AppBundle\Entity\DicoType $dicotype
      *
      * @return Dico
      */
@@ -87,7 +87,7 @@ class Dico
     /**
      * Get dicotype
      *
-     * @return \CorentApi\ApiBundle\Entity\DicoType
+     * @return \AppBundle\Entity\DicoType
      */
     public function getDicotype()
     {

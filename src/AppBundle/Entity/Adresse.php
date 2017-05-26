@@ -164,11 +164,11 @@ class Adresse
     /**
      * Set ville
      *
-     * @param \CorentApi\ApiBundle\Entity\Ville $ville
+     * @param \AppBundle\Entity\Ville $ville
      *
      * @return Adresse
      */
-    public function setVille(\CorentApi\ApiBundle\Entity\Ville $ville = null)
+    public function setVille(\AppBundle\Entity\Ville $ville = null)
     {
         $this->ville = $ville;
 
@@ -178,7 +178,7 @@ class Adresse
     /**
      * Get ville
      *
-     * @return \CorentApi\ApiBundle\Entity\Ville
+     * @return \AppBundle\Entity\Ville
      */
     public function getVille()
     {

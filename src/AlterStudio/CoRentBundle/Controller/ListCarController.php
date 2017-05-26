@@ -29,23 +29,21 @@ class ListCarController extends Controller
             throw new NotFoundHttpException("Veuillez choisir un lieux");
         }
         //create Form for carlist
-        $defaultData = array('location' => $location,'dateDebut'=>$dateD,'dateFin'=>$dateF);
+        $defaultData = array('location' => $location,'dateDebut'=>new \DateTime($dateD),'dateFin'=>new \DateTime($dateF));
         $form = $this->createFormBuilder($defaultData)
         ->add('location', TextType::class,
         array('constraints' => array(
                  new NotBlank(),
                  new Length(array('min' => 3)),
              )))
-        ->add('dateDebut', DateType::class, array(
-          'html5'=>false,
-          'widget' => 'single_text',
-          'input'=>'string',
-        ))
-        ->add('dateFin', DateType::class, array(
-          'html5'=>false,
-          'widget' => 'single_text',
-          'input'=>'string',
-        ))
+             ->add('dateDebut', DateType::class, array(
+               'html5'=>false,
+               'widget' => 'single_text',
+             ))
+             ->add('dateFin', DateType::class, array(
+               'html5'=>false,
+               'widget' => 'single_text',
+             ))
         ->add('send', SubmitType::class)
         ->getForm();
 

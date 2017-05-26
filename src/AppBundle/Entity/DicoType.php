@@ -45,7 +45,7 @@ class DicoType
     }
     public function __toString()
     {
-        return $this->dicotypeLibelle;
+        return (string) $this->dicotypeLibelle;
     }
 
     /**
@@ -82,7 +82,7 @@ class DicoType
     /**
      * Add dico
      *
-     * @param \CorentApi\ApiBundle\Entity\Dico $dico
+     * @param \AppBundle\Entity\Dico $dico
      *
      * @return DicoType
      */
@@ -96,7 +96,7 @@ class DicoType
     /**
      * Remove dico
      *
-     * @param \CorentApi\ApiBundle\Entity\Dico $dico
+     * @param \AppBundle\Entity\Dico $dico
      */
     public function removeDico(\AppBundle\Entity\Dico $dico)
     {

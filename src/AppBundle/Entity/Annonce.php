@@ -315,11 +315,11 @@ class Annonce
     /**
      * Set voiture
      *
-     * @param \CorentApi\ApiBundle\Entity\Voiture $voiture
+     * @param \AppBundle\Entity\Voiture $voiture
      *
      * @return Annonce
      */
-    public function setVoiture(\CorentApi\ApiBundle\Entity\Voiture $voiture = null)
+    public function setVoiture(\AppBundle\Entity\Voiture $voiture = null)
     {
         $this->voiture = $voiture;
 
@@ -329,7 +329,7 @@ class Annonce
     /**
      * Get voiture
      *
-     * @return \CorentApi\ApiBundle\Entity\Voiture
+     * @return \AppBundle\Entity\Voiture
      */
     public function getVoiture()
     {
@@ -339,11 +339,11 @@ class Annonce
     /**
      * Set adresseVoiture
      *
-     * @param \CorentApi\ApiBundle\Entity\Adresse $adresseVoiture
+     * @param \AppBundle\Entity\Adresse $adresseVoiture
      *
      * @return Annonce
      */
-    public function setAdresseVoiture(\CorentApi\ApiBundle\Entity\Adresse $adresseVoiture = null)
+    public function setAdresseVoiture(\AppBundle\Entity\Adresse $adresseVoiture = null)
     {
         $this->adresseVoiture = $adresseVoiture;
 
@@ -353,7 +353,7 @@ class Annonce
     /**
      * Get adresseVoiture
      *
-     * @return \CorentApi\ApiBundle\Entity\Adresse
+     * @return \AppBundle\Entity\Adresse
      */
     public function getAdresseVoiture()
     {
@@ -370,11 +370,11 @@ class Annonce
     /**
      * Add calendrier
      *
-     * @param \CorentApi\ApiBundle\Entity\Calendrier $calendrier
+     * @param \AppBundle\Entity\Calendrier $calendrier
      *
      * @return Annonce
      */
-    public function addCalendrier(\CorentApi\ApiBundle\Entity\Calendrier $calendrier)
+    public function addCalendrier(\AppBundle\Entity\Calendrier $calendrier)
     {
         $this->calendrier[] = $calendrier;
 
@@ -384,9 +384,9 @@ class Annonce
     /**
      * Remove calendrier
      *
-     * @param \CorentApi\ApiBundle\Entity\Calendrier $calendrier
+     * @param \AppBundle\Entity\Calendrier $calendrier
      */
-    public function removeCalendrier(\CorentApi\ApiBundle\Entity\Calendrier $calendrier)
+    public function removeCalendrier(\AppBundle\Entity\Calendrier $calendrier)
     {
         $this->calendrier->removeElement($calendrier);
     }
@@ -404,11 +404,11 @@ class Annonce
     /**
      * Set loueur
      *
-     * @param \CorentApi\ApiBundle\Entity\Loueur $loueur
+     * @param \AppBundle\Entity\Loueur $loueur
      *
      * @return Annonce
      */
-    public function setLoueur(\CorentApi\ApiBundle\Entity\Loueur $loueur = null)
+    public function setLoueur(\AppBundle\Entity\Loueur $loueur = null)
     {
         $this->loueur = $loueur;
 
@@ -418,7 +418,7 @@ class Annonce
     /**
      * Get loueur
      *
-     * @return \CorentApi\ApiBundle\Entity\Loueur
+     * @return \AppBundle\Entity\Loueur
      */
     public function getLoueur()
     {
@@ -428,11 +428,11 @@ class Annonce
     /**
      * Add commentaire
      *
-     * @param \CorentApi\ApiBundle\Entity\CommentairesAnnonces $commentaire
+     * @param \AppBundle\Entity\CommentairesAnnonces $commentaire
      *
      * @return Annonce
      */
-    public function addCommentaire(\CorentApi\ApiBundle\Entity\CommentairesAnnonces $commentaire)
+    public function addCommentaire(\AppBundle\Entity\CommentairesAnnonces $commentaire)
     {
         $this->commentaires[] = $commentaire;
 
@@ -442,9 +442,9 @@ class Annonce
     /**
      * Remove commentaire
      *
-     * @param \CorentApi\ApiBundle\Entity\CommentairesAnnonces $commentaire
+     * @param \AppBundle\Entity\CommentairesAnnonces $commentaire
      */
-    public function removeCommentaire(\CorentApi\ApiBundle\Entity\CommentairesAnnonces $commentaire)
+    public function removeCommentaire(\AppBundle\Entity\CommentairesAnnonces $commentaire)
     {
         $this->commentaires->removeElement($commentaire);
     }
@@ -462,11 +462,11 @@ class Annonce
     /**
      * Add demande
      *
-     * @param \CorentApi\ApiBundle\Entity\DemandesAnnonce $demande
+     * @param \AppBundle\Entity\DemandesAnnonce $demande
      *
      * @return Annonce
      */
-    public function addDemande(\CorentApi\ApiBundle\Entity\DemandesAnnonce $demande)
+    public function addDemande(\AppBundle\Entity\DemandesAnnonce $demande)
     {
         $this->demandes[] = $demande;
 
@@ -476,9 +476,9 @@ class Annonce
     /**
      * Remove demande
      *
-     * @param \CorentApi\ApiBundle\Entity\DemandesAnnonce $demande
+     * @param \AppBundle\Entity\DemandesAnnonce $demande
      */
-    public function removeDemande(\CorentApi\ApiBundle\Entity\DemandesAnnonce $demande)
+    public function removeDemande(\AppBundle\Entity\DemandesAnnonce $demande)
     {
         $this->demandes->removeElement($demande);
     }

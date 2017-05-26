@@ -44,7 +44,7 @@ class MarqueVoiture
     }
     public function __toString()
     {
-        return $this->marque;
+        return (string) $this->marque;
     }
     /**
      * Set marque

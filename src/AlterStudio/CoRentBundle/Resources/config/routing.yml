@@ -16,3 +16,7 @@ add_annonce:
 detail_annonce:
     path:     /annonce/detail
     defaults: { _controller: AlterStudioCoRentBundle:Annonce:detail }
+price_car:
+    path:     /jep-makinen-tende/price
+    defaults: { _controller: AlterStudioCoRentBundle:RentCarWizard:getPrice}
+    methods:  [POST]

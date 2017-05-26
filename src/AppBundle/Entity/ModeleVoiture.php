@@ -28,7 +28,7 @@ class ModeleVoiture
      */
     private $modele;
     /**
-    * @ORM\ManyToOne(targetEntity="Dico")
+    * @ORM\ManyToOne(targetEntity="PriceCategorie")
     */
     private $categorie;
     /**
@@ -126,11 +126,11 @@ class ModeleVoiture
     /**
      * Set categorie
      *
-     * @param \AppBundle\Entity\Dico $categorie
+     * @param \AppBundle\Entity\PriceCategorie $categorie
      *
      * @return ModeleVoiture
      */
-    public function setCategorie(\AppBundle\Entity\Dico $categorie = null)
+    public function setCategorie(\AppBundle\Entity\PriceCategorie $categorie = null)
     {
         $this->categorie = $categorie;
 
@@ -140,7 +140,7 @@ class ModeleVoiture
     /**
      * Get categorie
      *
-     * @return \AppBundle\Entity\Dico
+     * @return \AppBundle\Entity\PriceCategorie
      */
     public function getCategorie()
     {

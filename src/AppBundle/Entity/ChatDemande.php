@@ -131,11 +131,11 @@ class ChatDemande
     /**
      * Set demande
      *
-     * @param \CorentApi\ApiBundle\Entity\DemandesAnnonce $demande
+     * @param \AppBundle\Entity\DemandesAnnonce $demande
      *
      * @return ChatDemande
      */
-    public function setDemande(\CorentApi\ApiBundle\Entity\DemandesAnnonce $demande = null)
+    public function setDemande(\AppBundle\Entity\DemandesAnnonce $demande = null)
     {
         $this->demande = $demande;
 
@@ -145,7 +145,7 @@ class ChatDemande
     /**
      * Get demande
      *
-     * @return \CorentApi\ApiBundle\Entity\DemandesAnnonce
+     * @return \AppBundle\Entity\DemandesAnnonce
      */
     public function getDemande()
     {

@@ -30,14 +30,14 @@ class ProfileController extends Controller
         //total money earned for Loueur
         $totalMoney = 0;
         foreach ($queryResults1 as $qu) {
-            $totalMoney+= $qu.prix;
+            $totalMoney+= $qu->prix;
             $reservations+=1;
         }
         //////////////////
         $reservationForLocataire = 0;
         $totalMoneyForLocataire = 0;
         foreach ($queryResults2 as $qu2) {
-            $totalMoneyForLocataire+= $qu2.prix;
+            $totalMoneyForLocataire+= $qu2->prix;
             $reservationForLocataire+=1;
         }
         return $this->render('corent/profili_tabs/situata.html.twig',

@@ -4,6 +4,7 @@ namespace AlterStudio\CoRentBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -19,7 +20,6 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $annonceRepository = $em->getRepository('AppBundle:Annonce');
         $query1 =  $annonceRepository->getFrontPageAnnonce();
-
         //create Form for carlist
         $form = $this->createFormBuilder()
         ->add('location', TextType::class,
@@ -28,12 +28,10 @@ class DefaultController extends Controller
                  new Length(array('min' => 3)),
              )))
         ->add('dateDebut', DateType::class, array(
-          'input'=>'string',
           'html5'=>false,
           'widget' => 'single_text',
         ))
         ->add('dateFin', DateType::class, array(
-          'input'=>'string',
           'html5'=>false,
           'widget' => 'single_text',
         ))
@@ -42,9 +40,13 @@ class DefaultController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $data = $form->getData();
-            //throw new NotFoundHttpException(print_r($data));
+            $dateDeb = $data['dateDebut']->format('Y-m-d H:i:s');
+            $dateF = $data['dateFin']->format('Y-m-d H:i:s');
+            //throw new NotFoundHttpException(print_r($dateDeb));
+            //print_r($data);
+
             return $this->redirectToRoute('list_makinat', array('location' => $data['location'],
-            'dateDebut'=>$data['dateDebut'],'dateFin'=>$data['dateFin']));
+            'dateDebut'=>$dateDeb,'dateFin'=>$dateF));
         }
 
         return $this->render('corent/index.html.twig', array("form"=>$form->createView(),"annonces"=>$query1->getResult()));

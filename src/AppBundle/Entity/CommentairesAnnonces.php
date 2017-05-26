@@ -101,11 +101,11 @@ class CommentairesAnnonces
     /**
      * Set annonces
      *
-     * @param \CorentApi\ApiBundle\Entity\DemandesAnnonce $annonces
+     * @param \AppBundle\Entity\DemandesAnnonce $annonces
      *
      * @return CommentairesAnnonces
      */
-    public function setAnnonces(\CorentApi\ApiBundle\Entity\DemandesAnnonce $annonces = null)
+    public function setAnnonces(\AppBundle\Entity\DemandesAnnonce $annonces = null)
     {
         $this->annonces = $annonces;
 
@@ -115,7 +115,7 @@ class CommentairesAnnonces
     /**
      * Get annonces
      *
-     * @return \CorentApi\ApiBundle\Entity\DemandesAnnonce
+     * @return \AppBundle\Entity\DemandesAnnonce
      */
     public function getAnnonces()
     {

@@ -42,7 +42,10 @@ class Pays
     {
         return $this->id;
     }
-
+    public function __toString()
+    {
+        return (string) $this->getPays();
+    }
     /**
      * Set pays
      *
@@ -77,11 +80,11 @@ class Pays
     /**
      * Add ville
      *
-     * @param \CorentApi\ApiBundle\Entity\Ville $ville
+     * @param \AppBundle\Entity\Ville $ville
      *
      * @return Pays
      */
-    public function addVille(\CorentApi\ApiBundle\Entity\Ville $ville)
+    public function addVille(\AppBundle\Entity\Ville $ville)
     {
         $this->villes[] = $ville;
 
@@ -91,9 +94,9 @@ class Pays
     /**
      * Remove ville
      *
-     * @param \CorentApi\ApiBundle\Entity\Ville $ville
+     * @param \AppBundle\Entity\Ville $ville
      */
-    public function removeVille(\CorentApi\ApiBundle\Entity\Ville $ville)
+    public function removeVille(\AppBundle\Entity\Ville $ville)
     {
         $this->villes->removeElement($ville);
     }
