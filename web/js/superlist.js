@@ -104,6 +104,7 @@ $(document).ready(function() {
   });
 
   //Calendar pignose
+  /*
   $('.calendar').pignoseCalendar({
     multiple: true,
     toggle: true,
@@ -119,7 +120,7 @@ $(document).ready(function() {
       context.storage.desactiveDates = ['2017-06-21'];
       console.log('click  dates', context, date);
     }
-  });
+  });*/
 
 
   /**

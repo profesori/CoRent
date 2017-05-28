@@ -122,7 +122,7 @@
               <div class="background-white p30 mb30">
                 <h3 class="page-title">4. Fotot e makines</h3>
                 <div class="row">
-                  {{form_widget(form.photos,{'attr': {'class': 'fileInput form-control','name':'image[]'}}) }}
+                  <input id="photos" type='file' multiple name='input-files[]'/>
                 </div>
               </div>
               <div class="input-group">
@@ -142,23 +142,33 @@
       var photos = {{ photos | json_encode()|raw}};
       var preview = [];
       var previewConfig = [];
+      var annonceID = {
+        annonceID: {{annonceID|json_encode()|raw}}
+      }
       for (var i = 0; i < photos.length; i++) {
         var image = ""
-        preview.push('<img src=' + photos[i] + ' style="width:160px"></img>')
+        preview.push('<img src=' + photos[i].url + ' style="width:160px"></img>')
         var config = {
-          width: '120px'
+          width: '120px',
+          url: '/annonce/delete/photo',
+          key: photos[i].id,
+          extra: annonceID
         }
         previewConfig.push(config)
       }
+      var dataToUpload = {
+        type: "images"
+      }
 
-      $('.fileInput').fileinput({
-        showUpload: false,
+      $('#photos').fileinput({
         initialCaption: "Vini fotot tuaja",
         overwriteInitial: false,
         initialPreview: preview,
         initialPreviewAsData: true,
         maxFileCount: 3,
-        initialPreviewConfig: previewConfig
+        uploadUrl: '/annonce/edit/{{annonceID|json_encode()|raw}}',
+        initialPreviewConfig: previewConfig,
+        uploadExtraData: dataToUpload
       });
 
     });

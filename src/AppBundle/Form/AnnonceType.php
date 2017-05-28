@@ -54,15 +54,17 @@ class AnnonceType extends AbstractType
         ->add('exigences', TextareaType::class, array(
           'label'=>'Eksigjenca te tjera'
         ))
+        /*
         ->add('photos', FileType::class, array(
           'required'=>false,
           'multiple'=>true
-        ))
+        ))*/
         ->add('save', SubmitType::class, array(
           'label' => 'Krijo annoncen tende'
         ));
+        /*
         $builder->get('photos')
-            ->addModelTransformer(new FilesToPhotosTransformer());
+            ->addModelTransformer(new FilesToPhotosTransformer());**/
     }
 
 

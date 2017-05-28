@@ -19,6 +19,9 @@ edit_annonce:
         _controller: AlterStudioCoRentBundle:Annonce:edit
     requirements:
         id: \d+
+delete_photo_annonce:
+    path: /annonce/delete/photo
+    defaults: { _controller: AlterStudioCoRentBundle:Annonce:deletePhoto }
 price_car:
     path:     /jep-makinen-tende/price
     defaults: { _controller: AlterStudioCoRentBundle:RentCarWizard:getPrice}
