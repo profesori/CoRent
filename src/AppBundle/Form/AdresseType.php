@@ -6,7 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use AppBundle\Form\VilleType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AdresseType extends AbstractType
 {
@@ -18,6 +20,11 @@ class AdresseType extends AbstractType
         $builder
         ->add('adresse', TextType::class)
         ->add('ville', VilleType::class);
+      /*
+        ->add('ville', EntityType::class, array(
+                'class'       => 'AppBundle:Ville',
+                'placeholder' => 'Ville',
+            ));*/
     }
 
     /**

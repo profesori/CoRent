@@ -16,10 +16,7 @@ class PaysType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('pays', EntityType::class, array(
-                'class'       => 'AppBundle:Pays',
-                'placeholder' => 'Pays',
-            ));
+        ->add('pays', TextType::class);
     }
 
     /**

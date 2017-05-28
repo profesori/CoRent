@@ -24,7 +24,7 @@ class Voiture
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="MarqueVoiture")
+     * @ORM\ManyToOne(targetEntity="MarqueVoiture")
      */
     private $marque;
     /**
@@ -34,13 +34,13 @@ class Voiture
      */
     private $anneeProduction;
     /**
-     * @ORM\OneToOne(targetEntity="ModeleVoiture")
+     * @ORM\ManyToOne(targetEntity="ModeleVoiture")
      */
     private $modele;
     /**
      * @var string
      *
-     * @ORM\Column(name="details", type="string", length=255)
+     * @ORM\Column(name="details", type="string", length=255,nullable=true)
      */
     private $details;
     /**

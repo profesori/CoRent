@@ -31,26 +31,19 @@ class Adresse
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse2", type="string", length=255)
-     */
-    private $adresse2;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="latitude", type="decimal", precision=5, scale=2)
+     * @ORM\Column(name="latitude", type="decimal", precision=5, scale=2,nullable=true)
      */
     private $latitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="longitude", type="decimal", precision=5, scale=2)
+     * @ORM\Column(name="longitude", type="decimal", precision=5, scale=2,nullable=true)
      */
     private $longitude;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Ville", inversedBy="adresses")
+    * @ORM\ManyToOne(targetEntity="Ville", inversedBy="adresses",cascade={"persist"})
     */
    private $ville;
 
@@ -63,6 +56,10 @@ class Adresse
     public function getId()
     {
         return $this->id;
+    }
+    public function __toString()
+    {
+        return (string) $this->getAdresse();
     }
 
     /**
@@ -171,6 +168,7 @@ class Adresse
     public function setVille(\AppBundle\Entity\Ville $ville = null)
     {
         $this->ville = $ville;
+        
 
         return $this;
     }

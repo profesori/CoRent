@@ -44,9 +44,19 @@ class ProfileController extends Controller
         array("reservations"=>$reservations,"earnings"=>$totalMoney,"spendings"=>$totalMoneyForLocataire,"rents"=>$reservationForLocataire
         ));
     }
+    /**
+     *
+     * @Security("has_role('ROLE_USER')")
+     */
     public function makinatAction()
     {
-        return $this->render('corent/profili_tabs/makinat.html.twig');
+        $curentUser = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $annoncesRepository = $em->getRepository('AppBundle:Annonce');
+        $query =  $annoncesRepository->getAnnoncesByUser($curentUser);
+        $queryResults = $query->getResult();
+        //var_dump($queryResults);
+        return $this->render('corent/profili_tabs/makinat.html.twig', array('annonces'=>$queryResults));
     }
     public function kerkesatAction()
     {

@@ -1,35 +1,43 @@
 <div class="background-white p30 mb50">
 
   <div class="background-white p30">
-    <div class="row">
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card-simple" data-background-image="assets/img/tmp/product-3.jpg">
-          <div class="card-simple-background">
-            <div class="card-simple-content"></div>
+    {% for annonce in annonces %}
+      <div class="row">
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          {% if annonce.photos[0]is defined %}
+            <div class="card-simple" data-background-image="{{vich_uploader_asset(annonce.photos[0], 'imageFile', 'AppBundle\\Entity\\Photo')}}">
+            {% else %}
+              <div class="card-simple" data-background-image="">
+              {% endif %}
+              <div class="card-simple-background">
+                <div class="card-simple-content"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <p>
+              <strong>{{annonce.voiture.marque}}
+                {{annonce.voiture.modele}}</strong>
+            </p>
+            <p>{{annonce.adresseVoiture.adresse}}
+              {{annonce.adresseVoiture.ville}}
+              {{annonce.adresseVoiture.ville.pays | default("") }}</p>
+            <p>0 evaluime</p>
+            <br>
+            <br>
+
+            <a class="btn btn-primary" href="{{path('edit_annonce',{'id': annonce.id})}}">Modifiko Anoncen</a>
           </div>
           <!-- /.cards-system -->
         </div>
-      </div>
-      <div class="col-sm-3">
-        <p>
-          <strong>Alfa Romeo</strong>
-        </p>
-        <p>Adressa</p>
-        <p>0 evaluime</p>
-        <br>
-        <br>
-        <button type="submit" class="btn btn-primary">
-          <i class="fa fa-sign-in"></i>
-          Modifiko Anoncen
-        </button>
-      </div>
-      <!-- /.cards-system -->
-    </div>
-    <hr>
-    <div class=" row text-center">
-      <h2>Nuk keni te disponueshme asnje makine</h2>
-      <a href="#">Krijo nje tani</a>
-    </div>
+        <hr>
+      {% else %}
+        <div class=" row text-center">
+          <h2>Nuk keni te disponueshme asnje makine</h2>
+          <a href="#">Krijo nje tani</a>
+        </div>
+      {% endfor %}
 
+    </div>
   </div>
-</div>

@@ -29,7 +29,14 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "twig/twig": "^1.0||^2.0",
-        "friendsofsymfony/user-bundle": "dev-master"
+        "friendsofsymfony/user-bundle": "dev-master",
+        "vich/uploader-bundle":"dev-master",
+        "knplabs/knp-paginator-bundle":"dev-master",
+        "sonata-project/core-bundle":"dev-master",
+        "sonata-project/block-bundle":"dev-master",
+        "knplabs/knp-menu-bundle" : "^2.0",
+        "sonata-project/doctrine-orm-admin-bundle" : "dev-master",
+        "sonata-project/admin-bundle":"dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

@@ -78,10 +78,10 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="input-group">
-                      {{form_row(form.adresseVoiture.adresse,{'attr': {'class': 'form-control'}}) }}
+                      {{form_row(form.adresseVoiture.adresse,{'attr': {'class': 'route form-control'}}) }}
                     </div>
                     <div class="input-group">
-                      {{form_row(form.adresseVoiture.ville.ville,{'attr': {'class': 'form-control'}}) }}
+                      {{form_row(form.adresseVoiture.ville.ville,{'attr': {'class': 'locality form-control'}}) }}
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -122,7 +122,7 @@
               <div class="background-white p30 mb30">
                 <h3 class="page-title">4. Fotot e makines</h3>
                 <div class="row">
-                  {{form_widget(form.photos,{'attr': {'class': 'form-control','name':"appbundle_annonce[photos][]"}}) }}
+                  {{form_widget(form.photos,{'attr': {'class': 'fileInput form-control','name':'image[]'}}) }}
                 </div>
               </div>
               <div class="input-group">
@@ -138,6 +138,31 @@
 {% endblock %}
 {% block javascript %}
   <script>
+    $(document).ready(function() {
+      var photos = {{ photos | json_encode()|raw}};
+      var preview = [];
+      var previewConfig = [];
+      for (var i = 0; i < photos.length; i++) {
+        var image = ""
+        preview.push('<img src=' + photos[i] + ' style="width:160px"></img>')
+        var config = {
+          width: '120px'
+        }
+        previewConfig.push(config)
+      }
+
+      $('.fileInput').fileinput({
+        showUpload: false,
+        initialCaption: "Vini fotot tuaja",
+        overwriteInitial: false,
+        initialPreview: preview,
+        initialPreviewAsData: true,
+        maxFileCount: 3,
+        initialPreviewConfig: previewConfig
+      });
+
+    });
+
     var placeSearch,
       autocomplete;
     var componentForm = {

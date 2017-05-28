@@ -104,7 +104,7 @@ class VoitureType extends AbstractType
                 FormEvents::PRE_SET_DATA,
                 function (FormEvent $event) use ($formModifier) {
                     $data = $event->getData();
-                    $id = $data->getMarque()===null ? null : $data->getMarque();
+                    $id = $data===null ? null : $data->getMarque();
                     $formModifier($event->getForm(), $id);
                 }
             );
@@ -114,7 +114,6 @@ class VoitureType extends AbstractType
                 function (FormEvent $event) use ($formModifier) {
                     $form = $event->getForm();
                     $data = $event->getForm()->getData();
-                    echo "<script>console.log( 'Debug Objects: " . $event->getData() . "' );</script>";
 
                     $formModifier($form->getParent(), $data);
                 }

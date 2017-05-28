@@ -35,4 +35,14 @@ class AnnonceRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery();
         return $query;
     }
+    public function getAnnoncesByUser($user)
+    {
+        $qb = $this->createQueryBuilder('ann');
+        $expression = $qb->expr();
+        $query = $qb
+          ->where($expression->eq('ann.loueur', '?1'))
+          ->setParameter(1, $user)
+          ->getQuery();
+        return $query;
+    }
 }

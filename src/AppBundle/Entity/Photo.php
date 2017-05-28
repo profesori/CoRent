@@ -8,159 +8,105 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Photo
- *
+ *@Vich\Uploadable
  * @ORM\Table(name="photo")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PhotoRepository")
  */
 class Photo
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+   * @var int
+   *
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  private $id;
+    /**
+   * @ORM\Column(type="string", length=255)
+   * @var string
+   */
+  private $image;
+
+  /**
+   * @Vich\UploadableField(mapping="photos", fileNameProperty="image")
+   * @var File
+   */
+  private $imageFile;
+
+  /**
+   * @ORM\Column(type="datetime")
+   * @var \DateTime
+   */
+  private $updatedAt;
+  /**
+  * @ORM\ManyToOne(targetEntity="Annonce", inversedBy="photos")
+  */
+ private $annonce;
+
+
+  // ...
+
+  public function setImageFile(File $image = null)
+  {
+      $this->imageFile = $image;
+
+      // VERY IMPORTANT:
+      // It is required that at least one field changes if you are using Doctrine,
+      // otherwise the event listeners won't be called and the file is lost
+      if ($image) {
+          // if 'updatedAt' is not defined in your entity, use another property
+          $this->updatedAt = new \DateTime('now');
+      }
+  }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
 
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * Set updatedAt
      *
-     * @Vich\UploadableField(mapping="annonce_photo", fileNameProperty="imageName", size="size")
+     * @param \DateTime $updatedAt
      *
-     * @var File
+     * @return Photo
      */
-    private $imageFile;
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * Get updatedAt
      *
-     * @var string
+     * @return \DateTime
      */
-    private $imageName;
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="size", type="float")
-     */
-    private $size;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="sizeThumb", type="float")
-     */
-    private $sizeThumb;
-    /**
-    * @ORM\ManyToOne(targetEntity="Annonce", inversedBy="photos")
-    */
-    private $annonce;
-
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set photoUrl
-     *
-     * @param string $photoUrl
-     *
-     * @return Photo
-     */
-    public function setPhotoUrl($photoUrl)
-    {
-        $this->photoUrl = $photoUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get photoUrl
-     *
-     * @return string
-     */
-    public function getPhotoUrl()
-    {
-        return $this->photoUrl;
-    }
-
-    /**
-     * Set thumbUrl
-     *
-     * @param string $thumbUrl
-     *
-     * @return Photo
-     */
-    public function setThumbUrl($thumbUrl)
-    {
-        $this->thumbUrl = $thumbUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get thumbUrl
-     *
-     * @return string
-     */
-    public function getThumbUrl()
-    {
-        return $this->thumbUrl;
-    }
-
-    /**
-     * Set size
-     *
-     * @param float $size
-     *
-     * @return Photo
-     */
-    public function setSize($size)
-    {
-        $this->size = $size;
-
-        return $this;
-    }
-
-    /**
-     * Get size
-     *
-     * @return float
-     */
-    public function getSize()
-    {
-        return $this->size;
-    }
-
-    /**
-     * Set sizeThumb
-     *
-     * @param float $sizeThumb
-     *
-     * @return Photo
-     */
-    public function setSizeThumb($sizeThumb)
-    {
-        $this->sizeThumb = $sizeThumb;
-
-        return $this;
-    }
-
-    /**
-     * Get sizeThumb
-     *
-     * @return float
-     */
-    public function getSizeThumb()
-    {
-        return $this->sizeThumb;
     }
 
     /**
@@ -185,29 +131,5 @@ class Photo
     public function getAnnonce()
     {
         return $this->annonce;
-    }
-
-    /**
-     * Set imageName
-     *
-     * @param string $imageName
-     *
-     * @return Photo
-     */
-    public function setImageName($imageName)
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * Get imageName
-     *
-     * @return string
-     */
-    public function getImageName()
-    {
-        return $this->imageName;
     }
 }

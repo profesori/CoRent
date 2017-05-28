@@ -2,7 +2,6 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Form\DataTransformer\FilesToPhotosTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
@@ -20,13 +19,13 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use AppBundle\Form\PhotoType;
 use Doctrine\ORM\EntityManager;
-
+use AppBundle\Form\DataTransformer\FilesToPhotosTransformer;
 
 use AppBundle\Form\AdresseType;
 use AppBundle\Form\VoitureType;
 use AppBundle\Entity\MarqueVoiture;
 
-class AnnonceType extends AbstractType
+class AnnonceTestType extends AbstractType
 {
 
 
@@ -36,24 +35,13 @@ class AnnonceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('voiture', VoitureType::class)
-        ->add('adresseVoiture', AdresseType::class)
-        ->add('prixJour', IntegerType::class, array(
-          'label'=>'Cmimi ditor i qerase'
-        ))
-        ->add('prixKM', IntegerType::class, array(
-          'label'=>'Cmimi per cdo KM shtese'
-        ))
-        //->add('enligne', CheckboxType::class)
-        ->add('dureeLocation', IntegerType::class, array(
-          'label'=>'Kohezgjatja max e qerase'
-        ))
-        ->add('limiteKM', IntegerType::class, array(
-          'label'=>'Limiti kohor max i qerase'
-        ))
-        ->add('exigences', TextareaType::class, array(
-          'label'=>'Eksigjenca te tjera'
-        ))
+        /*
+        ->add('photos', CollectionType::class, array(
+            'entry_type' => FileType::class,
+            'by_reference' => false,
+            'required' => false,
+            'allow_add'=>true
+        ))*/
         ->add('photos', FileType::class, array(
           'required'=>false,
           'multiple'=>true
@@ -61,6 +49,7 @@ class AnnonceType extends AbstractType
         ->add('save', SubmitType::class, array(
           'label' => 'Krijo annoncen tende'
         ));
+
         $builder->get('photos')
             ->addModelTransformer(new FilesToPhotosTransformer());
     }

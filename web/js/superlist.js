@@ -1,7 +1,5 @@
 $(document).ready(function() {
   'use strict';
-
-
   var $voiture = $('#appbundle_voiture_marque');
   var prix = $('#prix');
   // When sport gets selected ...
@@ -55,6 +53,32 @@ $(document).ready(function() {
     });
   });
 
+  //2 formvar
+  var $voiture2 = $('#appbundle_annonce_voiture_marque');
+  // When sport gets selected ...
+  $voiture2.on('change', function() {
+    // ... retrieve the corresponding form.
+    var $form = $(this).closest('form');
+    // Simulate form data, but only include the selected sport value.
+    var data = {};
+    data[$voiture2.attr('name')] = $voiture2.val();
+    // Submit data via AJAX to the form's action path.
+    $.ajax({
+      url: $form.attr('action'),
+      type: $form.attr('method'),
+      data: data,
+      success: function(html) {
+        var aremp =
+          // Replace current position field ... console.log(html);
+          $("#marque_remplace").replaceWith(function(n) {
+            var ht = $(html).find('#marque_remplace');
+            return ht;
+          });
+      }
+    });
+  });
+
+
   //Wizard
   $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
 
@@ -87,6 +111,13 @@ $(document).ready(function() {
     reverse: true,
     select: function(dates, context) {
       console.log('toggle active dates', context.storage.activeDates);
+    },
+    click: function(event, context) {
+      console.log('click  dates', context);
+    },
+    apply: function(date, context) {
+      context.storage.desactiveDates = ['2017-06-21'];
+      console.log('click  dates', context, date);
     }
   });
 
@@ -366,7 +397,7 @@ $(document).ready(function() {
   /**
    * Input file
    */
-  $('#appbundle_annonce_photos_imageName').fileinput({
+  $('#appbundle_annonce_photo').fileinput({
     showUpload: false,
     initialCaption: "Vini fotot tuaja",
     overwriteInitial: false,

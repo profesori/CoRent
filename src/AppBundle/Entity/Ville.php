@@ -39,7 +39,7 @@ class Ville
      */
     private $adresses;
     /**
-    * @ORM\ManyToOne(targetEntity="Pays", inversedBy="villes")
+    * @ORM\ManyToOne(targetEntity="Pays", inversedBy="villes",cascade={"persist"})
     */
    private $pays;
 
@@ -123,6 +123,7 @@ class Ville
     public function addAdress(\AppBundle\Entity\Adresse $adress)
     {
         $this->adresses[] = $adress;
+        $adress->setVille($this);
 
         return $this;
     }

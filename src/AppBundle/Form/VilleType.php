@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use AppBundle\Form\PaysType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
@@ -17,11 +19,7 @@ class VilleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('ville', EntityType::class, array(
-                'class'       => 'AppBundle:Ville',
-                'placeholder' => 'Ville',
-            ))
-        ->add('codePostal', TextType::class)
+        ->add('ville', TextType::class)
         ->add('pays', PaysType::class);
     }
 

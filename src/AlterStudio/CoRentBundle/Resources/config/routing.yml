@@ -13,10 +13,16 @@ profile:
 add_annonce:
     path:     /annonce/add
     defaults: { _controller: AlterStudioCoRentBundle:Annonce:add }
-detail_annonce:
-    path:     /annonce/detail
-    defaults: { _controller: AlterStudioCoRentBundle:Annonce:detail }
+edit_annonce:
+    path:      annonce/edit/{id}
+    defaults:
+        _controller: AlterStudioCoRentBundle:Annonce:edit
+    requirements:
+        id: \d+
 price_car:
     path:     /jep-makinen-tende/price
     defaults: { _controller: AlterStudioCoRentBundle:RentCarWizard:getPrice}
     methods:  [POST]
+test:
+    path:     /test
+    defaults: { _controller: AlterStudioCoRentBundle:Test:add }

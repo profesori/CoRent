@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Annonce
  *
  * @ORM\Table(name="annonce")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AnnonceRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Annonce
 {
@@ -18,73 +20,74 @@ class Annonce
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
     private $id;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateAnnonce", type="datetimetz")
+     * @ORM\Column(name="dateAnnonce", type="datetimetz",nullable=true)
      */
     private $dateAnnonce;
     /**
      * @var bool
      *
-     * @ORM\Column(name="landing", type="boolean")
+     * @ORM\Column(name="landing", type="boolean",nullable=true)
      */
     private $landing;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="prixJour", type="integer")
+     * @ORM\Column(name="prixJour", type="integer",nullable=true)
      */
     private $prixJour;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prixKM", type="decimal", precision=5, scale=2)
+     * @ORM\Column(name="prixKM", type="decimal", precision=5, scale=2,nullable=true)
      */
     private $prixKM;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="enligne", type="boolean")
+     * @ORM\Column(name="enligne", type="boolean",nullable=true)
      */
     private $enligne;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateMiseEnLigne", type="datetime")
+     * @ORM\Column(name="dateMiseEnLigne", type="datetime",nullable=true)
      */
     private $dateMiseEnLigne;
     /**
-    * @ORM\OneToOne(targetEntity="Voiture")
+    * @ORM\OneToOne(targetEntity="Voiture",cascade={"persist"})
     */
    private $voiture;
    /**
-   * @ORM\ManyToOne(targetEntity="Adresse")
+   * @ORM\ManyToOne(targetEntity="Adresse",cascade={"persist"})
    */
    private $adresseVoiture;
    /**
     * @var int
     *
-    * @ORM\Column(name="dureeLocation", type="integer")
+    * @ORM\Column(name="dureeLocation", type="integer",nullable=true)
     */
    private $dureeLocation;
    /**
     * @var int
     *
-    * @ORM\Column(name="limiteKM", type="integer")
+    * @ORM\Column(name="limiteKM", type="integer",nullable=true)
     */
    private $limiteKM;
    /**
     * @var string
     *
-    * @ORM\Column(name="exigences", type="string", length=255)
+    * @ORM\Column(name="exigences", type="string", length=255,nullable=true)
     */
    private $exigences;
    /**
@@ -104,11 +107,20 @@ class Annonce
    */
    private $demandes;
    /**
-   * @ORM\OneToMany(targetEntity="Photo", mappedBy="annonce")
+   * @ORM\OneToMany(targetEntity="Photo", mappedBy="annonce",cascade={"persist"})
    */
-   private $photos;
+    protected $photos;
 
 
+    /**
+     * @ORM\PrePersist
+     */
+    public function updateDate()
+    {
+        $this->setDateAnnonce(new \Datetime());
+        $this->setDateMiseEnLigne(new \Datetime());
+        $this->setEnLigne(true);
+    }
 
     /**
      * Get id
@@ -365,6 +377,7 @@ class Annonce
     public function __construct()
     {
         $this->calendrier = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->photos =  new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -404,11 +417,11 @@ class Annonce
     /**
      * Set loueur
      *
-     * @param \AppBundle\Entity\Loueur $loueur
+     * @param \AppBundle\Entity\User $loueur
      *
      * @return Annonce
      */
-    public function setLoueur(\AppBundle\Entity\Loueur $loueur = null)
+    public function setLoueur(\AppBundle\Entity\User $loueur = null)
     {
         $this->loueur = $loueur;
 
@@ -418,7 +431,7 @@ class Annonce
     /**
      * Get loueur
      *
-     * @return \AppBundle\Entity\Loueur
+     * @return \AppBundle\Entity\User
      */
     public function getLoueur()
     {
@@ -493,39 +506,6 @@ class Annonce
         return $this->demandes;
     }
 
-    /**
-     * Add photo
-     *
-     * @param \AppBundle\Entity\Photo $photo
-     *
-     * @return Annonce
-     */
-    public function addPhoto(\AppBundle\Entity\Photo $photo)
-    {
-        $this->photos[] = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Remove photo
-     *
-     * @param \AppBundle\Entity\Photo $photo
-     */
-    public function removePhoto(\AppBundle\Entity\Photo $photo)
-    {
-        $this->photos->removeElement($photo);
-    }
-
-    /**
-     * Get photos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPhotos()
-    {
-        return $this->photos;
-    }
 
     /**
      * Set landing
@@ -549,5 +529,40 @@ class Annonce
     public function getLanding()
     {
         return $this->landing;
+    }
+
+    /**
+     * Add photo
+     *
+     * @param \AppBundle\Entity\Photo $photo
+     *
+     * @return Annonce
+     */
+    public function addPhoto(\AppBundle\Entity\Photo $photo)
+    {
+        $this->photos[] = $photo;
+        $photo->setAnnonce($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove photo
+     *
+     * @param \AppBundle\Entity\Photo $photo
+     */
+    public function removePhoto(\AppBundle\Entity\Photo $photo)
+    {
+        $this->photos->removeElement($photo);
+    }
+
+    /**
+     * Get photos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
     }
 }
