@@ -163,11 +163,11 @@ class DemandesAnnonce
     /**
      * Set locataire
      *
-     * @param \AppBundle\Entity\Locataire $locataire
+     * @param \AppBundle\Entity\User $locataire
      *
      * @return DemandesAnnonce
      */
-    public function setLocataire(\AppBundle\Entity\Locataire $locataire = null)
+    public function setLocataire(\AppBundle\Entity\User $locataire = null)
     {
         $this->locataire = $locataire;
 
