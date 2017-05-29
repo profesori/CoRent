@@ -56,84 +56,97 @@
             makina te disponueshme me kriteret tuaja
           </h2>
 
-          {% for annonce in pagination %}
-            <!-- /.page-title -->
-            <div class="cards-row">
+          <!-- /.page-title -->
+          <div class="cards-row">
+            {% for annonce in pagination %}
               <div class="card-row">
                 <div class="card-row-inner">
-                  <div class="card-row-image" data-background-image="assets/img/tmp/product-1.jpg">
-                    <div class="card-row-label">
-                      <a href="listing-detail.html">Alfa Romeo</a>
+                  {% if annonce.photos[0]is defined %}
+                    <div class="card-row-image" data-background-image="{{vich_uploader_asset(annonce.photos[0], 'imageFile', 'AppBundle\\Entity\\Photo')}}">
+                    {% else %}
+                      <div class="card-row-image" data-background-image="">
+                      {% endif %}
+
+                      <div class="card-row-label">
+                        <a href="listing-detail.html">{{annonce.voiture.marque}}
+                          {{annonce.voiture.modele}}</a>
+                      </div>
+                      <!-- /.card-row-label -->
+
+                      <div class="card-row-price">{{annonce.prixJour}}
+                        Euro / dita</div>
+                      <!-- -->
+
                     </div>
-                    <!-- /.card-row-label -->
+                    <!-- /.card-row-image -->
 
-                    <div class="card-row-price">50 Euro / dita</div>
-                    <!-- -->
-
-                  </div>
-                  <!-- /.card-row-image -->
-
-                  <div class="card-row-body">
-                    <h2 class="card-row-title">
-                      <a href="listing-detail.html">Alfa Romeo 15</a>
-                    </h2>
-                    <div class="card-row-content">
-                      <p>And why did 'I' have to take a cab? Bender, quit destroying the universe! I've been there. My folks were always on me to groom myself and...</p>
+                    <div class="card-row-body">
+                      <h2 class="card-row-title">
+                        <a href="listing-detail.html">{{annonce.voiture.marque}}
+                          {{annonce.voiture.modele}}</a>
+                      </h2>
+                      <div class="card-row-content">
+                        <p>{{annonce.loueur.username}}</p>
+                      </div>
+                      <!-- /.card-row-content -->
                     </div>
-                    <!-- /.card-row-content -->
+                    <!-- /.card-row-body -->
+
+                    <div class="card-row-properties">
+                      <dl>
+
+                        <dd>Cmimi</dd>
+                        <dt>{{annonce.prixJour}}
+                          Euro / dita</dt>
+
+                        <dd>Kategoria</dd>
+                        <dt>{{annonce.voiture.modele.categorie.dicoLibelle|default("E panjohur")}}</dt>
+
+                        <dd>Vendndodhja</dd>
+                        <dt>{{annonce.adresseVoiture.ville.ville}}</dt>
+
+                        <dd>Vleresimi</dd>
+                        <dt>
+                          <div class="card-row-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                          </div>
+                          <!-- /.card-row-rating -->
+                        </dt>
+                      </dl>
+                    </div>
+                    <!-- /.card-row-properties -->
                   </div>
-                  <!-- /.card-row-body -->
-
-                  <div class="card-row-properties">
-                    <dl>
-
-                      <dd>Cmimi</dd>
-                      <dt>$50 / dita</dt>
-
-                      <dd>Kategoria</dd>
-                      <dt>Berline</dt>
-
-                      <dd>Vendndodhja</dd>
-                      <dt>Tirane</dt>
-
-                      <dd>Vleresimi</dd>
-                      <dt>
-                        <div class="card-row-rating">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                        </div>
-                        <!-- /.card-row-rating -->
-                      </dt>
-                    </dl>
-                  </div>
-                  <!-- /.card-row-properties -->
+                  <!-- /.card-row-inner -->
                 </div>
-                <!-- /.card-row-inner -->
+                <!-- /.card-row -->
+
+              {% endfor %}
+            </div>
+            {% if pagination.getTotalItemCount > 0 %}
+              <div class="pager  pb60">
+                {{ knp_pagination_render(pagination) }}
               </div>
-              <!-- /.card-row -->
-            </div>
-            <div class="pager  pb60">
-              {{ knp_pagination_render(pagination) }}
-            </div>
+            {% else %}
+              <div class="col-sm-12">
+                <div class="background-white p30 mb50">
+                  <div class=" row text-center">
+                    <h2>Nuk ka asnje makine te disponueshme</h2>
+                  </div>
+                  <!-- /.cards-system -->
+                </div>
+              </div>
+            {% endif %}
 
             <!-- /.pagination -->
-          {% else %}
-            <div class="col-sm-12">
-              <div class="background-white p30 mb50">
-                <div class=" row text-center">
-                  <h2>Nuk ka asnje makine te disponueshme</h2>
-                </div>
-                <!-- /.cards-system -->
-              </div>
-            </div>
-          {% endfor %}
-          <!-- /.cards-row -->
+
+            <!-- /.cards-row -->
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-{% endblock %}
+  {% endblock %}

@@ -45,8 +45,7 @@ class DefaultController extends Controller
             //throw new NotFoundHttpException(print_r($dateDeb));
             //print_r($data);
 
-            return $this->redirectToRoute('list_makinat', array('location' => $data['location'],
-            'dateDebut'=>$dateDeb,'dateFin'=>$dateF));
+            return $this->redirectToRoute('list_makinat', array('location' => $data['location']));
         }
 
         return $this->render('corent/index.html.twig', array("form"=>$form->createView(),"annonces"=>$query1->getResult()));

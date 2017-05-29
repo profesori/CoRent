@@ -14,10 +14,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ListCarController extends Controller
 {
-    /**
-   * @Security("has_role('ROLE_USER')")
-   *
-   */
     public function indexAction(Request $request)
     {
         //get params
@@ -50,8 +46,7 @@ class ListCarController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $data = $form->getData();
             //throw new NotFoundHttpException(print_r($data));
-            return $this->redirectToRoute('list_makinat', array('location' => $data['location'],
-            'dateDebut'=>$data['dateDebut'],'dateFin'=>$data['dateFin']));
+            return $this->redirectToRoute('list_makinat', array('location' => $data['location']));
         }
 
       //Declare respitory
@@ -64,12 +59,17 @@ class ListCarController extends Controller
         $pagination = $paginator->paginate(
           $query, /* query NOT result */
           $request->query->getInt('page', 1)/*page number*/,
-          5/*limit per page*/
+          3/*limit per page*/
         );
 
       //  $annonces = $query->getResult();
         return $this->render('corent/list.html.twig', array(
             "pagination"=>$pagination,"form"=>$form->createView()
         ));
+    }
+
+    public function viewAction(Request $request)
+    {
+        return $this->render('corent/annonce_detail.html.twig', array());
     }
 }

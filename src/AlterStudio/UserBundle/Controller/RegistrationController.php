@@ -43,7 +43,6 @@ class RegistrationController extends Controller
         $user->setEnabled(true);
 
         //get callbackParam
-        $path = $request->query->get('callback');
 
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
@@ -59,11 +58,7 @@ class RegistrationController extends Controller
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
                 $userManager->updateUser($user);
                 if (null === $response = $event->getResponse()) {
-                    if ($path!=null) {
-                        $url = $this->generateUrl('fos_user_registration_confirmed');
-                    } else {
-                        $url = $this->generateUrl('profile');
-                    }
+                    $url = $this->getTargetUrlFromSession();
                     $response = new RedirectResponse($url);
                 }
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
@@ -83,16 +78,19 @@ class RegistrationController extends Controller
     private function getTargetUrlFromSession()
     {
         // Set the SecurityContext for Symfony <2.6
-       if (interface_exists('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface')) {
-           $tokenStorage = $this->get('security.token_storage');
-       } else {
-           $tokenStorage = $this->get('security.context');
-       }
+        $key = '_security.main.target_path';
+        if ($this->container->get('session')->has($key)) {
+            //set the url based on the link they were trying to access before being authenticated
+            $url = $this->container->get('session')->get($key);
 
-        $key = sprintf('_security.%s.target_path', $tokenStorage->getToken()->getProviderKey());
-
-        if ($this->get('session')->has($key)) {
-            return $this->get('session')->get($key);
+            //remove the session key
+            $this->container->get('session')->remove($key);
+        }
+        if ($url) {
+            return $url;
+        } else {
+            $url = $this->generateUrl('profile');
+            return $url;
         }
     }
 }

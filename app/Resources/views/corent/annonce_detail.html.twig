@@ -56,11 +56,27 @@
             <div class="col-sm-5">
 
               <div class="background-white p20">
-                <div class="detail-overview-rating">
-                  <i class="fa fa-star"></i>
-                  <strong>4.3 / 5
-                  </strong>nga
-                  <a href="#reviews">316 njerez</a>
+                <div class="column">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <div class="testimonial-image">
+                        <img src="{{asset('img/tmp/agent-2.jpg')}}" alt="">
+                      </div>
+                    </div>
+                    <div class="col-sm-8 col-sm-offset-1 vcenter">
+                      <h3>
+                        <a href="#">Rudi Thoma</a>
+                      </h3>
+                    </div>
+                  </div>
+                  <div class="col-sm-12" style="padding:20px">
+                    <div class="detail-overview-rating">
+                      <i class="fa fa-star"></i>
+                      <strong>4.3 / 5
+                      </strong>nga
+                      <a href="#reviews">316 njerez</a>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="detail-actions row">
@@ -271,5 +287,13 @@
 {% endblock %}
 {% block style %}
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+<style>
+  .vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+  }
+
+</style>
 {% endblock %}
 {% block javascript %}{% endblock %}

@@ -7,6 +7,12 @@ alter_studio_co_rent_rent:
 list_makinat:
     path:     /makinat
     defaults: { _controller: AlterStudioCoRentBundle:ListCar:index }
+display_makine:
+    path:      makinat/annonce/{id}
+    defaults:
+        _controller: AlterStudioCoRentBundle:ListCar:view
+    requirements:
+        id: \d+
 profile:
     path:     /profile
     defaults: { _controller: AlterStudioCoRentBundle:Profile:index }

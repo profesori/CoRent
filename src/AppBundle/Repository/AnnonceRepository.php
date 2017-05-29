@@ -25,13 +25,7 @@ class AnnonceRepository extends \Doctrine\ORM\EntityRepository
         $query = $qb->join('ann.adresseVoiture', 'adr')
             ->join('adr.ville', 'vi', 'WITH', $qb->expr()->eq('vi.ville', '?1'))
             ->addSelect('adr')
-            ->join('ann.calendrier', 'ca')
-            ->where($expression->andx($expression->between('ca.dateStatus', '?2', '?3'), $expression->eq('ca.isFree', '?4')))
-            ->addSelect('ca')
             ->setParameter(1, $location)
-            ->setParameter(2, $dateD)
-            ->setParameter(3, $dateF)
-            ->setParameter(4, true)
             ->getQuery();
         return $query;
     }
