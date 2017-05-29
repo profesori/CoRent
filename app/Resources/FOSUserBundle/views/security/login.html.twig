@@ -16,19 +16,18 @@
                 <h1>Lidhu</h1>
               </div>
               <!-- /.page-title -->
-
               <form method="post" action="{{ path('fos_user_security_check') }}">
                 {% if csrf_token %}
                   <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
                 {% endif %}
                 <div class="form-group">
-                  <label for="username">Username</label>
+                  <label for="username">Pseudonimi</label>
                   <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required"/>
                 </div>
                 <!-- /.form-group -->
 
                 <div class="form-group">
-                  <label for="password">Password</label>
+                  <label for="password">Fjalekaimi</label>
                   <input type="password" class="form-control" id="password" name="_password" required="required"/>
                 </div>
 
