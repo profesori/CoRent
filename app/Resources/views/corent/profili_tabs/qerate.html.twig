@@ -1,11 +1,54 @@
 <div class="col-sm-12">
   <div class="background-white p30 mb50">
-
-    <div class=" row text-center">
-      <h2>Nuk keni kerkuar asnje makine per qera.</h2>
-      <a href="#">Kerko makinen tende dhe behu gati per pushime</a>
-    </div>
-
+    {% for demande in demandes %}
+      <div class="background-white p30">
+        <div class="row text-center">
+          <div class="col-sm-3">
+            <div class="user user-lg">
+              <a href="#"><img src="{{asset('img/tmp/agent-2.jpg')}}" alt=""></a>
+              <p>{{demande.annonce.loueur.username}}</p>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <p>{{demande.annonce.voiture.marque}}
+              {{demande.annonce.voiture.modele}}</br>
+            Nga
+            <strong>{{demande.dateDebut|date("d/m/Y")}}</strong>
+            <br>
+            Deri me
+            <strong>{{demande.dateFin|date("d/m/Y")}}</strong>
+            <br>
+          </div>
+          <div class="col-sm-4">
+            <strong>Shuma per te paguar :
+            </strong>
+            <p>
+              60 euro
+            </p>
+          </div>
+          <div class="col-sm-3"><br>
+            <strong>Statusi :</strong>
+            {% if demande.status == 1 %}
+              <p>Kerkesa juaj eshte ne pritje te konfirmimit</p>
+            {% elseif demande.status == 2 %}
+              <p>Kerkesa juaj eshte pranuar.Kliko
+                <a href="#">ketu</a>
+                per me shume infomarcione per oraganizimin.
+              </p>
+            {% else %}
+              <p>Kerkesa juaj eshte refuzuar, ose pronari ka pranuar nje makine tjeter.</p>
+            {% endif %}
+          </div>
+        </div>
+        <!-- /.cards-system -->
+      </div>
+      <hr>
+    {% else %}
+      <div class=" row text-center">
+        <h2>Nuk keni kerkuar asnje makine per qera.</h2>
+        <a href="#">Kerko makinen tende dhe behu gati per pushime</a>
+      </div>
+    {% endfor %}
     <!-- /.cards-system -->
   </div>
 

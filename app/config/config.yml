@@ -49,6 +49,7 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+            namer:              vich_uploader.namer_uniqid
 
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
@@ -106,3 +107,6 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "rudi"
+    registration:
+        form:
+            name: app_user_registration

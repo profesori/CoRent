@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
@@ -61,6 +62,7 @@ class DemandeFormType extends AbstractType
                     new NotBlank(),
                     new Length(array('min' => 10,'max'=>10)),
                 )))
+          ->add('annonceID', HiddenType::class)
           ->add('dateDebut', DateType::class, array(
             'html5'=>false,
             'widget' => 'single_text',

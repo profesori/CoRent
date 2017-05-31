@@ -1,7 +1,6 @@
-<div class="background-white p30 mb50">
-
-  <div class="background-white p30">
-    {% for annonce in annonces %}
+<div class="col-sm-12">
+  {% for annonce in annonces %}
+    <div class="background-white p30">
       <div class="row">
 
         <div class="col-sm-6 col-md-4 col-lg-3">
@@ -28,16 +27,16 @@
             <br>
 
             <a class="btn btn-primary" href="{{path('edit_annonce',{'id': annonce.id})}}">Modifiko Anoncen</a>
+            <a class="btn btn-primary" href="{{path('edit_annonce',{'id': annonce.id})}}">Fshi Anoncen</a>
           </div>
           <!-- /.cards-system -->
         </div>
-        <hr>
-      {% else %}
-        <div class=" row text-center">
-          <h2>Nuk keni te disponueshme asnje makine</h2>
-          <a href="#">Krijo nje tani</a>
-        </div>
-      {% endfor %}
-
-    </div>
+      </div>
+      <hr>
+    {% else %}
+      <div class=" row text-center">
+        <h2>Nuk keni te disponueshme asnje makine</h2>
+        <a href="#">Krijo nje tani</a>
+      </div>
+    {% endfor %}
   </div>

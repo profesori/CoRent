@@ -44,9 +44,10 @@ class AnnonceController extends Controller
             if ($dataRequest=="images") {
                 //handle request
               $files = $request->files->get('input-files');
+
                 $em = $this->getDoctrine()->getManager();
                 foreach ($files as $file) {
-                    $photo = new UploadedFile($file, $file, "image/png", filesize($file), false, true);
+                    $photo = new UploadedFile($file, $file->getClientOriginalName(), $file->getClientMimeType(), filesize($file), false, true);
                     $newPhoto = new Photo();
                     $newPhoto->setImageFile($photo);
                     $em->persist($newPhoto);
@@ -130,9 +131,10 @@ class AnnonceController extends Controller
             if ($dataRequest=="images") {
                 //handle request
               $files = $request->files->get('input-files');
+
                 $em = $this->getDoctrine()->getManager();
                 foreach ($files as $file) {
-                    $photo = new UploadedFile($file, $file, 'image/png', filesize($file), false, true);
+                    $photo = new UploadedFile($file, $file->getClientOriginalName(), $file->getClientMimeType(), filesize($file), false, true);
                     $newPhoto = new Photo();
                     $newPhoto->setImageFile($photo);
                     $em->persist($newPhoto);

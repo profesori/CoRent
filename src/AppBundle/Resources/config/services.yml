@@ -4,3 +4,11 @@ services:
               arguments: []
               tags:
                   - { name: kernel.event_subscriber }
+
+      appbundle.login_entry_point:
+              class: AppBundle\EventListener\LoginEntryPoint
+              arguments: ['@router']
+      app.form.registration:
+              class: AppBundle\Form\RegistrationType
+              tags:
+                  - { name: form.type, alias: app_user_registration }

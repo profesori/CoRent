@@ -38,6 +38,10 @@ class CommentairesAnnonces
     * @ORM\ManyToOne(targetEntity="Annonce", inversedBy="commentaires")
     */
     private $annonce;
+    /**
+    * @ORM\ManyToOne(targetEntity="User")
+    */
+    private $user;
 
 
     /**
@@ -144,5 +148,29 @@ class CommentairesAnnonces
     public function getAnnonce()
     {
         return $this->annonce;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return CommentairesAnnonces
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

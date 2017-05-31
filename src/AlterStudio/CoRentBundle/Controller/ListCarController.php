@@ -5,8 +5,18 @@ namespace AlterStudio\CoRentBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\Form\DemandeFormType;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AppBundle\Entity\DemandesAnnonce;
+use \DateTime;
+use \DateInterval;
+use \DatePeriod;
 
 class ListCarController extends Controller
 {
@@ -17,9 +27,6 @@ class ListCarController extends Controller
         $dateD = $request->query->get('dateDebut'); // get a $_GET parameter
         $dateF = $request->query->get('dateFin'); // get a $_GET parameter
 
-        if (null === $location) {
-            throw new NotFoundHttpException("Veuillez choisir un lieux");
-        }
         //create Form for carlist
         $defaultData = array('location' => $location,'dateDebut'=>new \DateTime($dateD),'dateFin'=>new \DateTime($dateF));
         $form = $this->createFormBuilder($defaultData)
@@ -87,7 +94,12 @@ class ListCarController extends Controller
         $demande = $query->getResult();
 
         //3. get demande Form
-        $defaultData = array('email' => $curentUser->getEmail());
+        if ($curentUser) {
+            $email = $curentUser->getEmail();
+        } else {
+            $email = "";
+        }
+        $defaultData = array('email' => $email,'annonceID'=>$annonce->getID());
         $form   = $this->createForm(DemandeFormType::class, $defaultData);
 
 
@@ -95,8 +107,82 @@ class ListCarController extends Controller
         array("annonce"=>$annonce,"photos"=>$photos,"demande"=>$demande,"form"=>$form->createView()));
     }
 
+
     public function demandeAction(Request $request)
     {
-        return $this->render('corent/annonce_detail.html.twig', array("annonce"=>$annonce,"photos"=>$photos,"demande"=>$demandes));
+        if ($request->isXmlHttpRequest()) {
+
+            //check if user authentificated
+            $securityContext = $this->container->get('security.authorization_checker');
+            if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+                // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
+            $em = $this->getDoctrine()->getManager();
+                $data = $request->request->get('appbundle_demmande');
+                $dateDebut = $data['dateDebut'];
+                $dateFin = $data['dateFin'];
+                $emri = $data['emri'];
+                $mbiemri = $data['mbiemri'];
+                $email = $data['email'];
+                $annonceID = $data['annonceID'];
+
+                $error = "";
+
+                if ($annonceID<0) {
+                    $error = "L'annonce n'est pas correcte!";
+                    $array = $reponse = array("status"=>"BAD","error"=>$error);
+                    $response = new Response(json_encode($array));
+                    $response->headers->set('Content-Type', 'application/json');
+                    return $response;
+                } else {
+                    $annonce = $em->getRepository('AppBundle:Annonce')->find($annonceID);
+                    if (null === $annonce) {
+                        $error = "L'annonce n'est pas correcte!";
+                        $array = $reponse = array("status"=>"BAD","error"=>$error);
+                        $response = new Response(json_encode($array));
+                        $response->headers->set('Content-Type', 'application/json');
+                        return $response;
+                    }
+                }
+
+            //TODO : ADD VAlidation for inputs
+
+            $demandeRepository = $em->getRepository('AppBundle:Annonce');
+            //check if annonce is Free
+            $query = $demandeRepository->getAnnoncesByValidDate($annonceID, $dateDebut, $dateFin);
+                $isOk = $query->getResult();
+                $curentUser = $this->getUser();
+                if ($isOk) {
+                    //Create new demande Annonce
+              $demande = new DemandesAnnonce();
+                    $demande->setDateDebut(new DateTime($dateDebut));
+                    $demande->setDateFin(new DateTime($dateFin));
+                    $demande->setAnnonce($annonce);
+                    $var = $this->getParameter('PER_KONFIRMIM_PRONARI');
+                    $demande->setStatus($var);
+                    $demande->setLocataire($curentUser);
+                    $em->persist($demande);
+                    $em->flush();
+
+                    $array = array("annonce"=>$annonceID,"status"=>"OK");
+                    $response = new Response(json_encode($array));
+                    $response->headers->set('Content-Type', 'application/json');
+                    return $response;
+                } else {
+                    //Anononce is not Free
+                    $array = array("annonce"=>$annonceID,"status"=>"BAD");
+                    $response = new Response(json_encode($array));
+                    $response->headers->set('Content-Type', 'application/json');
+                    return $response;
+                };
+            } else {
+                $array = array("status"=>"BAD");
+                $response = new Response(json_encode($array), 401);
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
+            }
+        } else {
+            $reponse = array("annonce"=>$annonceID,"status"=>"BAD");
+            return new Response(json_encode($reponse));
+        }
     }
 }

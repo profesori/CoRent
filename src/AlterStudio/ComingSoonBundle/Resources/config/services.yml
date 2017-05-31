@@ -1,0 +1,4 @@
+services:
+#    alter_studio_coming_soon.example:
+#        class: AlterStudio\ComingSoonBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

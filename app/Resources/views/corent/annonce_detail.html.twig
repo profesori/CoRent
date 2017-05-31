@@ -84,12 +84,41 @@
                 </div>
 
                 <div class="detail-actions row">
-                  <div class="col-sm-4">
-                    <div class="btn btn-primary btn-book" data-toggle="modal" data-target="#myModal">
-                      <i class="fa fa-sign-in"></i>
-                      Rezervo
-                    </div>
-                  </div>
+                  {% if demande %}
+                    {% if demande[0].status == 1 %}
+                      <div class="col-sm-12">
+                        <p>Shihni listen e makinave dhe beni kerkesa te tjera rezervimi.</p>
+                      </div>
+                    {% elseif demande[0].status == 2 %}
+                      Kliko
+                      <a>ketu</a>
+                      per te njohur dokumentacionin e nevojshem per marrjen e makines.
+                    {% else %}
+                      <div class="col-sm-4">
+                        <div class="btn btn-primary btn-book">
+                          <i class="fa fa-sign-in"></i>
+                          Gjej makine tjeter
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% else %}
+
+                    {% if app.user %}
+                      <div class="col-sm-4">
+                        <div class="btn btn-primary btn-book" data-target="#myModal" data-toggle="modal">
+                          <i class="fa fa-sign-in"></i>
+                          Rezervo
+                        </div>
+                      </div>
+                    {% else %}
+                      <div class="col-sm-12">
+                        <p>Per te rezervuar kete makine ju duhet te identifikoheni. Klikoni
+                          <a href="{{path('fos_user_security_login')}}">ketu</a>
+                        </p>
+                      </div>
+                    {% endif %}
+
+                  {% endif %}
 
                   <!--modal for reservations-->
                   <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
@@ -137,12 +166,14 @@
                               {{ form_label(form.dateFin) }}
                               {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
                             </div>
-                            {{ form_end(form) }}
+                            {{form_row(form.annonceID)}}
+
                           </div>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-primary">Rezervo Tani</button>
+                          <button type="button" id="envoyer" class="btn btn-primary">Rezervo</button>
                         </div>
+                        {{ form_end(form) }}
                       </div>
                       <!-- /.modal-content -->
                     </div>
@@ -155,184 +186,238 @@
                 <!-- /.detail-actions -->
               </div>
               <!-- /.detail-amenities -->
-              <div class="alert alert-icon alert-info" role="alert">
-                <strong>Si te rezervoni</strong>
-              </br>
-              Shifni karakteristikat e makines, nqs jeni dakort klikoni butonin Rezervoj dhe plotesoni fomularin. Per me shume info kliko
-              <a href="#">ketu</a>.
-            </div>
-          </div>
-          <!-- /.col-sm-5 -->
-
-          <div class="col-sm-12">
-            <h2>Karakteristikat e makines</h2>
-            <div class="background-white p20">
-              <div class="row">
-                <div class="col-sm-6">
-                  <table class="table table-hover mb0">
-                    <tbody>
-                      <tr>
-                        <th scope="row">Karburanti</th>
-                        <td style="text-align:right">Diesel</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">KM</th>
-                        <td style="text-align:right">20.000-30.000</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Portat</th>
-                        <td style="text-align:right">3 dyer</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-sm-6">
-                  <table class="table table-hover mb0">
-                    <tbody>
-                      <tr>
-                        <th scope="row">Karburanti</th>
-                        <td style="text-align:right">Diesel</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">KM</th>
-                        <td style="text-align:right">20.000-30.000</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Portat</th>
-                        <td style="text-align:right">3 dyer</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <h3>Opsionet</h3>
-              <ul class="detail-amenities">
-                <li class="yes">WiFi</li>
-                <li class="yes">WiFi</li>
-                <li class="yes">WiFi</li>
-                <li class="yes">WiFi</li>
-                <li class="yes">WiFi</li>
-              </ul>
-            </div>
-            <!--Reviews-->
-            <h2 id="reviews">Komentet per kete makine</h2>
-            <div class="reviews">
-              <div class="review">
-                <div class="review-image">
-                  <img src="{{asset('img/tmp/agent-1.jpg')}}" alt=" ">
-                </div>
-                <!-- /.review-image -->
-
-                <div class="review-inner">
-                  <div class="review-title">
-                    <h2>Nancy Collins</h2>
-
-                    <div class="review-overall-rating">
-                      <span class="overall-rating-title">Total Score:</span>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star-half-o"></i>
-                      <i class="fa fa-star-o"></i>
-                    </div>
-                    <!-- /.review-rating -->
+              {% if demande %}
+                {% if demande[0].status == 1 %}
+                  <!--En attente de reponse-->
+                  <div class="alert alert-icon alert-warning" role="alert">
+                    <strong>Kerkesa juaj eshte derguar</strong>
+                    <br>
+                    Kerkesa juaj eshte derguar me sukses dhe eshte duke u shqyrtuar nga pronari i makines. Do ju kontaktojme brenda 24 oresh me nje pergjigje.
                   </div>
-                  <!-- /.review-title -->
+                {% elseif demande[0].status == 2 %}
+                  <!--Konfirmé-->
+                  <div class="alert alert-icon alert-success" role="alert">
+                    <strong>Behuni gati</strong>
+                    <br>
+                    Kerkesa juaj eshte pranuar me sukses. Detajet e rezervimit tuaj :
+                    <ul>
+                      <li></li>
+                      <li></li>
+                    </ul>
 
-                  <div class="review-content-wrapper">
-                    <div class="review-content">
-                      <div class="review-pros">
-                        <p>Quisque aliquet ornare nunc in viverra. Nullam ornare molestie ligula in luctus. Suspendisse ac cursus elit. In congue mattis felis, non hendrerit orci dictum id.</p>
+                  </div>
+
+                {% else %}
+                  <!--Anullé-->
+                  <div class="alert alert-icon alert-danger" role="alert">
+                    <strong>:(</strong>
+                    <br>
+                    Kerkesa juaj nuk mund te validohet. Pronari i makines ose ka refuzuar ose nje kerkese tjeter eshte pranuar. Pa problem,
+                    <a href="#">klikoni ketu</a>
+                    dhe shqyrtoni listen e makinave dhe beni nje kerkese tjeter rezervimi.
+                  </div>
+                {% endif %}
+
+              {% else %}
+                <div class="alert alert-icon alert-info" role="alert">
+                  <strong>Si te rezervoni</strong>
+                  <br>
+                  Shifni karakteristikat e makines, nqs jeni dakort klikoni butonin Rezervoj dhe plotesoni fomularin. Per me shume info kliko
+                  <a href="#">ketu</a>.
+                </div>
+              {% endif %}
+
+            </div>
+            <!-- /.col-sm-5 -->
+
+            <div class="col-sm-12">
+              <h2>Karakteristikat e makines</h2>
+              <div class="background-white p20">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <table class="table table-hover mb0">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Karburanti</th>
+                          <td style="text-align:right">{{annonce.voiture.carburant}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">KM</th>
+                          <td style="text-align:right">{{annonce.voiture.kmParcourues}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Portat</th>
+                          <td style="text-align:right">{{annonce.voiture.portes}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-sm-6">
+                    <table class="table table-hover mb0">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Vendet</th>
+                          <td style="text-align:right">{{annonce.voiture.places}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Kambio</th>
+                          <td style="text-align:right">{{annonce.voiture.boite}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Viti i prodhimit</th>
+                          <td style="text-align:right">{{annonce.voiture.anneeProduction}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <h3>Opsionet</h3>
+                <ul class="detail-amenities">
+                  {% for opt in annonce.voiture.options %}
+                    <li class="yes">{{opt}}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <!--Reviews-->
+              <h2 id="reviews">Komentet per kete makine</h2>
+              <div class="reviews">
+                {% for comment in annonce.commentaires %}
+                  <div class="review">
+                    <div class="review-image">
+                      <img src="{{asset('img/tmp/agent-1.jpg')}}" alt=" ">
+                    </div>
+                    <!-- /.review-image -->
+
+                    <div class="review-inner">
+                      <div class="review-title">
+                        <h2>{{comment.user.emri}}
+                          {{comment.user.mbiemri}}</h2>
+
+                        <div class="review-overall-rating">
+                          <span class="overall-rating-title">Total Score:</span>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star-half-o"></i>
+                          <i class="fa fa-star-o"></i>
+                        </div>
+                        <!-- /.review-rating -->
                       </div>
-                      <!-- /.pros -->
+                      <!-- /.review-title -->
+
+                      <div class="review-content-wrapper">
+                        <div class="review-content">
+                          <div class="review-pros">
+                            <p>{{comment.commentaire}}</p>
+                          </div>
+                          <!-- /.pros -->
+                        </div>
+                        <!-- /.review-content -->
+                        <!-- /.review-rating -->
+                      </div>
+                      <!-- /.review-content-wrapper -->
+
                     </div>
-                    <!-- /.review-content -->
-                    <!-- /.review-rating -->
+                    <!-- /.review-inner -->
                   </div>
-                  <!-- /.review-content-wrapper -->
+                  <!-- /.review -->
+                {% else %}
+                  <h1>
+                    Asnje koment per kete makine</h1>
+                {% endfor %}
 
-                </div>
-                <!-- /.review-inner -->
               </div>
-              <!-- /.review -->
-
+              <!-- /.reviews -->
+              <!--End Reviews-->
             </div>
-            <!-- /.reviews -->
-            <!--End Reviews-->
-
-            <h2>Ler nje koment</h2>
-            <form class="background-white p20 add-review" method="post" action="?">
-              <div class="row">
-                <div class="form-group col-sm-6">
-                  <label for="">Name
-                    <span class="required">*</span>
-                  </label>
-                  <input type="text" class="form-control" id="" required>
-                </div>
-                <!-- /.col-sm-6 -->
-
-                <div class="form-group col-sm-6">
-                  <label for="">Email
-                    <span class="required">*</span>
-                  </label>
-                  <input type="email" class="form-control" id="" required>
-                </div>
-                <!-- /.col-sm-6 -->
-              </div>
-              <!-- /.row -->
-
-              <div class="row">
-                <div class="form-group col-sm-6">
-                  <label for="">Pros</label>
-                  <textarea class="form-control" rows="5" id=""></textarea>
-                </div>
-                <!-- /.col-sm-6 -->
-                <div class="form-group col-sm-6">
-                  <label for="">Cons</label>
-                  <textarea class="form-control" rows="5" id=""></textarea>
-                </div>
-                <!-- /.col-sm-6 -->
-
-                <div class="col-sm-8">
-                  <p>Required fields are marked
-                    <span class="required">*</span>
-                  </p>
-                </div>
-                <!-- /.col-sm-8 -->
-                <div class="col-sm-4">
-                  <button class="btn btn-primary btn-block" type="submit">
-                    <i class="fa fa-star"></i>Submit Review</button>
-                </div>
-                <!-- /.col-sm-4 -->
-              </div>
-              <!-- /.row -->
-            </form>
+            <!-- /.col-* -->
           </div>
-          <!-- /.col-* -->
+          <!-- /.row -->
+
         </div>
-        <!-- /.row -->
+        <!-- /.container -->
 
       </div>
-      <!-- /.container -->
-
+      <!-- /.content -->
     </div>
-    <!-- /.content -->
+    <!-- /.main-inner -->
   </div>
-  <!-- /.main-inner -->
-</div>
-<!-- /.main -->
+  <!-- /.main -->
 
 {% endblock %}
 {% block style %}
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-<style>
-  .vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-  }
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <style>
+    .vcenter {
+      display: inline-block;
+      vertical-align: middle;
+      float: none;
+    }
 
-</style>
+  </style>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"/>
 {% endblock %}
-{% block javascript %}{% endblock %}
+{% block javascript %}
+  <script>
+    $(document).ready(function() {
+
+      $('#envoyer').on('click', function(e) {
+        e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
+        //  var $this = $('#appbundle_demmande'); // L'objet jQuery du formulaire
+        var $form = $('form[name="appbundle_demmande"]')
+        $.ajax({
+          url: $form.attr('action'),
+          type: $form.attr('method'),
+          data: $form.serialize(),
+          success: function(res) {
+            console.log(res)
+            if (res) {
+              if (res.status == "OK") {
+                var redirectUrl = "{{path('view_annonce',{'id': annonce.id})}}"
+                window.location.replace(redirectUrl);
+              } else {
+                var redirectUrl = "{{path('list_makinat')}}"
+                window.location.replace(redirectUrl);
+              }
+            }
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            switch (jqXHR.status) {
+              case 401:
+                var redirectUrl = "{{path('fos_user_security_login')}}"
+                window.location.replace(redirectUrl);
+                break;
+              case 403: // (Invalid CSRF token for example)
+                // Reload page from server
+                window.location.reload(true);
+            }
+          }
+        });
+      });
+
+    });
+    $(function() {
+      $('#appbundle_demmande_dateDebut').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        "drops": "up",
+        locale: {
+          format: 'YYYY-MM-DD'
+        },
+        minDate: new Date()
+      }, function(start, end, label) {});
+      $('#appbundle_demmande_dateFin').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        "drops": "up",
+        locale: {
+          format: 'YYYY-MM-DD'
+        },
+        minDate: new Date()
+      }, function(start, end, label) {});
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+{% endblock %}

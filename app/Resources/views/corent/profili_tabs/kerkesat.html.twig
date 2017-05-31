@@ -1,40 +1,47 @@
 <div class="col-sm-12">
-  <div class="background-white p30">
-    <div class="row text-center">
-      <div class="col-sm-3">
-        <div class="user user-lg">
-          <a href="#"><img src="{{asset('img/tmp/agent-2.jpg')}}" alt=""></a>
-          <p>Rudi thoma</p>
+  {% for demande in demandes %}
+    <div class="background-white p30">
+      <div class="row text-center">
+        <div class="col-sm-3">
+          <div class="user user-lg">
+            <a href="#"><img src="{{asset('img/tmp/agent-2.jpg')}}" alt=""></a>
+            <p>{{demande.locataire.username}}</p>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <p>{{demande.annonce.voiture.marque}}
+            {{demande.annonce.voiture.modele}}</br>
+          Nga
+          <strong>{{demande.dateDebut|date("d/m/Y")}}</strong>
+          <br>
+          Deri me
+          <strong>{{demande.dateFin|date("d/m/Y")}}</strong>
+          <br>
+        </div>
+        <div class="col-sm-4">
+          <p>
+            <strong>60 euro</strong>
+          </p>
+          <p>50 euro per ju</p>
+        </div>
+        <div class="col-sm-3"><br>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-sign-in"></i>
+            Pranoje qerane
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-sign-in"></i>
+            Refuzoj
+          </button>
         </div>
       </div>
-      <div class="col-sm-2">
-        <p>Volkswagen Golf</br>
-        Nga
-        <strong>11/05/2017</strong>
-        <br>
-        Deri me
-        <strong>12/05/2017</strong>
-        <br>
-      </div>
-      <div class="col-sm-4">
-        <p>
-          <strong>60 euro</strong>
-        </p>
-        <p>50 euro per ju</p>
-      </div>
-      <div class="col-sm-3"><br>
-        <button type="submit" class="btn btn-primary">
-          <i class="fa fa-sign-in"></i>
-          Pranoje qerane
-        </button>
-        <button type="submit" class="btn btn-primary">
-          <i class="fa fa-sign-in"></i>
-          Refuzoj
-        </button>
-      </div>
+      <!-- /.cards-system -->
     </div>
-    <!-- /.cards-system -->
-  </div>
-  <hr>
+    <hr>
+  {% else %}
+    <div class=" row text-center">
+      <h2>Nuk keni asnje kerkese</h2>
+    </div>
+  {% endfor %}
 
 </div>

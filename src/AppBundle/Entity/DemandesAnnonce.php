@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="demandes_annonce")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DemandesAnnonceRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class DemandesAnnonce
 {
@@ -42,7 +43,7 @@ class DemandesAnnonce
     /**
      * @var int
      *
-     * @ORM\Column(name="KM", type="integer")
+     * @ORM\Column(name="KM", type="integer",nullable=true)
      */
     private $kM;
     /**
@@ -58,10 +59,20 @@ class DemandesAnnonce
     */
     private $chatMessages;
     /**
-    * @ORM\ManyToOne(targetEntity="Dico")
-    */
-     private $statut;
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer",length=1)
+     */
+    private $status;
 
+
+     /**
+      * @ORM\PrePersist
+      */
+     public function updateDate()
+     {
+         $this->setDateDemande(new \Datetime());
+     }
 
     /**
      * Get id
@@ -316,26 +327,26 @@ class DemandesAnnonce
     }
 
     /**
-     * Set statut
+     * Set status
      *
-     * @param \AppBundle\Entity\Dico $statut
+     * @param integer $status
      *
      * @return DemandesAnnonce
      */
-    public function setStatut(\AppBundle\Entity\Dico $statut = null)
+    public function setStatus($status)
     {
-        $this->statut = $statut;
+        $this->status = $status;
 
         return $this;
     }
 
     /**
-     * Get statut
+     * Get status
      *
-     * @return \AppBundle\Entity\Dico
+     * @return integer
      */
-    public function getStatut()
+    public function getStatus()
     {
-        return $this->statut;
+        return $this->status;
     }
 }

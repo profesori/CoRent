@@ -60,12 +60,25 @@ class ProfileController extends Controller
     }
     public function kerkesatAction()
     {
-        return $this->render('corent/profili_tabs/kerkesat.html.twig');
+        $curentUser = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $demandeRepository = $em->getRepository('AppBundle:DemandesAnnonce');
+        $query = $demandeRepository->getDemandesAnnonceByLoueur($curentUser);
+        $results=$query->getResult();
+        //var_dump($results[0]);
+        //die;
+        return $this->render('corent/profili_tabs/kerkesat.html.twig', array("demandes"=>$results));
     }
     public function qerateAction()
     {
-        return $this->render('corent/profili_tabs/qerate.html.twig');
+        $curentUser = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $demandeRepository = $em->getRepository('AppBundle:DemandesAnnonce');
+        $query = $demandeRepository->getDemandesAnnonceByLocataire($curentUser);
+        $results=$query->getResult();
+        return $this->render('corent/profili_tabs/qerate.html.twig', array("demandes"=>$results));
     }
+    
     public function infoAction()
     {
         return $this->render('corent/profili_tabs/info.html.twig');

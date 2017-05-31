@@ -1,0 +1,3 @@
+alter_studio_coming_soon_homepage:
+    path:     /
+    defaults: { _controller: AlterStudioComingSoonBundle:Default:index }

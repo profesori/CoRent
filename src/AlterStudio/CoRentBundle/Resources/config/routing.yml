@@ -34,7 +34,7 @@ price_car:
     methods:  [POST]
 demande_annonce:
     path:     /demande/annonce
-    defaults: { _controller: AlterStudioCoRentBundle:ListCarController:demande}
+    defaults: { _controller: AlterStudioCoRentBundle:ListCar:demande}
     methods:  [POST]
 test:
     path:     /test

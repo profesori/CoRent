@@ -39,4 +39,28 @@ class AnnonceRepository extends \Doctrine\ORM\EntityRepository
           ->getQuery();
         return $query;
     }
+    public function getAnnoncesByValidDate($id, $dd, $df)
+    {
+        $qb = $this->createQueryBuilder('ann');
+        $expression = $qb->expr();
+        $query = $qb
+          ->where($expression->eq('ann.id', '?1'))
+          ->join('ann.calendrier', 'ca', 'WITH', $expression->andx($expression->between('ca.dateStatus', '?2', '?3'), $expression->eq('ca.isFree', true)))
+          ->setParameter(1, $id)
+          ->setParameter(2, $dd)
+          ->setParameter(3, $df)
+          ->getQuery();
+        return $query;
+    }
+    /*
+    public function getDemandesAnnonceByLoueur($loueur)
+    {
+        $qb = $this->createQueryBuilder('a');
+        $expression = $qb->expr();
+        $query = $qb
+        ->where($expression->eq('a.loueur', '?1'))
+        ->setParameter(1, $loueur)
+        ->getQuery();
+        return $query;
+    }*/
 }

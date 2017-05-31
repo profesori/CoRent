@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             // Then add SonataAdminBundle
             new Sonata\AdminBundle\SonataAdminBundle(),
             new AlterStudio\UserBundle\AlterStudioUserBundle(),
+            new AlterStudio\ComingSoonBundle\AlterStudioComingSoonBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

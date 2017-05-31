@@ -21,4 +21,24 @@ class DemandesAnnonceRepository extends \Doctrine\ORM\EntityRepository
         ->getQuery();
         return $query;
     }
+    public function getDemandesAnnonceByLoueur($loueur)
+    {
+        $qb = $this->createQueryBuilder('d');
+        $expression = $qb->expr();
+        $query = $qb
+        ->join('d.annonce', 'a', 'WITH', $expression->eq('a.loueur', '?1'))
+        ->setParameter(1, $loueur)
+        ->getQuery();
+        return $query;
+    }
+    public function getDemandesAnnonceByLocataire($locataire)
+    {
+        $qb = $this->createQueryBuilder('d');
+        $expression = $qb->expr();
+        $query = $qb
+        ->where($expression->eq('d.locataire', '?1'))
+        ->setParameter(1, $locataire)
+        ->getQuery();
+        return $query;
+    }
 }

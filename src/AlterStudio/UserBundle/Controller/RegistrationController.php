@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use AppBundle\Form\RegistrationType;
 
 /**
  * Controller managing the registration.
@@ -49,7 +50,7 @@ class RegistrationController extends Controller
         if (null !== $event->getResponse()) {
             return $event->getResponse();
         }
-        $form = $formFactory->createForm();
+        $form = $this->createForm(RegistrationType::class);
         $form->setData($user);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
@@ -79,14 +80,14 @@ class RegistrationController extends Controller
     {
         // Set the SecurityContext for Symfony <2.6
         $key = '_security.main.target_path';
+        $url="";
         if ($this->container->get('session')->has($key)) {
             //set the url based on the link they were trying to access before being authenticated
             $url = $this->container->get('session')->get($key);
-
             //remove the session key
             $this->container->get('session')->remove($key);
         }
-        if ($url) {
+        if ($url!="") {
             return $url;
         } else {
             $url = $this->generateUrl('profile');
