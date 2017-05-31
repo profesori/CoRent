@@ -1,5 +1,5 @@
 <?php
-namespace AlterStudio\CoRentBundle\EventListener;
+namespace AppBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;

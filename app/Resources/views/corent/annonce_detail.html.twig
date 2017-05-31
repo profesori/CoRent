@@ -13,38 +13,42 @@
               {{Message}}
             </div>
           {% endfor %}
-          <div class="row detail-content">
-            <h2>Alfa Romeo 19</h2>
-            <div class="col-sm-6">
 
+          <div class="row detail-content">
+            <h2>{{annonce.voiture.marque}}
+              {{annonce.voiture.modele}}</h2>
+            <div class="col-sm-6">
               <div class="detail-gallery">
+
                 <div class="detail-gallery-preview">
-                  <a href="{{asset('img/tmp/gallery-1.jpg')}}">
-                    <img src="{{asset('img/tmp/gallery-1.jpg')}}">
-                  </a>
+                  <div class="card-row-image" data-background-image="">
+                    {% if photos[0]is defined %}
+
+                      <a href="{{vich_uploader_asset(photos[0], 'imageFile', 'AppBundle\\Entity\\Photo')}}">
+                        <img src="{{vich_uploader_asset(photos[0], 'imageFile', 'AppBundle\\Entity\\Photo')}}">
+                      </a>
+                    {% else %}
+                      <a href="{{asset('img/tmp/gallery-1.jpg')}}">
+                        <img src="{{asset('img/tmp/gallery-1.jpg')}}">
+                      </a>
+                    {% endif %}
+                  </div>
                 </div>
 
                 <ul class="detail-gallery-index">
-                  <li class="detail-gallery-list-item">
-                    <a data-target="{{asset('img/tmp/gallery-2.jpg')}}">
-                      <img src="{{asset('img/tmp/gallery-2.jpg')}}" alt="...">
-                    </a>
-                  </li>
-                  <li class="detail-gallery-list-item">
-                    <a data-target="{{asset('img/tmp/gallery-3.jpg')}}">
-                      <img src="{{asset('img/tmp/gallery-3.jpg')}}" alt="...">
-                    </a>
-                  </li>
-                  <li class="detail-gallery-list-item">
-                    <a data-target="{{asset('img/tmp/gallery-3.jpg')}}">
-                      <img src="{{asset('img/tmp/gallery-3.jpg')}}" alt="...">
-                    </a>
-                  </li>
-                  <li class="detail-gallery-list-item">
-                    <a data-target="{{asset('img/tmp/gallery-3.jpg')}}">
-                      <img src="{{asset('img/tmp/gallery-3.jpg')}}" alt="...">
-                    </a>
-                  </li>
+                  {% for photo in photos %}
+                    <li class="detail-gallery-list-item">
+                      <a data-target="{{vich_uploader_asset(photo, 'imageFile', 'AppBundle\\Entity\\Photo')}}">
+                        <img src="{{vich_uploader_asset(photo, 'imageFile', 'AppBundle\\Entity\\Photo')}}" alt="...">
+                      </a>
+                    </li>
+                  {% else %}
+                    <li class="detail-gallery-list-item">
+                      <a data-target="{{asset('img/tmp/gallery-1.jpg')}}">
+                        <img src="{{asset('img/tmp/gallery-1.jpg')}}" alt="...">
+                      </a>
+                    </li>
+                  {% endfor %}
                 </ul>
 
               </div>
@@ -65,7 +69,7 @@
                     </div>
                     <div class="col-sm-8 col-sm-offset-1 vcenter">
                       <h3>
-                        <a href="#">Rudi Thoma</a>
+                        <a href="#">{{annonce.loueur.username}}</a>
                       </h3>
                     </div>
                   </div>
@@ -82,7 +86,7 @@
                 <div class="detail-actions row">
                   <div class="col-sm-4">
                     <div class="btn btn-primary btn-book" data-toggle="modal" data-target="#myModal">
-                      <i class="fa fa-shopping-cart"></i>
+                      <i class="fa fa-sign-in"></i>
                       Rezervo
                     </div>
                   </div>
@@ -95,13 +99,48 @@
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
-                          <h4 class="modal-title">Modal title</h4>
+                          <h4 class="modal-title">Rezervo tani
+                            {{annonce.voiture.marque}}
+                            {{annonce.voiture.modele}}
+                          </h4>
                         </div>
-                        <div class="modal-body">
-                          <p>One fine body&hellip;</p>
+                        <div class="row">
+                          <div class="col-xs-8 col-sm-8 col-sm-offset-2 col-xs-offset-2 " style="display: block">
+                            {{ form_start(form, {'method': 'post', 'action': path('demande_annonce')}) }}
+                            <div class="form-group">
+                              {{ form_label(form.emri) }}
+                              {{ form_errors(form.emri) }}
+                              {{ form_widget(form.emri, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                              {{ form_label(form.mbiemri) }}
+                              {{ form_errors(form.mbiemri) }}
+                              {{ form_widget(form.mbiemri, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                              {{ form_label(form.email) }}
+                              {{ form_errors(form.email) }}
+                              {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                              {{ form_errors(form.telefon) }}
+                              {{ form_label(form.telefon) }}
+                              {{ form_widget(form.telefon, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                              {{ form_errors(form.dateDebut) }}
+                              {{ form_label(form.dateDebut) }}
+                              {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                              {{ form_errors(form.dateFin) }}
+                              {{ form_label(form.dateFin) }}
+                              {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            {{ form_end(form) }}
+                          </div>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Anullo</button>
                           <button type="button" class="btn btn-primary">Rezervo Tani</button>
                         </div>
                       </div>

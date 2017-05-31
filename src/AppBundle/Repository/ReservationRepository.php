@@ -13,12 +13,11 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository
     public function getReservationsForLoueur($user)
     {
         $qb = $this->createQueryBuilder('r');
-        $query = $qb->join('r.demandeAnnonce', 'd', 'WITH', $qb->expr()->eq('d.isAccepte', '?1'))
-            ->join('d.annonce', 'an', 'WITH', $qb->expr()->eq('an.loueur', '?2'))
+        $query = $qb->join('r.demandeAnnonce', 'd')
+            ->join('d.annonce', 'an', 'WITH', $qb->expr()->eq('an.loueur', '?1'))
             ->addSelect('d')
             ->addSelect('an')
-            ->setParameter(1, true)
-            ->setParameter(2, $user)
+            ->setParameter(1, $user)
             ->getQuery();
         return $query;
     }
@@ -26,12 +25,11 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository
     {
         $qb = $this->createQueryBuilder('r');
         $expr = $qb->expr();
-        $query = $qb->join('r.demandeAnnonce', 'd', 'WITH', $expr->andx($expr->eq('d.isAccepte', '?1'), $expr->eq('d.locataire', '?2')))
+        $query = $qb->join('r.demandeAnnonce', 'd', 'WITH', $expr->eq('d.locataire', '?1'))
             ->join('d.annonce', 'an')
             ->addSelect('d')
             ->addSelect('an')
-            ->setParameter(1, true)
-            ->setParameter(2, $user)
+            ->setParameter(1, $user)
             ->getQuery();
         return $query;
     }

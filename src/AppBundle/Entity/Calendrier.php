@@ -24,7 +24,7 @@ class Calendrier
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateStatus", type="datetime")
+     * @ORM\Column(name="dateStatus", type="date")
      */
     private $dateStatus;
 
@@ -38,7 +38,7 @@ class Calendrier
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateModification", type="datetime")
+     * @ORM\Column(name="dateModification", type="date")
      */
     private $dateModification;
     /**

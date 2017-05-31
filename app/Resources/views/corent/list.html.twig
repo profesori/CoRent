@@ -82,10 +82,11 @@
 
                     <div class="card-row-body">
                       <h2 class="card-row-title">
-                        <a href="listing-detail.html">{{annonce.voiture.marque}}
+
+                        <a href="{{path('view_annonce',{'id': annonce.id})}}">{{annonce.voiture.marque}}
                           {{annonce.voiture.modele}}</a>
                       </h2>
-                      <div class="card-row-content">
+                      <div class=" card-row-content">
                         <p>{{annonce.loueur.username}}</p>
                       </div>
                       <!-- /.card-row-content -->

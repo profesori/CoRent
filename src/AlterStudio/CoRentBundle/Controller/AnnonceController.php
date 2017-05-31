@@ -14,10 +14,14 @@ use AppBundle\Entity\Adresse;
 use AppBundle\Entity\Ville;
 use AppBundle\Entity\Pays;
 use AppBundle\Entity\Photo;
+use AppBundle\Entity\Calendrier;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Session\Session;
+use \DateTime;
+use \DateInterval;
+use \DatePeriod;
 
 class AnnonceController extends Controller
 {
@@ -72,6 +76,21 @@ class AnnonceController extends Controller
                     $annonce->addPhoto($photo);
                 };
                 $em->persist($annonce);
+                $em->flush();
+
+                $start = new DateTime();
+                $end = new DateTime("+1 year");
+                $interval = DateInterval::createFromDateString('1 day');
+                $days = new DatePeriod($start, $interval, $end);
+
+                foreach ($days as $day) {
+                    $cal = new Calendrier();
+                    $cal->setDateStatus($day);
+                    $cal->setIsFree(true);
+                    $cal->setDateModification($day);
+                    $cal->setAnnonce($annonce);
+                    $em->persist($cal);
+                }
                 $em->flush();
                 $session->remove('photos');
                 $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');

@@ -58,17 +58,9 @@ class DemandesAnnonce
     */
     private $chatMessages;
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="isAccepte", type="boolean")
-     */
-    private $isAccepte;
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="invalide", type="boolean")
-     */
-    private $invalide;
+    * @ORM\ManyToOne(targetEntity="Dico")
+    */
+     private $statut;
 
 
     /**
@@ -289,31 +281,6 @@ class DemandesAnnonce
     {
         return $this->kM;
     }
-
-    /**
-     * Set invalide
-     *
-     * @param boolean $invalide
-     *
-     * @return DemandesAnnonce
-     */
-    public function setInvalide($invalide)
-    {
-        $this->invalide = $invalide;
-
-        return $this;
-    }
-
-    /**
-     * Get invalide
-     *
-     * @return boolean
-     */
-    public function getInvalide()
-    {
-        return $this->invalide;
-    }
-
     /**
      * Add chatMessage
      *
@@ -346,5 +313,29 @@ class DemandesAnnonce
     public function getChatMessages()
     {
         return $this->chatMessages;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param \AppBundle\Entity\Dico $statut
+     *
+     * @return DemandesAnnonce
+     */
+    public function setStatut(\AppBundle\Entity\Dico $statut = null)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return \AppBundle\Entity\Dico
+     */
+    public function getStatut()
+    {
+        return $this->statut;
     }
 }

@@ -10,4 +10,15 @@ namespace AppBundle\Repository;
  */
 class DemandesAnnonceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getDemandeByUserAndAnnonce($user, $annonce)
+    {
+        $qb = $this->createQueryBuilder('d');
+        $expression = $qb->expr();
+        $query = $qb
+        ->where($expression->andx($expression->eq('d.locataire', '?1'), $expression->eq('d.annonce', '?2')))
+        ->setParameter(1, $user)
+        ->setParameter(2, $annonce)
+        ->getQuery();
+        return $query;
+    }
 }

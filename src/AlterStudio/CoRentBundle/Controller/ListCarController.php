@@ -6,11 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AppBundle\Form\DemandeFormType;
 
 class ListCarController extends Controller
 {
@@ -68,8 +64,39 @@ class ListCarController extends Controller
         ));
     }
 
-    public function viewAction(Request $request)
+    public function viewAction(Request $request, $id)
     {
-        return $this->render('corent/annonce_detail.html.twig', array());
+        //1. get annonce en cours and photos
+        $em = $this->getDoctrine()->getManager();
+        $annonce = $em->getRepository('AppBundle:Annonce')->find($id);
+        if (null === $annonce) {
+            throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
+        }
+        $photos = $annonce->getPhotos();
+        $arrayPhoto = "";
+        $tabPhotos=[];
+        foreach ($photos as $photo) {
+            $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
+            $path = $helper->asset($photo, 'imageFile');
+            $arrayPhoto[] = array("url"=>$path,"id"=> $photo->getId());
+        };
+        //2. check if demande from user
+        $curentUser = $this->getUser();
+        $demandeRepository = $em->getRepository('AppBundle:DemandesAnnonce');
+        $query = $demandeRepository->getDemandeByUserAndAnnonce($curentUser, $annonce);
+        $demande = $query->getResult();
+
+        //3. get demande Form
+        $defaultData = array('email' => $curentUser->getEmail());
+        $form   = $this->createForm(DemandeFormType::class, $defaultData);
+
+
+        return $this->render('corent/annonce_detail.html.twig',
+        array("annonce"=>$annonce,"photos"=>$photos,"demande"=>$demande,"form"=>$form->createView()));
+    }
+
+    public function demandeAction(Request $request)
+    {
+        return $this->render('corent/annonce_detail.html.twig', array("annonce"=>$annonce,"photos"=>$photos,"demande"=>$demandes));
     }
 }

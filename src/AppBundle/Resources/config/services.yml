@@ -1,0 +1,6 @@
+services:
+      appbundle.registration_listener:
+              class: AppBundle\EventListener\RegistrationListener
+              arguments: []
+              tags:
+                  - { name: kernel.event_subscriber }
