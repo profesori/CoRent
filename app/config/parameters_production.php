@@ -13,6 +13,6 @@
     $container->setParameter('mailer_host', "localhost");
     $container->setParameter('mailer_user', "thoma.rudi@gmail.com");
     $container->setParameter('mailer_password', "");
-    $contrainer->setParameter('PER_KONFIRMIM_PRONARI', 1);
+    $container->setParameter('PER_KONFIRMIM_PRONARI', 1);
     $container->setParameter('KONFIRMUAR', 2);
     $container->setParameter('ANULLUAR', 3);
