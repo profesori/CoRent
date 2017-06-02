@@ -1,5 +1,5 @@
 <?php
-$secrets = getenv("APP_SECRETS")
+$secrets = getenv("APP_SECRETS");
 if (!$secrets) {
     return;
 }
@@ -15,6 +15,18 @@ if (isset($secrets['MYSQL'])) {
     $container->setParameter('database_user', $secrets['MYSQL']['USER']);
     $container->setParameter('database_password', $secrets['MYSQL']['PASSWORD']);
 }
+
+//Set mail params to container
+$container->setParameter('locale', 'en');
+$container->setParameter('mailer_transport', "smtp");
+$container->setParameter('mailer_host', "smtp-relay.gmail.com");
+$container->setParameter('mailer_user', "admin@ko-rent.com");
+$container->setParameter('mailer_password', "Golden16");
+
+//set status params
+$container->setParameter('PER_KONFIRMIM_PRONARI', 1);
+$container->setParameter('KONFIRMUAR', 2);
+$container->setParameter('ANULLUAR', 3);
 
 // check if the Memcache component is present
 if (isset($secrets['MEMCACHE'])) {
@@ -35,4 +47,3 @@ if (isset($secrets['MEMCACHE'])) {
         ini_set('memcached.sess_binary', 1);
     }
 }
-?>
