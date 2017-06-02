@@ -1,12 +1,17 @@
 imports:
-    - { resource: parameters_production.php }
+    - { resource: parameters.yml }
     - { resource: config.yml }
+    - { resource: config_prod_secrets.php }
 
 #doctrine:
 #    orm:
 #        metadata_cache_driver: apc
 #        result_cache_driver: apc
 #        query_cache_driver: apc
+framework:
+    session:
+        # set handler_id to null to use default session handler from php.ini (memcached)
+        handler_id:  ~
 
 monolog:
     handlers:
@@ -15,8 +20,6 @@ monolog:
             action_level: error
             handler:      nested
         nested:
-            type:  stream
-            path:  "%kernel.logs_dir%/%kernel.environment%.log"
-            level: debug
+            type: error_log
         console:
             type:  console
