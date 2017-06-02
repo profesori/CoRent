@@ -52,6 +52,7 @@ class RegistrationController extends Controller
         }
         $form = $this->createForm(RegistrationType::class);
         $form->setData($user);
+        
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
