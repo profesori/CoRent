@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+  <div class="main">
+    <div class="outer-admin">
+      <div class="wrapper-admin">
+        <div class="content-admin">
+          <div class="content-admin-wrapper">
+            <div class="content-admin-main">
+              <div class="content-admin-main-inner">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="container">
+                        <div class="row">
+                          <!-- /.col-* -->
+                          <div class="col-sm-8 col-lg-9">
+                            <div class="content">
+                              <div class="page-title">
+                                <h1>Profili juaj</h1>
+                              </div>
+                              <!-- /.page-title -->
+                              {{ form_start(form, { 'action': path('profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+                              <div class="background-white p20 mb30">
+                                <h3 class="page-title">
+                                  Kontakti
+                                  <input class="btn btn-primary btn-xs pull-right" type="submit" value="Ruaj"/>
+                                </h3>
+
+                                <div class="row">
+                                  <div class="form-group col-sm-6">
+                                    {{ form_label(form.emri) }}
+                                    {{ form_errors(form.emri) }}
+                                    {{ form_widget(form.emri, {'attr': {'class': 'form-control'}}) }}
+                                  </div>
+                                  <!-- /.form-group -->
+
+                                  <div class="form-group col-sm-6">
+                                    {{ form_label(form.mbiemri) }}
+                                    {{ form_errors(form.mbiemri) }}
+                                    {{ form_widget(form.mbiemri, {'attr': {'class': 'form-control'}}) }}
+                                  </div>
+                                  <!-- /.form-group -->
+
+                                  <div class="form-group col-sm-6">
+                                    {{ form_label(form.email) }}
+                                    {{ form_errors(form.email) }}
+                                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                                  </div>
+                                  <!-- /.form-group -->
+
+                                  <div class="form-group col-sm-6">
+                                    {{ form_label(form.telefoni) }}
+                                    {{ form_errors(form.telefoni) }}
+                                    {{ form_widget(form.telefoni, {'attr': {'class': 'form-control'}}) }}
+                                  </div>
+                                  <div class="form-group col-sm-6">
+                                    {{ form_label(form.username) }}
+                                    {{ form_errors(form.username) }}
+                                    {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+                                  </div>
+                                  <div class="form-group col-sm-6">
+                                    {{ form_label(form.current_password) }}
+                                    {{ form_errors(form.current_password) }}
+                                    {{ form_widget(form.current_password, {'attr': {'class': 'form-control'}}) }}
+                                  </div>
+                                  <!-- /.form-group -->
+                                </div>
+                                <!-- /.row -->
+                              </div>
+                              {{ form_end(form) }}
+                              <div class="alert alert-info" role="alert">
+                                <strong>Per te ruajtur ndryshimet</strong>
+                                duhet te vini fjalekalimin tuaj.
+                              </div>
+                            </div>
+                            <!-- /.content -->
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.col-* -->
+                  </div>
+                </div>
+                <!-- /.container-fluid -->
+              </div>
+              <!-- /.content-admin-main-inner -->
+            </div>
+            <!-- /.content-admin-main -->
+          </div>
+          <!-- /.content-admin-wrapper -->
+        </div>
+        <!-- /.content-admin -->
+      </div>
+      <!-- /.wrapper-admin -->
+    </div>
+    <!-- /.outer-admin -->
+  </div>
+{% endblock %}
+{% block style %}
+  <style></style>
+
+{% endblock %}
+{% block javascript %}{% endblock %}

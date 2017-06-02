@@ -108,5 +108,7 @@ fos_user:
         address: "%mailer_user%"
         sender_name: "rudi"
     registration:
+        confirmation:
+            enabled: true
         form:
             name: app_user_registration

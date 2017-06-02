@@ -10,6 +10,9 @@ list_makinat:
 profile:
     path:     /profile
     defaults: { _controller: AlterStudioCoRentBundle:Profile:index }
+profile_edit:
+    path:     /profile/edit
+    defaults: { _controller: AlterStudioCoRentBundle:Profile:info }
 add_annonce:
     path:     /annonce/add
     defaults: { _controller: AlterStudioCoRentBundle:Annonce:add }

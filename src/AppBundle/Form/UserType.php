@@ -16,22 +16,13 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-        ->add('ville', EntityType::class, array(
-                'class'       => 'AppBundle:Ville',
-                'placeholder' => 'Ville',
-            ))
-        ->add('codePostal', TextType::class)
-        ->add('pays', PaysType::class);
+        $builder->add('emri');
+        $builder->add('mbiemri');
+        $builder->add('telefoni');
     }
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
+    public function getParent()
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\User'
-        ));
+        return 'FOS\UserBundle\Form\Type\ProfileFormType';
     }
 
     /**
