@@ -1,7 +1,7 @@
 imports:
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@AppBundle/Resources/config/admin.yml" }
+    #- { resource: "@AppBundle/Resources/config/admin.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -40,6 +40,31 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
+easy_admin:
+    entities:
+        Dico:
+            class: AppBundle\Entity\Dico
+        DicoType:
+            class: AppBundle\Entity\DicoType
+        Marque:
+            class: AppBundle\Entity\MarqueVoiture
+        Modele:
+            class: AppBundle\Entity\ModeleVoiture
+        Annonces:
+            class: AppBundle\Entity\Annonce
+        Demandes:
+            class: AppBundle\Entity\DemandesAnnonce
+            list:
+                fields: ['id', 'dateDemande', 'annonce', 'locataire','statusLibelle']
+        Reservation:
+            class: AppBundle\Entity\Reservation
+            list:
+                fields: ['id', 'Loueur','Locataire','annonce', 'dateDebut', 'dateFin','prix','prixLocataire']
+        Voiture:
+            class: AppBundle\Entity\Voiture
+        Photos:
+            class: AppBundle\Entity\Photo
+
 vich_uploader:
     db_driver: orm # or mongodb or propel or phpcr
     mappings:
@@ -62,13 +87,6 @@ knp_paginator:
         pagination: 'KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig'     # sliding pagination controls template
         sortable: 'KnpPaginatorBundle:Pagination:sortable_link.html.twig' # sort link template
 
-sonata_block:
-    default_contexts: [cms]
-    blocks:
-
-        # enable the SonataAdminBundle block
-        sonata.admin.block.admin_list:
-            contexts:   [admin]
 
 # Doctrine Configuration
 doctrine:

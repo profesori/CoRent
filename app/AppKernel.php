@@ -20,19 +20,7 @@ class AppKernel extends Kernel
             new AlterStudio\CoRentBundle\AlterStudioCoRentBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            // Add your dependencies
-            new Sonata\CoreBundle\SonataCoreBundle(),
-            new Sonata\BlockBundle\SonataBlockBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            //...
-
-            // If you haven't already, add the storage bundle
-            // This example uses SonataDoctrineORMAdmin but
-            // it works the same with the alternatives
-            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-
-            // Then add SonataAdminBundle
-            new Sonata\AdminBundle\SonataAdminBundle(),
+            new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new AlterStudio\UserBundle\AlterStudioUserBundle(),
             new AlterStudio\ComingSoonBundle\AlterStudioComingSoonBundle(),
         ];

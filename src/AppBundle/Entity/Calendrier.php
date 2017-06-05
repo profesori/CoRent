@@ -46,6 +46,10 @@ class Calendrier
     * @ORM\ManyToOne(targetEntity="Annonce", inversedBy="calendrier")
     */
    private $annonce;
+    public function __toString()
+    {
+        return (string) $this->getDateStatus()->format('YYYY-MM-DD');
+    }
 
 
     /**

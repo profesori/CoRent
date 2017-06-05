@@ -66,12 +66,40 @@ class Reservation
     */
     private $demandeAnnonce;
 
+
+
+    public function getAnnonce()
+    {
+        return $this->getDemandeAnnonce()->getAnnonce();
+    }
+
+    public function getPrixLocataire()
+    {
+        return $this->getPrix()-($this->getPrix()*0.3);
+    }
+
+    public function getLoueur()
+    {
+        $this->getAnnonce()->getLoueur()->getEmri();
+    }
+
+    public function getLocataire()
+    {
+        $this->getDemandeAnnonce()->getLocataire()->getEmri();
+    }
+
+
     /**
      * @ORM\PrePersist
      */
     public function updateDate()
     {
         $this->setDateReservation(new \Datetime());
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getId();
     }
 
     /**

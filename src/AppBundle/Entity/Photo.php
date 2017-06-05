@@ -44,6 +44,12 @@ class Photo
   */
  private $annonce;
 
+ 
+    public function __toString()
+    {
+        return (string) $this->getImage();
+    }
+
 
   // ...
 

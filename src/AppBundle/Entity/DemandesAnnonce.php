@@ -78,6 +78,22 @@ class DemandesAnnonce
      */
     private $reservation;
 
+    public function getStatusLibelle()
+    {
+        switch ($this->getStatus()) {
+          case 1:
+            return "Ne pritje te validimit";
+            break;
+          case 2:
+            return "Kerkesa eshte pranuar";
+            break;
+          default:
+
+            return "Kerkesa eshte anulluar";
+            break;
+        }
+    }
+
 
 
      /**
@@ -87,6 +103,10 @@ class DemandesAnnonce
      {
          $this->setDateDemande(new \Datetime());
      }
+    public function __toString()
+    {
+        return (string) $this->getId();
+    }
 
     /**
      * Get id
