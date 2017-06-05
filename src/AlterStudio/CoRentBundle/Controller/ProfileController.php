@@ -13,6 +13,10 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\FOSUserEvents;
+use \DateTime;
+use \DateInterval;
+use \DatePeriod;
+use AppBundle\Entity\Reservation;
 
 class ProfileController extends Controller
 {
@@ -39,14 +43,14 @@ class ProfileController extends Controller
         //total money earned for Loueur
         $totalMoney = 0;
         foreach ($queryResults1 as $qu) {
-            $totalMoney+= $qu->prix;
+            $totalMoney+= $qu->getPrix();
             $reservations+=1;
         }
         //////////////////
         $reservationForLocataire = 0;
         $totalMoneyForLocataire = 0;
         foreach ($queryResults2 as $qu2) {
-            $totalMoneyForLocataire+= $qu2->prix;
+            $totalMoneyForLocataire+= $qu2->getPrix();
             $reservationForLocataire+=1;
         }
         return $this->render('corent/profili_tabs/situata.html.twig',
@@ -76,8 +80,87 @@ class ProfileController extends Controller
         $results=$query->getResult();
         //var_dump($results[0]);
         //die;
-        return $this->render('corent/profili_tabs/kerkesat.html.twig', array("demandes"=>$results));
+        return $this->render('corent/list_kerkesa.html.twig', array("demandes"=>$results));
     }
+
+    public function refuzoAction(Request $request)
+    {
+    }
+
+    /**
+     *
+     * @Security("has_role('ROLE_USER')")
+     */
+    public function accepteAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $curentUser = $this->getUser();
+
+        if ($id>0) {
+            //getDemande
+                $demande = $em->getRepository('AppBundle:DemandesAnnonce')->find($id);
+            if (null === $demande) {
+                throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
+            }
+                    //set status demande =2
+                $var = $this->getParameter('KONFIRMUAR');
+            $demande->setStatus($var);
+                    //set calendrier annonce is free=false
+            $annonce = $demande->getAnnonce();
+            $start = $demande->getDateDebut();
+            $end = $demande->getDateFin();
+            $end_loop = $end;
+            date_add($end_loop, date_interval_create_from_date_string('1 day'));
+
+            $interval = DateInterval::createFromDateString('1 day');
+            $days = new DatePeriod($start, $interval, $end_loop);
+            $int= $start->diff($end);
+            $diff = $int->format('%a');
+
+            $calendrierRepository = $em->getRepository('AppBundle:Calendrier');
+
+            if ($diff==0) {
+                $query = $calendrierRepository->getCalendrierByAnnonceAndData($annonce, $start);
+                $calendrier = $query->getSingleResult();
+                $calendrier->setIsFree(false);
+            } else {
+                foreach ($days as $day) {
+
+                    //die;
+                    $query = $calendrierRepository->getCalendrierByAnnonceAndData($annonce, $day);
+                    $calendrier = $query->getSingleResult();
+                    $calendrier->setIsFree(false);
+                }
+            }
+      
+                    //Create Reservation
+            $reservation = new Reservation();
+            $reservation->setDemandeAnnonce($demande);
+            $reservation->setDateDebut($start);
+            $reservation->setDateFin($end);
+            $reservation->setPrix($demande->getPrix());
+            $reservation->setReduction(0);
+            $em->persist($reservation);
+
+                //set status=refused for every other Demande in annonce with same periode
+                foreach ($annonce->getDemandes() as $dem) {
+                    if ($dem != $demande) {
+                        if (
+                            ($dem->getDateDebut()>=$start
+                            && $dem->getDateDebut()<=$end) ||
+                            ($dem->getDateFin()>=$start
+                            && $dem->getDateFin()<=$end)
+                            ) {
+                            $dem->setStatus($this->getParameter('ANULLUAR'));
+                        }
+                    }
+                }
+                //flush All
+                $em->flush();
+            return $this->redirectToRoute('list_kerkesat');
+        }
+    }
+
     public function qerateAction()
     {
         $curentUser = $this->getUser();

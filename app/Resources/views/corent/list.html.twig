@@ -10,12 +10,7 @@
 
           {{form_start(form,{'attr': {'class': 'filter'}})}}
           <div class="row">
-            <div class="col-sm-12 col-md-4">
-              <div class="form-group">
-                {{form_row(form.location,{'attr': {'class': 'form-control','placeholder':'Vendndodhja'}}) }}
-              </div>
-              <!-- /.form-group -->
-            </div>
+
             <!-- /.col-* -->
             <div class="col-sm-12 col-md-4">
               <div class="form-group">
@@ -42,10 +37,16 @@
               {{ form_widget(form.send, {'attr': {'class': 'btn btn-primary'},'label': 'Rikerko'}) }}
             </div>
             <!-- /.col-* -->
+
           </div>
+          {% for message in app.session.flashbag.get('dateError') %}
+            <div class="alert alert-icon alert-warning" role="alert">
+              <strong>Gabim!</strong>
+              {{message}}
+            </div>
+          {% endfor %}
           <!-- /.row -->
           {{ form_errors(form) }}
-          {{ form_errors(form.location) }}
           {{ form_errors(form.dateDebut) }}
           {{ form_errors(form.dateFin) }}
 
@@ -101,10 +102,10 @@
                           Euro / dita</dt>
 
                         <dd>Kategoria</dd>
-                        <dt>{{annonce.voiture.modele.categorie.dicoLibelle|default("E panjohur")}}</dt>
+                        <dt>{{annonce.voiture.modele.categorie|default("E panjohur")}}</dt>
 
                         <dd>Vendndodhja</dd>
-                        <dt>{{annonce.adresseVoiture.ville.ville}}</dt>
+                        <dt>Tirana</dt>
 
                         <dd>Vleresimi</dd>
                         <dt>
@@ -150,4 +151,34 @@
       </div>
     </div>
 
+  {% endblock %}
+  {% block javascript %}
+    <script>
+      //datepicker
+      $(function() {
+        $('#form_dateDebut').daterangepicker({
+          singleDatePicker: true,
+          showDropdowns: true,
+          locale: {
+            format: 'YYYY-MM-DD'
+          },
+          minDate: new Date()
+        }, function(start, end, label) {});
+        $('#form_dateFin').daterangepicker({
+          singleDatePicker: true,
+          showDropdowns: true,
+          locale: {
+            format: 'YYYY-MM-DD'
+          },
+          minDate: new Date()
+        }, function(start, end, label) {});
+      });
+    </script>
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+
+  {% endblock %}
+  {% block style %}
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"/>
   {% endblock %}

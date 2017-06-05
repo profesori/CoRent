@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * CommentairesAnnonces
@@ -30,7 +31,7 @@ class CommentairesAnnonces
 
     /**
      * @var \DateTime
-     *
+     *@Assert\DateTime(message="Data nuk eshte korrekte")
      * @ORM\Column(name="dateCommentaire", type="datetime")
      */
     private $dateCommentaire;

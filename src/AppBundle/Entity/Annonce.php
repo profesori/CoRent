@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Annonce
@@ -28,6 +29,7 @@ class Annonce
      * @var \DateTime
      *
      * @ORM\Column(name="dateAnnonce", type="datetimetz",nullable=true)
+     * @Assert\DateTime(message="Data nuk eshte korrekte")
      */
     private $dateAnnonce;
     /**
@@ -41,9 +43,9 @@ class Annonce
      * @var int
      *
      * @ORM\Column(name="prixJour", type="integer",nullable=true)
+     * @Assert\NotNull(message="Duhet te vini patjeter cmimin ditore qe anonca te validaohet")
      */
     private $prixJour;
-
     /**
      * @var string
      *
@@ -62,16 +64,19 @@ class Annonce
      * @var \DateTime
      *
      * @ORM\Column(name="dateMiseEnLigne", type="datetime",nullable=true)
+     * @Assert\DateTime(message="Data nuk eshte korrekte")
      */
     private $dateMiseEnLigne;
     /**
     * @ORM\OneToOne(targetEntity="Voiture",cascade={"persist"})
+    * @Assert\NotNull()
     */
    private $voiture;
    /**
-   * @ORM\ManyToOne(targetEntity="Adresse",cascade={"persist"})
+   * @ORM\ManyToOne(targetEntity="Ville",cascade={"persist"})
+   * @ORM\JoinColumn(name="ville_id", referencedColumnName="id")
    */
-   private $adresseVoiture;
+   private $ville;
    /**
     * @var int
     *
@@ -347,30 +352,6 @@ class Annonce
     {
         return $this->voiture;
     }
-
-    /**
-     * Set adresseVoiture
-     *
-     * @param \AppBundle\Entity\Adresse $adresseVoiture
-     *
-     * @return Annonce
-     */
-    public function setAdresseVoiture(\AppBundle\Entity\Adresse $adresseVoiture = null)
-    {
-        $this->adresseVoiture = $adresseVoiture;
-
-        return $this;
-    }
-
-    /**
-     * Get adresseVoiture
-     *
-     * @return \AppBundle\Entity\Adresse
-     */
-    public function getAdresseVoiture()
-    {
-        return $this->adresseVoiture;
-    }
     /**
      * Constructor
      */
@@ -413,7 +394,6 @@ class Annonce
     {
         return $this->calendrier;
     }
-
     /**
      * Set loueur
      *
@@ -564,5 +544,29 @@ class Annonce
     public function getPhotos()
     {
         return $this->photos;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param \AppBundle\Entity\Ville $ville
+     *
+     * @return Ville
+     */
+    public function setVille(\AppBundle\Entity\Ville $ville = null)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }

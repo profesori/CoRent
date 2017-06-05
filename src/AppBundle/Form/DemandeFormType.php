@@ -57,7 +57,7 @@ class DemandeFormType extends AbstractType
                    new NotBlank(),
                    new Length(array('min' => 3)),
                )))
-           ->add('telefon', NumberType::class,
+           ->add('telefon', TextType::class,
            array('constraints' => array(
                     new NotBlank(),
                     new Length(array('min' => 10,'max'=>10)),
@@ -70,6 +70,9 @@ class DemandeFormType extends AbstractType
           ->add('dateFin', DateType::class, array(
             'html5'=>false,
             'widget' => 'single_text',
+          ))
+          ->add('save', SubmitType::class, array(
+            'label' => 'Ruaj annoncen tende'
           ));
     }
 

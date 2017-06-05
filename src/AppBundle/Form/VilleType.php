@@ -19,8 +19,10 @@ class VilleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('ville', TextType::class)
-        ->add('pays', PaysType::class);
+        ->add('ville', EntityType::class, array(
+                'class'       => 'AppBundle:Ville',
+                'placeholder' => 'Qyteti',
+            ));
     }
 
     /**

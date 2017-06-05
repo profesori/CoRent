@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Adresse
@@ -25,6 +26,8 @@ class Adresse
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $adresse;
 
@@ -44,6 +47,7 @@ class Adresse
 
     /**
     * @ORM\ManyToOne(targetEntity="Ville", inversedBy="adresses",cascade={"persist"})
+    * @Assert\NotBlank()
     */
    private $ville;
 
@@ -168,7 +172,7 @@ class Adresse
     public function setVille(\AppBundle\Entity\Ville $ville = null)
     {
         $this->ville = $ville;
-        
+
 
         return $this;
     }

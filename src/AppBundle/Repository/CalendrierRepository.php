@@ -10,4 +10,15 @@ namespace AppBundle\Repository;
  */
 class CalendrierRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getCalendrierByAnnonceAndData($annonce, $date)
+    {
+        $qb = $this->createQueryBuilder('ca');
+        $expression = $qb->expr();
+        $query = $qb
+        ->where($expression->andx($expression->eq('ca.dateStatus', '?1'), $expression->eq('ca.annonce', '?2')))
+        ->setParameter(1, $date)
+        ->setParameter(2, $annonce)
+        ->getQuery();
+        return $query;
+    }
 }

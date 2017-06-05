@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Calendrier
@@ -23,7 +24,7 @@ class Calendrier
 
     /**
      * @var \DateTime
-     *
+     *@Assert\Date(message="Data nuk eshte korrekte")
      * @ORM\Column(name="dateStatus", type="date")
      */
     private $dateStatus;
@@ -37,7 +38,7 @@ class Calendrier
 
     /**
      * @var \DateTime
-     *
+     *@Assert\Date(message="Data nuk eshte korrekte")
      * @ORM\Column(name="dateModification", type="date")
      */
     private $dateModification;

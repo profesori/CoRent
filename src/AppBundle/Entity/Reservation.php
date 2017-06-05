@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Reservation
  *
  * @ORM\Table(name="reservation")
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ReservationRepository")
  */
 class Reservation
@@ -43,7 +44,7 @@ class Reservation
     /**
      * @var int
      *
-     * @ORM\Column(name="KM", type="integer")
+     * @ORM\Column(name="KM", type="integer",nullable=true)
      */
     private $kM;
 
@@ -61,9 +62,17 @@ class Reservation
      */
     private $reduction;
     /**
-    * @ORM\OneToOne(targetEntity="DemandesAnnonce")
+    * @ORM\OneToOne(targetEntity="DemandesAnnonce",mappedBy="reservation")
     */
     private $demandeAnnonce;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function updateDate()
+    {
+        $this->setDateReservation(new \Datetime());
+    }
 
     /**
      * Get id
@@ -229,7 +238,7 @@ class Reservation
     public function setDemandeAnnonce(\AppBundle\Entity\DemandesAnnonce $demandeAnnonce = null)
     {
         $this->demandeAnnonce = $demandeAnnonce;
-
+        $demandeAnnonce->setReservation($this);
         return $this;
     }
 

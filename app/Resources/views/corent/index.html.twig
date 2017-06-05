@@ -15,19 +15,17 @@
                   </p>
                   <div class="hero-image-form-wrapper-main">
                     {{form_start(form,{'attr': {'class': 'form-inline'}})}}
-                    <div class="hero-image-location form-group">
-                      {{form_widget(form.location,{'attr': {'class': 'form-control','placeholder':'Vendndodhja'}}) }}
-                    </div>
                     <div class="hero-image-date form-group">
                       {{form_widget(form.dateDebut,{'attr': {'class': 'form-control','placeholder':'Data e nisjes','value':''}}) }}
                     </div>
                     <div class="hero-image-date form-group">
+
                       {{form_widget(form.dateFin,{'attr': {'class': 'form-control','placeholder':'Data e mberritjes','value':''}}) }}
                     </div>
                     {{ form_widget(form.send, {'attr': {'class': 'btn btn-primary'}}) }}
 
                     {{ form_errors(form) }}
-                    {{ form_errors(form.location) }}
+
                     {{ form_errors(form.dateDebut) }}
                     {{ form_errors(form.dateFin) }}
 

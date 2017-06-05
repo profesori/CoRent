@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * DemandesAnnonce
@@ -24,19 +25,19 @@ class DemandesAnnonce
 
     /**
      * @var \DateTime
-     *
+     * @Assert\DateTime(message="Data nuk eshte korrekte")
      * @ORM\Column(name="dateDemande", type="datetime")
      */
     private $dateDemande;
     /**
      * @var \DateTime
-     *
+     * @Assert\DateTime(message="Data nuk eshte korrekte")
      * @ORM\Column(name="dateDebut", type="datetime")
      */
     private $dateDebut;
     /**
      * @var \DateTime
-     *
+     *@Assert\DateTime(message="Data nuk eshte korrekte")
      * @ORM\Column(name="dateFin", type="datetime")
      */
     private $dateFin;
@@ -64,6 +65,19 @@ class DemandesAnnonce
      * @ORM\Column(name="status", type="integer",length=1)
      */
     private $status;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="prix", type="integer")
+     */
+    private $prix;
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="Reservation", inversedBy="demandeAnnonce")
+     *
+     */
+    private $reservation;
+
 
 
      /**
@@ -348,5 +362,53 @@ class DemandesAnnonce
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param integer $prix
+     *
+     * @return DemandesAnnonce
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return integer
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set reservation
+     *
+     * @param \AppBundle\Entity\Reservation $reservation
+     *
+     * @return DemandesAnnonce
+     */
+    public function setReservation(\AppBundle\Entity\Reservation $reservation = null)
+    {
+        $this->reservation = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Get reservation
+     *
+     * @return \AppBundle\Entity\Reservation
+     */
+    public function getReservation()
+    {
+        return $this->reservation;
     }
 }

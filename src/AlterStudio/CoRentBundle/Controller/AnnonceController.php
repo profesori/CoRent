@@ -32,8 +32,8 @@ class AnnonceController extends Controller
     public function addAction(Request $request)
     {
         $annonce = new Annonce();
-        $adresse = new Adresse();
-        $annonce->setAdresseVoiture($adresse);
+        $ville = new Ville();
+      //xs  $annonce->setVilleVoiture($ville);
         $tabPhotos = [];
         $form   = $this->createForm(AnnonceType::class, $annonce);
         if ($request->isXmlHttpRequest()) {
@@ -62,6 +62,8 @@ class AnnonceController extends Controller
         } else {
             if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
                 //get user connected user
+                //var_dump($form->getData()->getVilleVoiture());
+              //  die;
                 $user = $this->getUser();
                 if (!$user) {
                     throw new AccessDeniedException();
@@ -70,12 +72,16 @@ class AnnonceController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $session = $request->getSession();
                 $tabPhotos = $session->get('photos');
-                foreach ($tabPhotos as $ph) {
-                    $photo =  $this->getDoctrine()
-                    ->getRepository('AppBundle:Photo')
-                    ->find($ph);
-                    $annonce->addPhoto($photo);
-                };
+
+                if (count($tabPhotos)>0) {
+                    foreach ($tabPhotos as $ph) {
+                        $photo =  $this->getDoctrine()
+                      ->getRepository('AppBundle:Photo')
+                      ->find($ph);
+                        $annonce->addPhoto($photo);
+                    };
+                }
+
                 $em->persist($annonce);
                 $em->flush();
 
@@ -150,6 +156,7 @@ class AnnonceController extends Controller
             if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
                 $session = $request->getSession();
                 $tabPhotos = $session->get('photos');
+
                 if ($tabPhotos) {
                     foreach ($tabPhotos as $ph) {
                         $photo =  $this->getDoctrine()

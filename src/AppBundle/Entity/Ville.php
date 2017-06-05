@@ -27,13 +27,6 @@ class Ville
      * @ORM\Column(name="ville", type="string", length=255)
      */
     private $ville;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="code_postal", type="string", length=5,nullable=true)
-     */
-    private $codePostal;
     /**
      * @ORM\OneToMany(targetEntity="Adresse", mappedBy="ville")
      */
@@ -82,29 +75,6 @@ class Ville
         return $this->ville;
     }
 
-    /**
-     * Set codePostal
-     *
-     * @param string $codePostal
-     *
-     * @return Ville
-     */
-    public function setCodePostal($codePostal)
-    {
-        $this->codePostal = $codePostal;
-
-        return $this;
-    }
-
-    /**
-     * Get codePostal
-     *
-     * @return string
-     */
-    public function getCodePostal()
-    {
-        return $this->codePostal;
-    }
     /**
      * Constructor
      */

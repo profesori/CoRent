@@ -7,12 +7,30 @@ alter_studio_co_rent_rent:
 list_makinat:
     path:     /makinat
     defaults: { _controller: AlterStudioCoRentBundle:ListCar:index }
+
+
 profile:
     path:     /profile
     defaults: { _controller: AlterStudioCoRentBundle:Profile:index }
 profile_edit:
     path:     /profile/edit
     defaults: { _controller: AlterStudioCoRentBundle:Profile:info }
+list_kerkesat:
+    path:     /kerkesat/edit
+    defaults: { _controller: AlterStudioCoRentBundle:Profile:kerkesat }
+refuzo_kerkese:
+    path:     /kerkesat/refuzo/{id}
+    defaults: { _controller: AlterStudioCoRentBundle:Profile:refuzo }
+    requirements:
+        id: \d+
+prano_kerkese:
+    path:     /kerkesat/prano/{id}
+    defaults: { _controller: AlterStudioCoRentBundle:Profile:accepte }
+    requirements:
+        id: \d+
+
+
+
 add_annonce:
     path:     /annonce/add
     defaults: { _controller: AlterStudioCoRentBundle:Annonce:add }
@@ -31,6 +49,8 @@ view_annonce:
 delete_photo_annonce:
     path: /annonce/delete/photo
     defaults: { _controller: AlterStudioCoRentBundle:Annonce:deletePhoto }
+
+
 price_car:
     path:     /jep-makinen-tende/price
     defaults: { _controller: AlterStudioCoRentBundle:RentCarWizard:getPrice}

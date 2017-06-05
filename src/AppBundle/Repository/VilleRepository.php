@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class VilleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getVilles()
+    {
+        $qb = $this->createQueryBuilder('v');
+        return $qb;
+    }
 }

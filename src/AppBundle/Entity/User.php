@@ -26,7 +26,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-    * @ORM\Column(type="string", length=255)
+    * @ORM\Column(type="string", length=255,nullable=true)
     *
     * @Assert\NotBlank(message="Emri eshte i detyrueshem", groups={"Registration", "Profile"})
     * @Assert\Length(
@@ -39,7 +39,7 @@ class User extends BaseUser
     */
     private $emri;
     /**
-    * @ORM\Column(type="string", length=255)
+    * @ORM\Column(type="string", length=255,nullable=true))
     *
     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
     * @Assert\Length(
@@ -52,7 +52,7 @@ class User extends BaseUser
     */
     private $mbiemri;
     /**
-    * @ORM\Column(type="string", length=10)
+    * @ORM\Column(type="string", length=10,nullable=true))
     *
     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
     * @Assert\Length(

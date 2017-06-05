@@ -18,14 +18,11 @@ class AnnonceRepository extends \Doctrine\ORM\EntityRepository
           ->getQuery();
         return $query;
     }
-    public function getAnnoncesByQuery($location, $dateD, $dateF)
+    public function getAnnonces()
     {
         $qb = $this->createQueryBuilder('ann');
         $expression = $qb->expr();
-        $query = $qb->join('ann.adresseVoiture', 'adr')
-            ->join('adr.ville', 'vi', 'WITH', $qb->expr()->eq('vi.ville', '?1'))
-            ->addSelect('adr')
-            ->setParameter(1, $location)
+        $query = $qb
             ->getQuery();
         return $query;
     }
@@ -52,6 +49,18 @@ class AnnonceRepository extends \Doctrine\ORM\EntityRepository
           ->getQuery();
         return $query;
     }
+    public function getAnnoncesByDate($dd, $df)
+    {
+        $qb = $this->createQueryBuilder('ann');
+        $expression = $qb->expr();
+        $query = $qb
+          ->join('ann.calendrier', 'ca', 'WITH', $expression->andx($expression->between('ca.dateStatus', '?2', '?3'), $expression->eq('ca.isFree', true)))
+          ->setParameter(2, $dd)
+          ->setParameter(3, $df)
+          ->getQuery();
+        return $query;
+    }
+
     /*
     public function getDemandesAnnonceByLoueur($loueur)
     {

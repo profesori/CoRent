@@ -120,7 +120,7 @@ class ModeleVoiture
     }
     public function __toString()
     {
-        return $this->modele;
+        return (string) $this->modele;
     }
 
     /**

@@ -27,7 +27,9 @@ class DemandesAnnonceRepository extends \Doctrine\ORM\EntityRepository
         $expression = $qb->expr();
         $query = $qb
         ->join('d.annonce', 'a', 'WITH', $expression->eq('a.loueur', '?1'))
+        ->where($expression->neq('d.status', 3))
         ->setParameter(1, $loueur)
+        ->orderBy('d.status', 'ASC')
         ->getQuery();
         return $query;
     }

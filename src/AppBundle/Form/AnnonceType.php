@@ -37,19 +37,12 @@ class AnnonceType extends AbstractType
     {
         $builder
         ->add('voiture', VoitureType::class)
-        ->add('adresseVoiture', AdresseType::class)
+        ->add('ville', EntityType::class, array(
+                'class'       => 'AppBundle:Ville',
+                'placeholder' => ''
+            ))
         ->add('prixJour', IntegerType::class, array(
           'label'=>'Cmimi ditor i qerase'
-        ))
-        ->add('prixKM', IntegerType::class, array(
-          'label'=>'Cmimi per cdo KM shtese'
-        ))
-        //->add('enligne', CheckboxType::class)
-        ->add('dureeLocation', IntegerType::class, array(
-          'label'=>'Kohezgjatja max e qerase'
-        ))
-        ->add('limiteKM', IntegerType::class, array(
-          'label'=>'Limiti kohor max i qerase'
         ))
         ->add('exigences', TextareaType::class, array(
           'label'=>'Eksigjenca te tjera'
@@ -60,7 +53,7 @@ class AnnonceType extends AbstractType
           'multiple'=>true
         ))*/
         ->add('save', SubmitType::class, array(
-          'label' => 'Krijo annoncen tende'
+          'label' => 'Ruaj annoncen tende'
         ));
         /*
         $builder->get('photos')

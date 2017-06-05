@@ -20,9 +20,11 @@
         </div>
         <div class="col-sm-4">
           <p>
-            <strong>60 euro</strong>
+            <strong>{{demande.prix}}
+              euro</strong>
           </p>
-          <p>50 euro per ju</p>
+          <p>{{demande.prix - (demande.prix * 0.3)}}
+            euro per ju</p>
         </div>
         <div class="col-sm-3"><br>
           <button type="submit" class="btn btn-primary">

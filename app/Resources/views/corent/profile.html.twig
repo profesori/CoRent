@@ -17,8 +17,8 @@
                             <li class="active" data-toggle="pill" href="#situata">
                               <a href="#situata">Situata</a>
                             </li>
-                            <li data-toggle="pill" href="#kerkesat">
-                              <a href="#kerkesat">Kerkesat per makinen time</a>
+                            <li href="{{path('list_kerkesat')}}">
+                              <a href="{{path('list_kerkesat')}}">Kerkesat per makinen time</a>
                             </li>
                             <li data-toggle="pill" href="#makinat">
                               <a href="#makinat">Makinat e mia</a>
@@ -76,12 +76,5 @@
 {% endblock %}
 {% block javascript %}
   <script src="{{asset('js/material-avatar.min.js')}}"></script>
-  <script defer async>
-    var options = {
-      shape: 'circle'
-    }
-    $('.user-photo').materialAvatar({backgroundColor: '#f12a27', textColor: '#777'});
-    $(document).ready(function() {});
-  </script>
 
 {% endblock %}

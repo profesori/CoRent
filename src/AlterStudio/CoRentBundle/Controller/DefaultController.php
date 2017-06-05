@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -22,11 +23,6 @@ class DefaultController extends Controller
         $query1 =  $annonceRepository->getFrontPageAnnonce();
         //create Form for carlist
         $form = $this->createFormBuilder()
-        ->add('location', TextType::class,
-        array('constraints' => array(
-                 new NotBlank(),
-                 new Length(array('min' => 3)),
-             )))
         ->add('dateDebut', DateType::class, array(
           'html5'=>false,
           'widget' => 'single_text',
@@ -45,7 +41,7 @@ class DefaultController extends Controller
             //throw new NotFoundHttpException(print_r($dateDeb));
             //print_r($data);
 
-            return $this->redirectToRoute('list_makinat', array('location' => $data['location']));
+            return $this->redirectToRoute('list_makinat', array("dateDebut"=>$dateDeb,"dateFin"=>$dateF));
         }
 
         return $this->render('corent/index.html.twig', array("form"=>$form->createView(),"annonces"=>$query1->getResult()));
