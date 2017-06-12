@@ -57,4 +57,9 @@ class TestController extends Controller
     {
         return $this->render('corent/annonce_detail.html.twig');
     }
+
+    public function testAction()
+    {
+        return $this->render('corent/demande_locataire.html.twig');
+    }
 }

@@ -62,16 +62,15 @@ class Reservation
      */
     private $reduction;
     /**
-    * @ORM\OneToOne(targetEntity="DemandesAnnonce",mappedBy="reservation")
+    * @ORM\ManyToOne(targetEntity="Annonce", inversedBy="reservations")
     */
-    private $demandeAnnonce;
+    private $annonce;
+    /**
+    * @ORM\ManyToOne(targetEntity="User")
+    */
+    private $locataire;
 
 
-
-    public function getAnnonce()
-    {
-        return $this->getDemandeAnnonce()->getAnnonce();
-    }
 
     public function getPrixLocataire()
     {
@@ -82,12 +81,6 @@ class Reservation
     {
         $this->getAnnonce()->getLoueur()->getEmri();
     }
-
-    public function getLocataire()
-    {
-        $this->getDemandeAnnonce()->getLocataire()->getEmri();
-    }
-
 
     /**
      * @ORM\PrePersist
@@ -257,26 +250,50 @@ class Reservation
     }
 
     /**
-     * Set demandeAnnonce
+     * Set annonce
      *
-     * @param \AppBundle\Entity\DemandesAnnonce $demandeAnnonce
+     * @param \AppBundle\Entity\Annonce $annonce
      *
      * @return Reservation
      */
-    public function setDemandeAnnonce(\AppBundle\Entity\DemandesAnnonce $demandeAnnonce = null)
+    public function setAnnonce(\AppBundle\Entity\Annonce $annonce = null)
     {
-        $this->demandeAnnonce = $demandeAnnonce;
-        $demandeAnnonce->setReservation($this);
+        $this->annonce = $annonce;
+
         return $this;
     }
 
     /**
-     * Get demandeAnnonce
+     * Get annonce
      *
-     * @return \AppBundle\Entity\DemandesAnnonce
+     * @return \AppBundle\Entity\Annonce
      */
-    public function getDemandeAnnonce()
+    public function getAnnonce()
     {
-        return $this->demandeAnnonce;
+        return $this->annonce;
+    }
+
+    /**
+     * Set locataire
+     *
+     * @param \AppBundle\Entity\User $locataire
+     *
+     * @return Reservation
+     */
+    public function setLocataire(\AppBundle\Entity\User $locataire = null)
+    {
+        $this->locataire = $locataire;
+
+        return $this;
+    }
+
+    /**
+     * Get locataire
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getLocataire()
+    {
+        return $this->locataire;
     }
 }

@@ -1,0 +1,176 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="main">
+    <div class="main-inner" style="padding:60px 0px">
+      <div class="container">
+        <div class="column">
+
+          <div class="row">
+            <div class="page-title">
+              <h1>Rezervimi numer 12
+              </h1>
+            </div>
+            <div class="col-sm-6">
+              <div class="column">
+                <div class="panel-green">
+                  <div class="rental_info_summary p20">
+                    <div style="padding-left:16px">
+                      nga
+                      <strong>12/03/2017</strong>
+                      ne 12:30<br>
+                      deri me
+                      <strong>14/03/2017</strong>
+                      ne 12:30
+                    </div>
+                    <div class="rental_info_price">
+                      <strong>50 euro</strong><br>
+                    </div>
+                  </div>
+                </div>
+                <!-- END col-->
+
+                <div class="">
+                  <div class="panel">
+                    <div class="p20">
+                      <div style="padding-left:16px">
+                        <h5>Kerkesa juaj eshte pranuar</h5>
+                        <p>Makina eshte ne pritje ne qendren tone per tu marre nga klienti</p>
+
+                        <button type="submit" class="btn btn-danger">
+                          <i class="fa fa-sign-in"></i>
+                          Anullo rezervimin/kerkesen
+                        </button>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- END col-->
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="sidebar">
+                <div class="widget">
+                  <div class="panel p20">
+                    <div class="content">
+                      <div class="row">
+                        <div class="col-sm-12 text-center">
+                          <div class="user user-lg">
+                            <a href="#"><img src="{{asset('img/tmp/agent-5.jpg')}}" alt=""></a>
+                          </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                          <p>Rudi Thoma</p>
+                        </div>
+                        <hr>
+                        <div class="col-sm-12">
+                          <div class="row text-center">
+                            <div class="col-sm-6">
+                              <i class="fa fa-key"></i>
+                              32 Qera
+                            </div>
+                            <div class="col-sm-6">
+                              <i class="fa fa-star"></i>
+                              50 evaluime
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- END col-->
+            </div>
+
+          </div>
+
+          <div class="col-sm-6">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#check" aria-controls="check" role="tab" data-toggle="tab">Check List</a>
+              </li>
+              <li role="presentation">
+                <a href="#fatura" aria-controls="fatura" role="tab" data-toggle="tab">Fatura</a>
+              </li>
+              <li role="presentation">
+                <a href="#klienti" aria-controls="klienti" role="tab" data-toggle="tab">Sherbimi i klientit</a>
+              </li>
+
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="check">
+                <h3>Perpara nisjes se kontrates :
+                </h3>
+                <ul>
+                  <li>Beni gati nje kopje te pashaportes tuaj</li>
+                  <li>Beni nje kopje te patentes</li>
+                  <li>Sigurohuni qe te dhenat e profilit tuaj jane korrekte : nr telefoni, emer mbiemer</li>
+                  <li>Duhet te paraqiteni ju ne qender per te marre makinen dhe askush tjeter</li>
+                </ul>
+                <h3>Pasi te merrni makinen :</h3>
+                <ul>
+                  <li>Beni gati nje kopje te pashaportes tuaj</li>
+                  <li>Beni nje kopje te patentes</li>
+                  <li>Sigurohuni qe te dhenat e profilit tuaj jane korrekte : nr telefoni, emer mbiemer</li>
+                  <li>Duhet te paraqiteni ju ne qender per te marre makinen dhe askush tjeter</li>
+                </ul>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="fatura">
+                <h3>Fatura juaj</h3>
+                <p>Keni per te paguar shumen e
+                  <strong>40 euro</strong>
+                  perpara se te merrni makinen.</p>
+                <hr>
+                <button type="submit" class="btn btn-primary">
+                  <i class="fa fa-file"></i>
+                  Shkarko faturen
+                </button>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="klienti">
+                <h3>
+                  Kerko ndihme
+                </h3>
+                <p>Ne rast emergjence apo ne qofte se keni pyetje mund te na kontaktoni ketu :
+                </p><br>
+                <a href="#">01 05 04 04 02</a><br>
+                <a href="#">admin@ko-rent.com</a><br>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block style %}
+  <style>
+    .rental_info_summary {
+      position: relative;
+      line-height: 1.2;
+      color: #fff;
+    }
+    .rental_info_price {
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      right: 20px;
+      text-align: right;
+    }
+    .big_rental_parameter {
+      display: inline;
+      font-size: 21px;
+      line-height: 21px;
+    }
+
+  </style>
+
+{% endblock %}

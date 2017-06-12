@@ -61,4 +61,4 @@ demande_annonce:
     methods:  [POST]
 test:
     path:     /test
-    defaults: { _controller: AlterStudioCoRentBundle:Test:add }
+    defaults: { _controller: AlterStudioCoRentBundle:Test:test }

@@ -71,12 +71,6 @@ class DemandesAnnonce
      * @ORM\Column(name="prix", type="integer")
      */
     private $prix;
-    /**
-     *
-     * @ORM\OneToOne(targetEntity="Reservation", inversedBy="demandeAnnonce")
-     *
-     */
-    private $reservation;
 
     public function getStatusLibelle()
     {
@@ -406,29 +400,5 @@ class DemandesAnnonce
     public function getPrix()
     {
         return $this->prix;
-    }
-
-    /**
-     * Set reservation
-     *
-     * @param \AppBundle\Entity\Reservation $reservation
-     *
-     * @return DemandesAnnonce
-     */
-    public function setReservation(\AppBundle\Entity\Reservation $reservation = null)
-    {
-        $this->reservation = $reservation;
-
-        return $this;
-    }
-
-    /**
-     * Get reservation
-     *
-     * @return \AppBundle\Entity\Reservation
-     */
-    public function getReservation()
-    {
-        return $this->reservation;
     }
 }

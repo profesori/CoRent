@@ -115,6 +115,10 @@ class Annonce
    * @ORM\OneToMany(targetEntity="Photo", mappedBy="annonce",cascade={"persist"})
    */
     protected $photos;
+    /**
+     * @ORM\OneToMany(targetEntity="Reservation", mappedBy="annonce")
+     */
+    private $reservations;
 
 
     /**
@@ -573,5 +577,39 @@ class Annonce
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Add reservation
+     *
+     * @param \AppBundle\Entity\Reservation $reservation
+     *
+     * @return Annonce
+     */
+    public function addReservation(\AppBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \AppBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\AppBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
     }
 }

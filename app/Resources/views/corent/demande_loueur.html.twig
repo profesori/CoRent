@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="main">
+    <div class="main-inner" style="padding:60px 0px">
+      <div class="container">
+        <div class="column">
+
+          <div class="row">
+            <div class="page-title">
+              <h1>Kerkesa e fff</h1>
+            </div>
+            <div class="col-sm-4">
+              <div class="sidebar">
+                <div class="widget">
+                  <div class="panel p20">
+                    <div class="content">
+                      <div class="row">
+                        <div class="col-sm-12 text-center">
+                          <div class="user user-lg">
+                            <a href="#"><img src="{{asset('img/tmp/agent-5.jpg')}}" alt=""></a>
+                          </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                          <p>Rudi Thoma</p>
+                        </div>
+
+                        <div class="col-sm-12">
+                          <h4>33 vjec</h4>
+                          <h4>Patenta e marre me : 2009</h4>
+                          <h4>User qe nga : 2017</h4>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- END col-->
+            </div>
+
+            <div class="col-sm-8">
+              <div class="panel-green">
+                <div class="rental_info_summary p20">
+                  <div style="padding-left:16px">
+                    nga
+                    <strong>12/03/2017</strong>
+                    ne 12:30<br>
+                    deri me
+                    <strong>14/03/2017</strong>
+                    ne 12:30
+                  </div>
+                  <div class="rental_info_price">
+                    <strong>50 euro</strong><br>
+                    45 euro per ju
+                  </div>
+                </div>
+              </div>
+              <!-- END col-->
+            </div>
+            <div class="col-sm-8">
+              <div class="panel">
+                <div class="p20">
+                  <div style="padding-left:16px">
+                    <h5>Ju keni pranuar kete kerkese</h5>
+                    <p>Makina eshte ne pritje tek qendra jone per tu marre nga klienti</p>
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fa fa-sign-in"></i>
+                      Pranoje
+                    </button>
+                    <button type="submit" class="btn btn-danger">
+                      <i class="fa fa-sign-in"></i>
+                      Refuzoje
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+              <!-- END col-->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block style %}
+  <style>
+    .rental_info_summary {
+      position: relative;
+      line-height: 1.2;
+      color: #fff;
+    }
+    .rental_info_price {
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      right: 20px;
+      text-align: right;
+    }
+    .big_rental_parameter {
+      display: inline;
+      font-size: 21px;
+      line-height: 21px;
+    }
+
+  </style>
+
+{% endblock %}
